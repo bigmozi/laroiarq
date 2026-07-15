@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Larô.IA — Demonstrativo: acompanhamento de obra</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          surface: { base: '#0a0a0a', raised: '#111111', overlay: '#161616' },
+          border:  { subtle: '#1e1e1e', default: '#2a2a2a' },
+          text:    { primary: '#ffffff', secondary: '#888888', tertiary: '#555555' },
+          brand:   { accent: '#e8622c', 'accent-h': '#cf5323', green: '#2ecc71', yellow: '#e8b02c' },
+        },
+        fontFamily: {
+          display: ['"Sora"', 'sans-serif'],
+          body:    ['"Inter"', 'sans-serif'],
+        },
+        borderRadius: { card: '18px', 'card-sm': '10px', pill: '100px' },
+      },
+    },
+  }
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  body { -webkit-font-smoothing: antialiased; }
+  .chip { transition: all .2s ease; }
+  .step-line { background: linear-gradient(180deg, #2a2a2a 0%, #2a2a2a 100%); }
+  .agent-bubble { animation: fadeIn .35s ease both; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .check-done { text-decoration: line-through; color: #555555; }
+  input[type=checkbox].sim-check { accent-color: #e8622c; width: 18px; height: 18px; }
+</style>
+</head>
+
+<body class="font-body bg-surface-base text-text-primary leading-relaxed antialiased">
+
+  <!-- NAV -->
+  <nav class="sticky top-0 z-50 flex justify-between items-center px-4 sm:px-8 h-[64px] bg-black/85 backdrop-blur-md border-b border-border-subtle">
+    <a href="index.html" class="font-display font-extrabold text-sm tracking-[0.1em] uppercase text-text-primary no-underline">
+      Larô<span class="text-brand-accent">.</span>ia
+    </a>
+    <span class="font-display font-bold text-[0.62rem] tracking-[0.14em] uppercase text-text-tertiary hidden sm:block">
+      Demonstrativo de 1 caso · não é o framework completo
+    </span>
+  </nav>
+
+  <!-- HERO -->
+  <section class="px-4 sm:px-8 pt-14 pb-12 max-w-[900px] mx-auto">
+    <p class="font-display font-bold text-[0.7rem] tracking-[0.2em] uppercase text-brand-accent mb-4">Caso real · acompanhamento de obra</p>
+    <h1 class="font-display font-extrabold uppercase tracking-[-0.02em] leading-[1.02] text-[clamp(1.9rem,5vw,3.2rem)] mb-6">
+      Um fluxo só, de ponta a ponta,<br><span class="text-brand-accent">pra você mostrar como o método funciona.</span>
+    </h1>
+    <p class="text-text-secondary text-[1.02rem] max-w-[640px] mb-4">
+      Este demonstrativo usa <strong class="text-text-primary">um único caso real</strong>: uma obra em andamento que já usa o Vobi pra gestão, e precisa de duas coisas automatizadas — o controle de prazo/atraso da obra, e a especificação técnica de acabamento (tinta, piso, textura). Identidade do cliente preservada.
+    </p>
+    <p class="text-text-tertiary text-[0.85rem] max-w-[640px]">
+      Propositalmente não mostra o framework inteiro da Larô.IA (Diagnóstico → Treinamento → Desenvolvimento aplicado a outras especialidades). É um exemplo prático, não o catálogo completo.
+    </p>
+  </section>
+
+  <!-- 1. COMO CONSTRUÍMOS O FLUXO -->
+  <section class="px-4 sm:px-8 py-14 border-t border-border-subtle max-w-[1000px] mx-auto">
+    <p class="font-display font-bold text-[0.7rem] tracking-[0.2em] uppercase text-brand-accent mb-3">01 — Como construímos o fluxo</p>
+    <h2 class="font-display font-extrabold text-[clamp(1.5rem,3.2vw,2.2rem)] mb-10">Da fonte de dado bagunçada até o memorial pronto</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div class="bg-surface-raised border border-border-subtle rounded-card p-5">
+        <span class="inline-block w-7 h-7 rounded-full bg-brand-accent/15 text-brand-accent font-display font-bold text-[0.8rem] flex items-center justify-center mb-4">1</span>
+        <p class="font-display font-bold text-[0.95rem] mb-2">Fontes reais</p>
+        <p class="text-[0.82rem] text-text-secondary leading-[1.55]">Vobi (cronograma e checklist da obra), decisões de acabamento de obras anteriores, prazo contratado.</p>
+      </div>
+      <div class="bg-surface-raised border border-border-subtle rounded-card p-5">
+        <span class="inline-block w-7 h-7 rounded-full bg-brand-accent/15 text-brand-accent font-display font-bold text-[0.8rem] flex items-center justify-center mb-4">2</span>
+        <p class="font-display font-bold text-[0.95rem] mb-2">Motor Larô.IA</p>
+        <p class="text-[0.82rem] text-text-secondary leading-[1.55]">Cruza dias corridos com o prazo contratado e cruza a etapa marcada no checklist com decisões repetidas de acabamento.</p>
+      </div>
+      <div class="bg-surface-raised border border-border-subtle rounded-card p-5">
+        <span class="inline-block w-7 h-7 rounded-full bg-brand-accent/15 text-brand-accent font-display font-bold text-[0.8rem] flex items-center justify-center mb-4">3</span>
+        <p class="font-display font-bold text-[0.95rem] mb-2">Saída sinalizada</p>
+        <p class="text-[0.82rem] text-text-secondary leading-[1.55]">Status de prazo colorido (no prazo/atenção/atrasado) e memorial de acabamento pré-preenchido por ambiente.</p>
+      </div>
+      <div class="bg-surface-raised border border-border-subtle rounded-card p-5">
+        <span class="inline-block w-7 h-7 rounded-full bg-brand-accent/15 text-brand-accent font-display font-bold text-[0.8rem] flex items-center justify-center mb-4">4</span>
+        <p class="font-display font-bold text-[0.95rem] mb-2">Revisão humana</p>
+        <p class="text-[0.82rem] text-text-secondary leading-[1.55]">A responsável pela obra confirma ou ajusta. O agente aponta, nunca decide sozinho.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. COMO O AGENTE SE COMPORTA -->
+  <section class="px-4 sm:px-8 py-14 border-t border-border-subtle max-w-[1000px] mx-auto">
+    <p class="font-display font-bold text-[0.7rem] tracking-[0.2em] uppercase text-brand-accent mb-3">02 — Como o agente se comporta</p>
+    <h2 class="font-display font-extrabold text-[clamp(1.5rem,3.2vw,2.2rem)] mb-4">Simulação clicável</h2>
+    <p class="text-text-secondary text-[0.92rem] mb-8 max-w-[640px]">Clique em "Avançar simulação" pra ver o agente reagir, passo a passo, exatamente como reagiria com dado real da obra.</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      <!-- Checklist -->
+      <div class="bg-surface-raised border border-border-subtle rounded-card p-6">
+        <p class="font-display font-bold text-[0.72rem] tracking-[0.1em] uppercase text-text-secondary mb-4">Checklist da obra (Vobi)</p>
+        <ul id="checklist" class="space-y-3 text-[0.9rem]"></ul>
+      </div>
+
+      <!-- Painel do agente -->
+      <div class="bg-surface-raised border border-border-subtle rounded-card p-6 flex flex-col">
+        <p class="font-display font-bold text-[0.72rem] tracking-[0.1em] uppercase text-text-secondary mb-4">Painel do agente Larô.IA</p>
+
+        <div class="bg-surface-overlay rounded-card-sm p-4 mb-4">
+          <div class="flex justify-between items-center mb-1">
+            <span class="text-[0.78rem] text-text-secondary">Prazo da obra</span>
+            <span id="status-badge" class="chip px-3 py-1 rounded-pill text-[0.65rem] font-display font-bold uppercase tracking-[0.06em] bg-white/10 text-text-secondary">aguardando dado</span>
+          </div>
+          <p id="dias-info" class="font-display font-bold text-[1.1rem]">— dias corridos / — dias contratados</p>
+        </div>
+
+        <p class="font-display font-bold text-[0.72rem] tracking-[0.1em] uppercase text-text-secondary mb-2">Memorial de acabamento (auto-preenchido)</p>
+        <div id="memorial" class="space-y-2 text-[0.84rem] flex-1 mb-4 min-h-[80px]">
+          <p class="text-text-tertiary italic">Nenhum ambiente lançado ainda.</p>
+        </div>
+
+        <div id="agent-log" class="border-t border-border-subtle pt-3 space-y-2 text-[0.8rem] text-text-secondary min-h-[40px]"></div>
+      </div>
+    </div>
+
+    <div class="flex flex-wrap gap-3 mt-6">
+      <button onclick="nextStep()" class="bg-brand-accent hover:bg-brand-accent-h text-surface-base font-display font-bold text-[0.85rem] px-6 py-3 rounded-pill transition-colors">Avançar simulação</button>
+      <button onclick="resetSim()" class="border border-border-default text-text-secondary hover:text-text-primary font-display font-semibold text-[0.85rem] px-6 py-3 rounded-pill transition-colors">Reiniciar</button>
+    </div>
+  </section>
+
+  <!-- 3. ESTIMATIVA -->
+  <section class="px-4 sm:px-8 py-14 border-t border-border-subtle max-w-[1000px] mx-auto">
+    <p class="font-display font-bold text-[0.7rem] tracking-[0.2em] uppercase text-brand-accent mb-3">03 — Estimativa de ganho de tempo e fricção</p>
+    <h2 class="font-display font-extrabold text-[clamp(1.5rem,3.2vw,2.2rem)] mb-6">A conta, por trás do número</h2>
+
+    <div class="bg-surface-raised border border-border-subtle rounded-card overflow-hidden mb-6">
+      <table class="w-full text-[0.85rem]">
+        <thead>
+          <tr class="border-b border-border-subtle text-text-secondary text-left">
+            <th class="p-4 font-display font-semibold">Atividade</th>
+            <th class="p-4 font-display font-semibold">Sem sistema</th>
+            <th class="p-4 font-display font-semibold">Com Larô.IA</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b border-border-subtle">
+            <td class="p-4">Checar status de prazo/atraso (4x/mês)</td>
+            <td class="p-4 text-text-secondary">35 min × 4 = 140 min/mês</td>
+            <td class="p-4 text-text-secondary">10 min × 4 = 40 min/mês</td>
+          </tr>
+          <tr class="border-b border-border-subtle">
+            <td class="p-4">Especificar acabamento por ambiente (~4/mês)</td>
+            <td class="p-4 text-text-secondary">30 min × 4 = 120 min/mês</td>
+            <td class="p-4 text-text-secondary">8 min × 4 = 32 min/mês</td>
+          </tr>
+          <tr>
+            <td class="p-4 font-display font-bold">Total mensal</td>
+            <td class="p-4 font-display font-bold">260 min (~4,3h)</td>
+            <td class="p-4 font-display font-bold text-brand-accent">72 min (~1,2h)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="bg-brand-accent/10 border border-brand-accent/30 rounded-card p-6 mb-6">
+      <p class="font-display font-extrabold text-[1.3rem] text-brand-accent mb-1">Economia estimada: ~3,1h por mês, por obra ativa</p>
+      <p class="text-[0.85rem] text-text-secondary">Além do tempo, reduz a fricção de reconstituir decisão antiga por WhatsApp e de discutir atraso sem dado por trás.</p>
+    </div>
+
+    <p class="text-[0.78rem] text-text-tertiary max-w-[640px]">
+      Números acima são <strong>estimativa de rotina típica</strong>, construída a partir do relato real do cliente, não medição validada. Mesmo padrão de honestidade usado no restante do material da Larô.IA: nenhum número vira alegação de marketing antes de um diagnóstico real confirmar.
+    </p>
+  </section>
+
+  <!-- FOOTER -->
+  <section class="px-4 sm:px-8 py-12 border-t border-border-subtle max-w-[900px] mx-auto text-center">
+    <p class="text-text-secondary text-[0.9rem] mb-6">Este é 1 dos vários casos possíveis dentro do mesmo método. Mostramos só este pra manter o foco na conversa.</p>
+    <a href="index.html"
+       class="inline-flex items-center justify-center bg-brand-accent hover:bg-brand-accent-h
+              text-surface-base font-display font-bold text-[0.85rem] no-underline
+              px-6 py-3 rounded-pill transition-colors duration-200">
+      ← Voltar pra Larô.IA
+    </a>
+  </section>
+
+<script>
+  const checklistItems = [
+    { label: 'Fundação e estrutura', done: false },
+    { label: 'Alvenaria e instalações', done: false },
+    { label: 'Pintura — sala', done: false },
+    { label: 'Piso — sala', done: false },
+    { label: 'Pintura — quarto 2', done: false },
+  ];
+
+  const steps = [
+    {
+      check: 0,
+      dias: '18 dias corridos / 90 dias contratados',
+      status: { text: 'no prazo', cls: 'bg-brand-green/15 text-brand-green' },
+      log: 'Agente registrou o início da obra e o prazo contratado. Nenhum atraso até aqui.',
+    },
+    {
+      check: 1,
+      dias: '52 dias corridos / 90 dias contratados',
+      status: { text: 'atenção', cls: 'bg-brand-yellow/15 text-brand-yellow' },
+      log: 'Ritmo de execução ficou abaixo do esperado pra essa fase. Agente sinaliza atenção — não decide se é atraso real, só aponta o desvio de ritmo pra responsável confirmar.',
+    },
+    {
+      check: 2,
+      dias: '61 dias corridos / 90 dias contratados',
+      status: { text: 'atenção', cls: 'bg-brand-yellow/15 text-brand-yellow' },
+      memorial: { ambiente: 'Sala — pintura', spec: 'Tinta acrílica fosca, cor Cinza Concreto, sem padrão geométrico.', origem: 'repetido de obra anterior, mesmo cliente' },
+      log: 'Item "Pintura — sala" marcado no checklist. Agente já preenche o memorial de acabamento puxando a última decisão de tinta usada com esse cliente, pra responsável só confirmar.',
+    },
+    {
+      check: 3,
+      memorial: { ambiente: 'Sala — piso', spec: 'Porcelanato acetinado, tom Cimento Queimado, sem geométrico.', origem: 'repetido de obra anterior, mesmo cliente' },
+      log: 'Item "Piso — sala" marcado. Mesmo raciocínio: memorial preenchido a partir do padrão já usado, revisão da responsável ainda é obrigatória antes de virar documento oficial.',
+    },
+    {
+      check: 4,
+      dias: '74 dias corridos / 90 dias contratados',
+      status: { text: 'atrasado', cls: 'bg-brand-accent/20 text-brand-accent' },
+      memorial: { ambiente: 'Quarto 2 — pintura', spec: 'Tinta acrílica acetinada, cor Areia Clara.', origem: 'nova combinação, sem repetição anterior' },
+      log: 'Ritmo confirma atraso frente ao prazo contratado. Agente sinaliza "atrasado" com o dado por trás (dias corridos x contratado), pra decisão de cobrar ou negociar prazo ser feita com número, não com desconforto.',
+    },
+  ];
+
+  let stepIndex = 0;
+
+  function renderChecklist() {
+    const ul = document.getElementById('checklist');
+    ul.innerHTML = checklistItems.map((item, i) => `
+      <li class="flex items-center gap-3">
+        <input type="checkbox" class="sim-check" disabled ${item.done ? 'checked' : ''}>
+        <span class="${item.done ? 'check-done' : ''}">${item.label}</span>
+      </li>
+    `).join('');
+  }
+
+  function nextStep() {
+    if (stepIndex >= steps.length) return;
+    const s = steps[stepIndex];
+
+    checklistItems[s.check].done = true;
+    renderChecklist();
+
+    if (s.dias) document.getElementById('dias-info').textContent = s.dias;
+    if (s.status) {
+      const badge = document.getElementById('status-badge');
+      badge.textContent = s.status.text;
+      badge.className = 'chip px-3 py-1 rounded-pill text-[0.65rem] font-display font-bold uppercase tracking-[0.06em] ' + s.status.cls;
+    }
+
+    if (s.memorial) {
+      const memorialEl = document.getElementById('memorial');
+      if (memorialEl.querySelector('.italic')) memorialEl.innerHTML = '';
+      memorialEl.innerHTML += `
+        <div class="agent-bubble bg-surface-overlay rounded-card-sm p-3">
+          <p class="font-display font-bold text-[0.8rem] mb-1">${s.memorial.ambiente}</p>
+          <p class="text-text-secondary text-[0.8rem] mb-1">${s.memorial.spec}</p>
+          <p class="text-text-tertiary text-[0.7rem] uppercase tracking-[0.05em]">${s.memorial.origem}</p>
+        </div>`;
+    }
+
+    const log = document.getElementById('agent-log');
+    log.innerHTML = `<p class="agent-bubble"><span class="text-brand-accent font-display font-bold">Agente:</span> ${s.log}</p>` + log.innerHTML;
+
+    stepIndex++;
+  }
+
+  function resetSim() {
+    stepIndex = 0;
+    checklistItems.forEach(i => i.done = false);
+    renderChecklist();
+    document.getElementById('dias-info').textContent = '— dias corridos / — dias contratados';
+    const badge = document.getElementById('status-badge');
+    badge.textContent = 'aguardando dado';
+    badge.className = 'chip px-3 py-1 rounded-pill text-[0.65rem] font-display font-bold uppercase tracking-[0.06em] bg-white/10 text-text-secondary';
+    document.getElementById('memorial').innerHTML = '<p class="text-text-tertiary italic">Nenhum ambiente lançado ainda.</p>';
+    document.getElementById('agent-log').innerHTML = '';
+  }
+
+  renderChecklist();
+</script>
+
+</body>
+</html>
