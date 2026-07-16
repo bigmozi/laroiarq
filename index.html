@@ -17,10 +17,10 @@
       theme: {
         extend: {
           colors: {
-            surface: { base: '#0a0a0a', raised: '#111111', overlay: '#161616' },
-            border:  { subtle: '#1e1e1e', default: '#2a2a2a' },
-            text:    { primary: '#ffffff', secondary: '#888888', tertiary: '#555555' },
-            brand:   { accent: '#e8622c', 'accent-h': '#cf5323' },
+            surface: { base: '#0b0b0b', raised: '#141414', overlay: '#1a1a1a' },
+            border:  { subtle: '#1f1f1f', default: '#2f2f2f' },
+            text:    { primary: '#f5f3ef', secondary: '#9a9890', tertiary: '#67655e' },
+            brand:   { accent: '#b08d4f', 'accent-h': '#8f7140', sand: '#d0d3c8' },
           },
           fontFamily: {
             display: ['"Sora"', 'sans-serif'],
@@ -40,10 +40,10 @@
     .reveal.visible { opacity: 1; transform: none; }
     .reveal-delay-1 { transition-delay: .06s; }
     .reveal-delay-2 { transition-delay: .12s; }
-    #nav.scrolled { border-color: #1e1e1e; }
+    #nav.scrolled { border-color: #1f1f1f; }
 
     .problema-item { transition: border-color .25s ease; cursor: pointer; }
-    .problema-item:hover { border-color: #e8622c; }
+    .problema-item:hover { border-color: #b08d4f; }
     .problema-a { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
     .problema-item.open .problema-a,
     .problema-item:hover .problema-a { max-height: 240px; }
@@ -141,7 +141,7 @@
           <p class="font-display font-bold text-[1.05rem] leading-[1.25]">Memorial de acabamento é redigitado do zero pra cada ambiente</p>
           <button type="button" class="problema-toggle shrink-0 w-6 h-6 rounded-full border border-text-tertiary text-text-tertiary flex items-center justify-center text-[0.8rem] font-bold leading-none" aria-expanded="false">+</button>
         </div>
-        <span class="inline-block w-fit px-3 py-1 rounded-pill bg-white/10 text-text-secondary font-display font-bold text-[0.65rem] tracking-[0.08em] uppercase">Risco médio</span>
+        <span class="inline-block w-fit px-3 py-1 rounded-pill bg-brand-sand/15 text-brand-sand font-display font-bold text-[0.65rem] tracking-[0.08em] uppercase">Risco médio</span>
         <div class="problema-a">
           <div class="border-t border-border-subtle pt-4 mt-4">
             <p class="font-display font-bold text-[0.65rem] tracking-[0.14em] uppercase text-brand-accent mb-2">Como a LARÔ.IA resolve</p>
@@ -169,7 +169,7 @@
           <p class="font-display font-bold text-[1.05rem] leading-[1.25]">Orçamento comparativo de fornecedor é remontado manualmente toda vez</p>
           <button type="button" class="problema-toggle shrink-0 w-6 h-6 rounded-full border border-text-tertiary text-text-tertiary flex items-center justify-center text-[0.8rem] font-bold leading-none" aria-expanded="false">+</button>
         </div>
-        <span class="inline-block w-fit px-3 py-1 rounded-pill bg-white/10 text-text-secondary font-display font-bold text-[0.65rem] tracking-[0.08em] uppercase">Risco médio</span>
+        <span class="inline-block w-fit px-3 py-1 rounded-pill bg-brand-sand/15 text-brand-sand font-display font-bold text-[0.65rem] tracking-[0.08em] uppercase">Risco médio</span>
         <div class="problema-a">
           <div class="border-t border-border-subtle pt-4 mt-4">
             <p class="font-display font-bold text-[0.65rem] tracking-[0.14em] uppercase text-brand-accent mb-2">Como a LARÔ.IA resolve</p>
@@ -205,7 +205,6 @@
         <img src="assets/laroia-wordmark.svg" alt="LARÔ.IA" class="h-6 w-auto mb-4">
         <p class="text-text-secondary text-[0.95rem]">Implementação de IA feita para arquitetura, engenharia de compatibilização e design de interiores</p>
       </div>
-      <p class="text-[0.7rem] text-text-tertiary mt-10">www.laro.ia</p>
     </div>
     <div class="flex flex-col">
       <div class="p-8 md:p-10 border-b border-border-subtle reveal">
@@ -420,11 +419,6 @@
                 text-surface-base font-display font-bold text-[0.95rem] no-underline px-6 py-4 rounded-pill transition-colors duration-200">
         Solicitar proposta
       </a>
-      <a href="#" class="inline-flex items-center justify-center border border-border-default text-text-secondary
-                font-display font-semibold text-[0.9rem] no-underline px-6 py-4 rounded-pill
-                hover:text-text-primary hover:border-text-secondary transition-colors duration-200">
-        www.laro.ia
-      </a>
     </div>
   </section>
 
@@ -434,7 +428,7 @@
       <img src="assets/laroia-symbol.svg" alt="" aria-hidden="true" class="h-4 w-auto opacity-70">
       <img src="assets/laroia-wordmark.svg" alt="LARÔ.IA" class="h-2.5 w-auto opacity-70">
     </div>
-    <p class="text-[0.68rem] text-text-tertiary tracking-[0.14em] uppercase">Implementação de IA · laro.ia</p>
+    <p class="text-[0.68rem] text-text-tertiary tracking-[0.14em] uppercase">Implementação de IA</p>
   </footer>
 
   <!-- JS -->

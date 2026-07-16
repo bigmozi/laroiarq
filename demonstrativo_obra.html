@@ -13,10 +13,10 @@
     theme: {
       extend: {
         colors: {
-          surface: { base: '#0a0a0a', raised: '#111111', overlay: '#161616' },
-          border:  { subtle: '#1e1e1e', default: '#2a2a2a' },
-          text:    { primary: '#ffffff', secondary: '#888888', tertiary: '#555555' },
-          brand:   { accent: '#e8622c', 'accent-h': '#cf5323', green: '#2ecc71', yellow: '#e8b02c' },
+          surface: { base: '#0b0b0b', raised: '#141414', overlay: '#1a1a1a' },
+          border:  { subtle: '#1f1f1f', default: '#2f2f2f' },
+          text:    { primary: '#f5f3ef', secondary: '#9a9890', tertiary: '#67655e' },
+          brand:   { accent: '#b08d4f', 'accent-h': '#8f7140', sand: '#d0d3c8', green: '#2ecc71', yellow: '#e8b02c' },
         },
         fontFamily: {
           display: ['"Sora"', 'sans-serif'],
@@ -33,11 +33,11 @@
 <style>
   body { -webkit-font-smoothing: antialiased; }
   .chip { transition: all .2s ease; }
-  .step-line { background: linear-gradient(180deg, #2a2a2a 0%, #2a2a2a 100%); }
+  .step-line { background: linear-gradient(180deg, #2f2f2f 0%, #2f2f2f 100%); }
   .agent-bubble { animation: fadeIn .35s ease both; }
   @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
-  .check-done { text-decoration: line-through; color: #555555; }
-  input[type=checkbox].sim-check { accent-color: #e8622c; width: 18px; height: 18px; }
+  .check-done { text-decoration: line-through; color: #67655e; }
+  input[type=checkbox].sim-check { accent-color: #b08d4f; width: 18px; height: 18px; }
 </style>
 </head>
 
