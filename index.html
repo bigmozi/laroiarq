@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Larô.IA: você refaz. O cliente não paga.</title>
+  <title>LARÔ.IA, IA para arquitetura</title>
   <meta name="description" content="Diagnóstico gratuito, treinamento e desenvolvimento sob medida de IA para escritórios de arquitetura, engenharia de compatibilização e design de interiores." />
-  <meta property="og:title" content="Larô.IA" />
+  <meta property="og:title" content="LARÔ.IA" />
   <meta property="og:description" content="Diagnóstico grátis. Treinamento aplicado. Sistema desenvolvido sob medida." />
   <meta property="og:locale" content="pt_BR" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -42,10 +42,14 @@
     .reveal-delay-2 { transition-delay: .12s; }
     #nav.scrolled { border-color: #1e1e1e; }
 
+    .problema-item { transition: border-color .25s ease; cursor: pointer; }
+    .problema-item:hover { border-color: #e8622c; }
     .problema-a { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
-    .problema-item.open .problema-a { max-height: 240px; }
+    .problema-item.open .problema-a,
+    .problema-item:hover .problema-a { max-height: 240px; }
     .problema-toggle { transition: transform .25s ease; cursor: pointer; }
-    .problema-item.open .problema-toggle { transform: rotate(45deg); }
+    .problema-item.open .problema-toggle,
+    .problema-item:hover .problema-toggle { transform: rotate(45deg); }
   </style>
 </head>
 
@@ -59,7 +63,7 @@
            border-b border-transparent transition-[border-color] duration-300">
     <a href="#" class="inline-flex items-center gap-2 no-underline">
       <img src="assets/laroia-symbol.svg" alt="" aria-hidden="true" class="h-6 w-auto">
-      <img src="assets/laroia-wordmark.svg" alt="Larô.IA" class="h-4 w-auto">
+      <img src="assets/laroia-wordmark.svg" alt="LARÔ.IA" class="h-4 w-auto">
     </a>
     <a href="#cta"
        class="font-display font-bold text-[0.65rem] sm:text-[0.78rem] tracking-[0.12em] uppercase no-underline
@@ -78,7 +82,7 @@
       <span class="text-brand-accent">O cliente <br>não paga.</span>
     </h1>
     <p class="text-base text-text-secondary leading-[1.7] max-w-[620px] mb-8">
-      Revisão sem controle de escopo, compatibilização feita no olho, memorial reescrito do zero. Tempo de projeto virou tempo de retrabalho. A Larô.IA devolve esse tempo pro projeto.
+      Revisão sem controle de escopo, compatibilização feita no olho, memorial reescrito do zero. Tempo de projeto virou tempo de retrabalho. A LARÔ.IA devolve esse tempo pro projeto.
     </p>
     <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 border-t border-border-subtle pt-6 max-w-[640px]">
       <a href="#diagnostico"
@@ -112,7 +116,7 @@
         <span class="inline-block w-fit px-3 py-1 rounded-pill bg-brand-accent/15 text-brand-accent font-display font-bold text-[0.65rem] tracking-[0.08em] uppercase">Risco alto</span>
         <div class="problema-a">
           <div class="border-t border-border-subtle pt-4 mt-4">
-            <p class="font-display font-bold text-[0.65rem] tracking-[0.14em] uppercase text-brand-accent mb-2">Como a Larô.IA resolve</p>
+            <p class="font-display font-bold text-[0.65rem] tracking-[0.14em] uppercase text-brand-accent mb-2">Como a LARÔ.IA resolve</p>
             <p class="text-[0.88rem] text-text-secondary leading-[1.6]">Registra o escopo original do contrato e aponta automaticamente quando uma revisão já passou do combinado.</p>
           </div>
         </div>
@@ -126,7 +130,7 @@
         <span class="inline-block w-fit px-3 py-1 rounded-pill bg-brand-accent/15 text-brand-accent font-display font-bold text-[0.65rem] tracking-[0.08em] uppercase">Risco alto</span>
         <div class="problema-a">
           <div class="border-t border-border-subtle pt-4 mt-4">
-            <p class="font-display font-bold text-[0.65rem] tracking-[0.14em] uppercase text-brand-accent mb-2">Como a Larô.IA resolve</p>
+            <p class="font-display font-bold text-[0.65rem] tracking-[0.14em] uppercase text-brand-accent mb-2">Como a LARÔ.IA resolve</p>
             <p class="text-[0.88rem] text-text-secondary leading-[1.6]">Cruza automaticamente os projetos de cada disciplina e aponta o conflito antes da reunião de compatibilização.</p>
           </div>
         </div>
@@ -140,7 +144,7 @@
         <span class="inline-block w-fit px-3 py-1 rounded-pill bg-white/10 text-text-secondary font-display font-bold text-[0.65rem] tracking-[0.08em] uppercase">Risco médio</span>
         <div class="problema-a">
           <div class="border-t border-border-subtle pt-4 mt-4">
-            <p class="font-display font-bold text-[0.65rem] tracking-[0.14em] uppercase text-brand-accent mb-2">Como a Larô.IA resolve</p>
+            <p class="font-display font-bold text-[0.65rem] tracking-[0.14em] uppercase text-brand-accent mb-2">Como a LARÔ.IA resolve</p>
             <p class="text-[0.88rem] text-text-secondary leading-[1.6]">Gera o memorial a partir de especificações e fornecedores já usados em projetos anteriores.</p>
           </div>
         </div>
@@ -154,7 +158,7 @@
         <span class="inline-block w-fit px-3 py-1 rounded-pill bg-yellow-500/15 text-yellow-500 font-display font-bold text-[0.65rem] tracking-[0.08em] uppercase">Atenção redobrada</span>
         <div class="problema-a">
           <div class="border-t border-border-subtle pt-4 mt-4">
-            <p class="font-display font-bold text-[0.65rem] tracking-[0.14em] uppercase text-brand-accent mb-2">Como a Larô.IA resolve</p>
+            <p class="font-display font-bold text-[0.65rem] tracking-[0.14em] uppercase text-brand-accent mb-2">Como a LARÔ.IA resolve</p>
             <p class="text-[0.88rem] text-text-secondary leading-[1.6]">Diagnóstico mapeia seu fluxo real antes de qualquer ferramenta. Sistema é construído sob medida pro seu processo.</p>
           </div>
         </div>
@@ -168,7 +172,7 @@
         <span class="inline-block w-fit px-3 py-1 rounded-pill bg-white/10 text-text-secondary font-display font-bold text-[0.65rem] tracking-[0.08em] uppercase">Risco médio</span>
         <div class="problema-a">
           <div class="border-t border-border-subtle pt-4 mt-4">
-            <p class="font-display font-bold text-[0.65rem] tracking-[0.14em] uppercase text-brand-accent mb-2">Como a Larô.IA resolve</p>
+            <p class="font-display font-bold text-[0.65rem] tracking-[0.14em] uppercase text-brand-accent mb-2">Como a LARÔ.IA resolve</p>
             <p class="text-[0.88rem] text-text-secondary leading-[1.6]">Monta o comparativo a partir de cotações e fornecedores já registrados em projetos anteriores.</p>
           </div>
         </div>
@@ -182,7 +186,7 @@
         <span class="inline-block w-fit px-3 py-1 rounded-pill bg-yellow-500/15 text-yellow-500 font-display font-bold text-[0.65rem] tracking-[0.08em] uppercase">Atenção redobrada</span>
         <div class="problema-a">
           <div class="border-t border-border-subtle pt-4 mt-4">
-            <p class="font-display font-bold text-[0.65rem] tracking-[0.14em] uppercase text-brand-accent mb-2">Como a Larô.IA resolve</p>
+            <p class="font-display font-bold text-[0.65rem] tracking-[0.14em] uppercase text-brand-accent mb-2">Como a LARÔ.IA resolve</p>
             <p class="text-[0.88rem] text-text-secondary leading-[1.6]">Cruza o cronograma de entrega com o cronograma financeiro do contrato e mostra qual parcela está pendente antes de qualquer pressão de prazo.</p>
           </div>
         </div>
@@ -190,7 +194,7 @@
 
     </div>
     <div class="mt-10 pt-6 border-t border-border-subtle reveal">
-      <p class="font-display font-extrabold text-[1.1rem] md:text-[1.3rem]">A Larô.IA resolve todas essas dores.</p>
+      <p class="font-display font-extrabold text-[1.1rem] md:text-[1.3rem]">A LARÔ.IA resolve todas essas dores.</p>
     </div>
   </section>
 
@@ -198,7 +202,7 @@
   <section id="diagnostico" class="border-t border-border-subtle grid grid-cols-1 md:grid-cols-[380px_1fr]">
     <div class="p-8 md:p-12 flex flex-col justify-between bg-surface-base border-b md:border-b-0 md:border-r border-border-subtle reveal">
       <div>
-        <p class="font-display font-extrabold text-2xl uppercase tracking-[-0.02em] mb-2">Larô<span class="text-brand-accent">.</span>ia</p>
+        <img src="assets/laroia-wordmark.svg" alt="LARÔ.IA" class="h-6 w-auto mb-4">
         <p class="text-text-secondary text-[0.95rem]">Implementação de IA feita para arquitetura, engenharia de compatibilização e design de interiores</p>
       </div>
       <p class="text-[0.7rem] text-text-tertiary mt-10">www.laro.ia</p>
@@ -225,7 +229,7 @@
            class="inline-flex items-center gap-2 font-display font-bold text-[0.85rem] tracking-[0.02em] no-underline
                   text-brand-accent border border-brand-accent px-6 py-3 rounded-pill
                   hover:bg-brand-accent hover:text-surface-base transition-colors duration-200">
-          Ver demonstrativo de uma obra real →
+          Ver na prática →
         </a>
       </div>
     </div>
@@ -235,7 +239,7 @@
   <section class="px-4 sm:px-6 md:px-12 py-16 md:py-24 border-t border-border-subtle">
     <p class="font-display font-bold text-[0.7rem] tracking-[0.2em] uppercase text-brand-accent mb-4 reveal">Exemplos reais — arquitetura</p>
     <h2 class="font-display font-extrabold text-[clamp(1.8rem,4vw,3rem)] mb-2 reveal">Escritórios de arquitetura</h2>
-    <p class="font-display font-bold text-[0.7rem] tracking-[0.14em] uppercase text-text-tertiary mb-10 reveal">O que a Larô.IA faz pelo seu escritório</p>
+    <p class="font-display font-bold text-[0.7rem] tracking-[0.14em] uppercase text-text-tertiary mb-10 reveal">O que a LARÔ.IA faz pelo seu escritório</p>
     <div class="flex flex-col reveal rounded-card border border-border-subtle overflow-hidden">
       <div class="flex gap-6 p-6">
         <span class="font-display font-extrabold text-brand-accent text-[1.1rem] w-8 shrink-0">01</span>
@@ -264,7 +268,7 @@
   <section class="px-4 sm:px-6 md:px-12 py-16 md:py-24 border-t border-border-subtle bg-surface-overlay">
     <p class="font-display font-bold text-[0.7rem] tracking-[0.2em] uppercase text-brand-accent mb-4 reveal">Exemplos reais — engenharia de compatibilização</p>
     <h2 class="font-display font-extrabold text-[clamp(1.8rem,4vw,3rem)] mb-2 reveal">Escritórios de engenharia</h2>
-    <p class="font-display font-bold text-[0.7rem] tracking-[0.14em] uppercase text-text-tertiary mb-10 reveal">O que a Larô.IA faz pelo seu escritório</p>
+    <p class="font-display font-bold text-[0.7rem] tracking-[0.14em] uppercase text-text-tertiary mb-10 reveal">O que a LARÔ.IA faz pelo seu escritório</p>
     <div class="flex flex-col reveal rounded-card border border-border-subtle overflow-hidden">
       <div class="flex gap-6 p-6">
         <span class="font-display font-extrabold text-brand-accent text-[1.1rem] w-8 shrink-0">01</span>
@@ -293,7 +297,7 @@
   <section class="px-4 sm:px-6 md:px-12 py-16 md:py-24 border-t border-border-subtle">
     <p class="font-display font-bold text-[0.7rem] tracking-[0.2em] uppercase text-brand-accent mb-4 reveal">Exemplos reais — design de interiores</p>
     <h2 class="font-display font-extrabold text-[clamp(1.8rem,4vw,3rem)] mb-2 reveal">Estúdios de design de interiores</h2>
-    <p class="font-display font-bold text-[0.7rem] tracking-[0.14em] uppercase text-text-tertiary mb-10 reveal">O que a Larô.IA faz pelo seu estúdio</p>
+    <p class="font-display font-bold text-[0.7rem] tracking-[0.14em] uppercase text-text-tertiary mb-10 reveal">O que a LARÔ.IA faz pelo seu estúdio</p>
     <div class="flex flex-col reveal rounded-card border border-border-subtle overflow-hidden">
       <div class="flex gap-6 p-6">
         <span class="font-display font-extrabold text-brand-accent text-[1.1rem] w-8 shrink-0">01</span>
@@ -332,11 +336,11 @@
         <div class="p-6 border-b border-border-subtle">
           <p class="font-display font-bold text-[0.7rem] tracking-[0.14em] uppercase text-brand-accent mb-3">Arquitetura</p>
           <p class="text-[0.88rem] text-text-secondary leading-[1.6] mb-2"><strong class="text-text-primary">Situação:</strong> cada revisão fora do escopo original é refeita sem controle, e a equipe gasta tempo tentando reconstituir o que já foi combinado com o cliente.</p>
-          <p class="text-[0.88rem] text-text-secondary leading-[1.6]"><strong class="text-text-primary">A Larô.IA age:</strong> registra o escopo original e aponta automaticamente quando uma revisão já passou do combinado.</p>
+          <p class="text-[0.88rem] text-text-secondary leading-[1.6]"><strong class="text-text-primary">A LARÔ.IA age:</strong> registra o escopo original e aponta automaticamente quando uma revisão já passou do combinado.</p>
         </div>
         <div class="p-6 mt-auto">
           <div class="flex justify-between text-[0.8rem] text-text-tertiary mb-1"><span>Sem sistema</span><span>~4h/mês</span></div>
-          <div class="flex justify-between text-[0.8rem] text-text-tertiary mb-3"><span>Com Larô.IA</span><span>~0,5h/mês</span></div>
+          <div class="flex justify-between text-[0.8rem] text-text-tertiary mb-3"><span>Com LARÔ.IA</span><span>~0,5h/mês</span></div>
           <p class="font-display font-extrabold text-brand-accent text-[1.3rem]">~3,5h/mês devolvidas</p>
         </div>
       </div>
@@ -345,11 +349,11 @@
         <div class="p-6 border-b border-border-subtle">
           <p class="font-display font-bold text-[0.7rem] tracking-[0.14em] uppercase text-brand-accent mb-3">Engenharia de compatibilização</p>
           <p class="text-[0.88rem] text-text-secondary leading-[1.6] mb-2"><strong class="text-text-primary">Situação:</strong> cruzar arquitetura, elétrica e hidráulica prancha por prancha consome horas por projeto, e o conflito que passa despercebido só aparece na obra.</p>
-          <p class="text-[0.88rem] text-text-secondary leading-[1.6]"><strong class="text-text-primary">A Larô.IA age:</strong> cruza os projetos automaticamente e aponta o conflito antes da reunião de compatibilização.</p>
+          <p class="text-[0.88rem] text-text-secondary leading-[1.6]"><strong class="text-text-primary">A LARÔ.IA age:</strong> cruza os projetos automaticamente e aponta o conflito antes da reunião de compatibilização.</p>
         </div>
         <div class="p-6 mt-auto">
           <div class="flex justify-between text-[0.8rem] text-text-tertiary mb-1"><span>Sem sistema</span><span>~16h/mês</span></div>
-          <div class="flex justify-between text-[0.8rem] text-text-tertiary mb-3"><span>Com Larô.IA</span><span>~6h/mês</span></div>
+          <div class="flex justify-between text-[0.8rem] text-text-tertiary mb-3"><span>Com LARÔ.IA</span><span>~6h/mês</span></div>
           <p class="font-display font-extrabold text-brand-accent text-[1.3rem]">~10h/mês devolvidas</p>
         </div>
       </div>
@@ -358,11 +362,11 @@
         <div class="p-6 border-b border-border-subtle">
           <p class="font-display font-bold text-[0.7rem] tracking-[0.14em] uppercase text-brand-accent mb-3">Design de interiores</p>
           <p class="text-[0.88rem] text-text-secondary leading-[1.6] mb-2"><strong class="text-text-primary">Situação:</strong> memorial de acabamento e orçamento comparativo são remontados do zero pra cada projeto, mesmo repetindo fornecedor e combinação de material.</p>
-          <p class="text-[0.88rem] text-text-secondary leading-[1.6]"><strong class="text-text-primary">A Larô.IA age:</strong> gera memorial e orçamento a partir de projetos e fornecedores já registrados.</p>
+          <p class="text-[0.88rem] text-text-secondary leading-[1.6]"><strong class="text-text-primary">A LARÔ.IA age:</strong> gera memorial e orçamento a partir de projetos e fornecedores já registrados.</p>
         </div>
         <div class="p-6 mt-auto">
           <div class="flex justify-between text-[0.8rem] text-text-tertiary mb-1"><span>Sem sistema</span><span>~15h/mês</span></div>
-          <div class="flex justify-between text-[0.8rem] text-text-tertiary mb-3"><span>Com Larô.IA</span><span>~4,5h/mês</span></div>
+          <div class="flex justify-between text-[0.8rem] text-text-tertiary mb-3"><span>Com LARÔ.IA</span><span>~4,5h/mês</span></div>
           <p class="font-display font-extrabold text-brand-accent text-[1.3rem]">~10,5h/mês devolvidas</p>
         </div>
       </div>
@@ -373,7 +377,7 @@
   <!-- DIFERENCIAIS -->
   <section class="px-4 sm:px-6 md:px-12 py-16 md:py-24 border-t border-border-subtle bg-surface-overlay">
     <p class="font-display font-bold text-[0.72rem] tracking-[0.22em] uppercase text-brand-accent mb-4 reveal">Diferenciais</p>
-    <h2 class="font-display font-extrabold text-[clamp(1.8rem,4vw,3rem)] mb-10 md:mb-14 reveal">Por que a Larô.IA?</h2>
+    <h2 class="font-display font-extrabold text-[clamp(1.8rem,4vw,3rem)] mb-10 md:mb-14 reveal">Por que a LARÔ.IA?</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 reveal">
       <div class="bg-surface-raised rounded-card border border-border-subtle p-6">
         <p class="font-display font-bold text-[0.95rem] mb-2"><span class="text-brand-accent mr-2">01</span>Especialidade primeiro</p>
@@ -404,6 +408,7 @@
 
   <!-- CTA FINAL -->
   <section id="cta" class="px-4 sm:px-6 md:px-12 py-20 md:py-28 border-t border-border-subtle">
+    <img src="assets/laroia-symbol.svg" alt="" aria-hidden="true" class="h-10 w-auto mb-6 reveal">
     <h2 class="font-display font-extrabold uppercase tracking-[-0.03em] leading-[0.95]
                text-[clamp(2rem,6vw,4.5rem)] max-w-[900px] mb-8 reveal">
       Pronto para não<br>ficar para trás?
@@ -424,8 +429,12 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="px-4 sm:px-6 md:px-12 py-6 border-t border-border-subtle flex flex-col sm:flex-row justify-between items-start sm:items-center flex-wrap gap-2">
-    <p class="text-[0.68rem] text-text-tertiary tracking-[0.14em] uppercase">Larô.ia · Implementação de IA · laro.ia</p>
+  <footer class="px-4 sm:px-6 md:px-12 py-6 border-t border-border-subtle flex flex-col sm:flex-row justify-between items-start sm:items-center flex-wrap gap-3">
+    <div class="flex items-center gap-2">
+      <img src="assets/laroia-symbol.svg" alt="" aria-hidden="true" class="h-4 w-auto opacity-70">
+      <img src="assets/laroia-wordmark.svg" alt="LARÔ.IA" class="h-2.5 w-auto opacity-70">
+    </div>
+    <p class="text-[0.68rem] text-text-tertiary tracking-[0.14em] uppercase">Implementação de IA · laro.ia</p>
   </footer>
 
   <!-- JS -->
