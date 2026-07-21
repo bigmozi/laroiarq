@@ -3,42 +3,14 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>LARÔ.IA — Demonstrativo: acompanhamento de obra</title>
+<title>LARÔ.IA · Demonstrativo: acompanhamento de obra</title>
 <link rel="icon" type="image/svg+xml" href="assets/laroia-symbol.svg" />
+<link rel="stylesheet" href="assets/tokens.css">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"></script>
 <script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          surface: { base: '#0b0b0b', raised: '#141414', overlay: '#1a1a1a' },
-          border:  { subtle: '#1f1f1f', default: '#2f2f2f' },
-          text:    { primary: '#f5f3ef', secondary: '#9a9890', tertiary: '#67655e' },
-          brand:   { accent: '#b08d4f', 'accent-h': '#8f7140', sand: '#d0d3c8', green: '#2ecc71', yellow: '#e8b02c' },
-        },
-        fontFamily: {
-          display: ['"Sora"', 'sans-serif'],
-          body:    ['"Inter"', 'sans-serif'],
-        },
-        borderRadius: { card: '18px', 'card-sm': '10px', pill: '100px' },
-      },
-    },
-  }
-</script>
+<script src="assets/tailwind.config.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
-<style>
-  body { -webkit-font-smoothing: antialiased; }
-  .chip { transition: all .2s ease; }
-  .step-line { background: linear-gradient(180deg, #2f2f2f 0%, #2f2f2f 100%); }
-  .agent-bubble { animation: fadeIn .35s ease both; }
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
-  .check-done { text-decoration: line-through; color: #67655e; }
-  input[type=checkbox].sim-check { accent-color: #b08d4f; width: 18px; height: 18px; }
-</style>
 </head>
 
 <body class="font-body bg-surface-base text-text-primary leading-relaxed antialiased">
@@ -61,7 +33,7 @@
       Um fluxo só, de ponta a ponta,<span class="text-brand-accent">pra você ver como <br> o método funciona.</span>
     </h1>
     <p class="text-text-secondary text-[1.02rem] max-w-[640px] mb-4">
-      Este demonstrativo usa <strong class="text-text-primary">um único caso real</strong>: uma obra em andamento que já usa o Vobi pra gestão, e precisa de duas coisas automatizadas — o controle de prazo/atraso da obra, e a especificação técnica de acabamento (tinta, piso, textura). Identidade do cliente preservada.
+      Este demonstrativo usa <strong class="text-text-primary">um único caso real</strong>: uma obra em andamento que já usa o Vobi pra gestão, e precisa de duas coisas automatizadas: o controle de prazo/atraso da obra e a especificação técnica de acabamento (tinta, piso, textura). Identidade do cliente preservada.
     </p>
     <p class="text-text-tertiary text-[0.85rem] max-w-[640px]">
       Propositalmente não mostra o framework inteiro da LARÔ.IA (Diagnóstico → Treinamento → Desenvolvimento aplicado a outras especialidades). É um exemplo prático, não o catálogo completo.
@@ -70,7 +42,7 @@
 
   <!-- 1. COMO CONSTRUÍMOS O FLUXO -->
   <section class="px-4 sm:px-8 py-14 border-t border-border-subtle max-w-[1000px] mx-auto">
-    <p class="font-display font-bold text-[0.7rem] tracking-[0.2em] uppercase text-brand-accent mb-3">01 — Como construímos o fluxo</p>
+    <p class="font-display font-bold text-[0.7rem] tracking-[0.2em] uppercase text-brand-accent mb-3">01 · Como construímos o fluxo</p>
     <h2 class="font-display font-extrabold text-[clamp(1.5rem,3.2vw,2.2rem)] mb-10">Da fonte de dado bagunçada até o memorial pronto</h2>
 
     <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -99,7 +71,7 @@
 
   <!-- 2. COMO O AGENTE SE COMPORTA -->
   <section class="px-4 sm:px-8 py-14 border-t border-border-subtle max-w-[1000px] mx-auto">
-    <p class="font-display font-bold text-[0.7rem] tracking-[0.2em] uppercase text-brand-accent mb-3">02 — Como o agente se comporta</p>
+    <p class="font-display font-bold text-[0.7rem] tracking-[0.2em] uppercase text-brand-accent mb-3">02 · Como o agente se comporta</p>
     <h2 class="font-display font-extrabold text-[clamp(1.5rem,3.2vw,2.2rem)] mb-4">Simulação clicável</h2>
     <p class="text-text-secondary text-[0.92rem] mb-8 max-w-[640px]">Clique em "Avançar simulação" pra ver o agente reagir, passo a passo, exatamente como reagiria com dado real da obra.</p>
 
@@ -120,7 +92,7 @@
             <span class="text-[0.78rem] text-text-secondary">Prazo da obra</span>
             <span id="status-badge" class="chip px-3 py-1 rounded-pill text-[0.65rem] font-display font-bold uppercase tracking-[0.06em] bg-white/10 text-text-secondary">aguardando dado</span>
           </div>
-          <p id="dias-info" class="font-display font-bold text-[1.1rem]">— dias corridos / — dias contratados</p>
+          <p id="dias-info" class="font-display font-bold text-[1.1rem]">Sem dado de prazo ainda</p>
         </div>
 
         <p class="font-display font-bold text-[0.72rem] tracking-[0.1em] uppercase text-text-secondary mb-2">Memorial de acabamento (auto-preenchido)</p>
@@ -140,7 +112,7 @@
 
   <!-- 3. ESTIMATIVA -->
   <section class="px-4 sm:px-8 py-14 border-t border-border-subtle max-w-[1000px] mx-auto">
-    <p class="font-display font-bold text-[0.7rem] tracking-[0.2em] uppercase text-brand-accent mb-3">03 — Estimativa de ganho de tempo e fricção</p>
+    <p class="font-display font-bold text-[0.7rem] tracking-[0.2em] uppercase text-brand-accent mb-3">03 · Estimativa de ganho de tempo e fricção</p>
     <h2 class="font-display font-extrabold text-[clamp(1.5rem,3.2vw,2.2rem)] mb-6">A conta, por trás do número</h2>
 
     <div class="bg-surface-raised border border-border-subtle rounded-card overflow-hidden mb-6">
@@ -206,9 +178,9 @@
   const checklistItems = [
     { label: 'Fundação e estrutura', done: false },
     { label: 'Alvenaria e instalações', done: false },
-    { label: 'Pintura — sala', done: false },
-    { label: 'Piso — sala', done: false },
-    { label: 'Pintura — quarto 2', done: false },
+    { label: 'Pintura da sala', done: false },
+    { label: 'Piso da sala', done: false },
+    { label: 'Pintura do quarto 2', done: false },
   ];
 
   const steps = [
@@ -222,25 +194,25 @@
       check: 1,
       dias: '52 dias corridos / 90 dias contratados',
       status: { text: 'atenção', cls: 'bg-brand-yellow/15 text-brand-yellow' },
-      log: 'Ritmo de execução ficou abaixo do esperado pra essa fase. Agente sinaliza atenção — não decide se é atraso real, só aponta o desvio de ritmo pra responsável confirmar.',
+      log: 'Ritmo de execução ficou abaixo do esperado pra essa fase. Agente sinaliza atenção: não decide se é atraso real, só aponta o desvio de ritmo pra responsável confirmar.',
     },
     {
       check: 2,
       dias: '61 dias corridos / 90 dias contratados',
       status: { text: 'atenção', cls: 'bg-brand-yellow/15 text-brand-yellow' },
-      memorial: { ambiente: 'Sala — pintura', spec: 'Tinta acrílica fosca, cor Cinza Concreto, sem padrão geométrico.', origem: 'repetido de obra anterior, mesmo cliente' },
-      log: 'Item "Pintura — sala" marcado no checklist. Agente já preenche o memorial de acabamento puxando a última decisão de tinta usada com esse cliente, pra responsável só confirmar.',
+      memorial: { ambiente: 'Pintura da sala', spec: 'Tinta acrílica fosca, cor Cinza Concreto, sem padrão geométrico.', origem: 'repetido de obra anterior, mesmo cliente' },
+      log: 'Item "Pintura da sala" marcado no checklist. Agente já preenche o memorial de acabamento puxando a última decisão de tinta usada com esse cliente, pra responsável só confirmar.',
     },
     {
       check: 3,
-      memorial: { ambiente: 'Sala — piso', spec: 'Porcelanato acetinado, tom Cimento Queimado, sem geométrico.', origem: 'repetido de obra anterior, mesmo cliente' },
-      log: 'Item "Piso — sala" marcado. Mesmo raciocínio: memorial preenchido a partir do padrão já usado, revisão da responsável ainda é obrigatória antes de virar documento oficial.',
+      memorial: { ambiente: 'Piso da sala', spec: 'Porcelanato acetinado, tom Cimento Queimado, sem geométrico.', origem: 'repetido de obra anterior, mesmo cliente' },
+      log: 'Item "Piso da sala" marcado. Mesmo raciocínio: memorial preenchido a partir do padrão já usado, revisão da responsável ainda é obrigatória antes de virar documento oficial.',
     },
     {
       check: 4,
       dias: '74 dias corridos / 90 dias contratados',
       status: { text: 'atrasado', cls: 'bg-brand-accent/20 text-brand-accent' },
-      memorial: { ambiente: 'Quarto 2 — pintura', spec: 'Tinta acrílica acetinada, cor Areia Clara.', origem: 'nova combinação, sem repetição anterior' },
+      memorial: { ambiente: 'Pintura do quarto 2', spec: 'Tinta acrílica acetinada, cor Areia Clara.', origem: 'nova combinação, sem repetição anterior' },
       log: 'Ritmo confirma atraso frente ao prazo contratado. Agente sinaliza "atrasado" com o dado por trás (dias corridos x contratado), pra decisão de cobrar ou negociar prazo ser feita com número, não com desconforto.',
     },
   ];

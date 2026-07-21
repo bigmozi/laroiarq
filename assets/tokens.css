@@ -1,0 +1,94 @@
+/* LARÔ.IA — design tokens e estilos compartilhados
+   Usado por index.html, diagnostico.html e demonstrativo_obra.html.
+   Os valores aqui são a fonte única de verdade; o tailwind.config de cada
+   página só referencia essas variáveis (var(--color-...) etc.), nunca hex direto. */
+
+:root {
+  /* Superfícies */
+  --color-surface-base: #0b0b0b;
+  --color-surface-raised: #141414;
+  --color-surface-overlay: #1a1a1a;
+
+  /* Bordas */
+  --color-border-subtle: #1f1f1f;
+  --color-border-default: #2f2f2f;
+
+  /* Texto */
+  --color-text-primary: #f5f3ef;
+  --color-text-secondary: #9a9890;
+  --color-text-tertiary: #67655e;
+
+  /* Marca */
+  --color-brand-accent: #b08d4f;
+  --color-brand-accent-hover: #8f7140;
+  --color-brand-sand: #d0d3c8;
+  --color-brand-green: #2ecc71;
+  --color-brand-yellow: #e8b02c;
+
+  /* Tipografia */
+  --font-display: "Sora", sans-serif;
+  --font-body: "Inter", sans-serif;
+
+  /* Raio */
+  --radius-card: 18px;
+  --radius-card-sm: 10px;
+  --radius-pill: 100px;
+}
+
+body { -webkit-font-smoothing: antialiased; }
+
+/* Animação de entrada ao rolar (todas as páginas) */
+.reveal { opacity: 0; transform: translateY(14px); transition: opacity .5s ease, transform .5s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-delay-1 { transition-delay: .06s; }
+.reveal-delay-2 { transition-delay: .12s; }
+#nav.scrolled { border-color: var(--color-border-subtle); }
+
+/* Accordion "o problema" (index.html) */
+.problema-item { transition: border-color .25s ease; cursor: pointer; }
+.problema-item:hover { border-color: var(--color-brand-accent); }
+.problema-a { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+.problema-item.open .problema-a,
+.problema-item:hover .problema-a { max-height: 240px; }
+.problema-toggle { transition: transform .25s ease; cursor: pointer; }
+.problema-item.open .problema-toggle,
+.problema-item:hover .problema-toggle { transform: rotate(45deg); }
+
+/* Accordion FAQ (index.html) */
+.faq-a { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+.faq-item.open .faq-a { max-height: 200px; }
+.faq-toggle { transition: transform .25s ease; }
+.faq-item.open .faq-toggle { transform: rotate(45deg); }
+
+/* Campos de formulário (diagnostico.html) */
+input, select, textarea {
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border-default);
+  color: var(--color-text-primary);
+  border-radius: var(--radius-card-sm);
+  padding: 0.85rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  width: 100%;
+  transition: border-color .2s ease;
+}
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--color-brand-accent); }
+input::placeholder, textarea::placeholder { color: var(--color-text-tertiary); }
+label {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* Simulação clicável (demonstrativo_obra.html) */
+.chip { transition: all .2s ease; }
+.step-line { background: linear-gradient(180deg, var(--color-border-default) 0%, var(--color-border-default) 100%); }
+.agent-bubble { animation: fadeIn .35s ease both; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.check-done { text-decoration: line-through; color: var(--color-text-tertiary); }
+input[type=checkbox].sim-check { accent-color: var(--color-brand-accent); width: 18px; height: 18px; }

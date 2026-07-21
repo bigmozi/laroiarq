@@ -10,47 +10,13 @@
   <meta property="og:locale" content="pt_BR" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/svg+xml" href="assets/laroia-symbol.svg" />
+  <link rel="stylesheet" href="assets/tokens.css">
 
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            surface: { base: '#0b0b0b', raised: '#141414', overlay: '#1a1a1a' },
-            border:  { subtle: '#1f1f1f', default: '#2f2f2f' },
-            text:    { primary: '#f5f3ef', secondary: '#9a9890', tertiary: '#67655e' },
-            brand:   { accent: '#b08d4f', 'accent-h': '#8f7140', sand: '#d0d3c8' },
-          },
-          fontFamily: {
-            display: ['"Sora"', 'sans-serif'],
-            body:    ['"Inter"', 'sans-serif'],
-          },
-          borderRadius: { card: '18px', 'card-sm': '10px', pill: '100px' },
-        },
-      },
-    }
-  </script>
+  <script src="assets/tailwind.config.js"></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
-  <style>
-    .reveal { opacity: 0; transform: translateY(14px); transition: opacity .5s ease, transform .5s ease; }
-    .reveal.visible { opacity: 1; transform: none; }
-    .reveal-delay-1 { transition-delay: .06s; }
-    .reveal-delay-2 { transition-delay: .12s; }
-    #nav.scrolled { border-color: #1f1f1f; }
-
-    .problema-item { transition: border-color .25s ease; cursor: pointer; }
-    .problema-item:hover { border-color: #b08d4f; }
-    .problema-a { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
-    .problema-item.open .problema-a,
-    .problema-item:hover .problema-a { max-height: 240px; }
-    .problema-toggle { transition: transform .25s ease; cursor: pointer; }
-    .problema-item.open .problema-toggle,
-    .problema-item:hover .problema-toggle { transform: rotate(45deg); }
-  </style>
 </head>
 
 <body class="font-body bg-surface-base text-text-primary text-lg leading-relaxed antialiased overflow-x-hidden">
@@ -65,11 +31,11 @@
       <img src="assets/laroia-symbol.svg" alt="" aria-hidden="true" class="h-6 w-auto">
       <img src="assets/laroia-wordmark.svg" alt="LARÔ.IA" class="h-4 w-auto">
     </a>
-    <a href="#cta"
+    <a href="diagnostico.html"
        class="font-display font-bold text-[0.65rem] sm:text-[0.78rem] tracking-[0.12em] uppercase no-underline
               bg-brand-accent text-surface-base px-4 sm:px-5 py-2.5 rounded-pill
               hover:bg-brand-accent-h transition-colors duration-200 whitespace-nowrap">
-      Solicitar proposta
+      Diagnóstico gratuito
     </a>
   </nav>
 
@@ -82,20 +48,20 @@
       <span class="text-brand-accent">O cliente <br>não paga.</span>
     </h1>
     <p class="text-base text-text-secondary leading-[1.7] max-w-[620px] mb-8">
-      Revisão sem controle de escopo, compatibilização feita no olho, memorial reescrito do zero. Tempo de projeto virou tempo de retrabalho. A LARÔ.IA devolve esse tempo pro projeto.
+      Revisão sem controle de escopo, compatibilização feita no olho, memorial reescrito do zero. São horas que nunca entram na proposta. A LARÔ.IA transforma essas horas em capacidade de entregar mais projetos, com mais controle e menos desgaste.
     </p>
-    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 border-t border-border-subtle pt-6 max-w-[640px]">
-      <a href="#diagnostico"
+    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 border-t border-border-subtle pt-6">
+      <a href="diagnostico.html"
          class="inline-flex items-center justify-center gap-2 bg-brand-accent hover:bg-brand-accent-h
-                text-surface-base font-display font-bold text-[0.95rem] tracking-[0.02em] no-underline
-                px-6 py-4 rounded-pill transition-colors duration-200">
-        Conhecer a solução
+                text-surface-base font-display font-bold text-[0.95rem] tracking-[0.02em] no-underline uppercase
+                px-6 py-4 rounded-pill transition-colors duration-200 sm:whitespace-nowrap sm:shrink-0">
+        Fazer o diagnóstico gratuito
       </a>
-      <a href="#cta"
+      <a href="#diagnostico"
          class="inline-flex items-center justify-center border border-border-default text-text-secondary
-                font-display font-semibold text-[0.9rem] no-underline px-6 py-4 rounded-pill
-                hover:text-text-primary hover:border-text-secondary transition-colors duration-200">
-        Solicitar proposta
+                font-display font-semibold text-[0.9rem] no-underline uppercase px-6 py-4 rounded-pill
+                hover:text-text-primary hover:border-text-secondary transition-colors duration-200 sm:whitespace-nowrap sm:shrink-0">
+        Conhecer a solução
       </a>
     </div>
   </section>
@@ -103,9 +69,12 @@
   <!-- O PROBLEMA -->
   <section id="problema" class="px-4 sm:px-6 md:px-12 py-16 md:py-24 border-t border-border-subtle">
     <p class="font-display font-bold text-[0.72rem] tracking-[0.22em] uppercase text-brand-accent mb-4 reveal">O problema</p>
-    <h2 class="font-display font-extrabold text-[clamp(1.8rem,4vw,3rem)] leading-[1.1] mb-10 md:mb-14 max-w-[760px] reveal">
+    <h2 class="font-display font-extrabold text-[clamp(1.8rem,4vw,3rem)] leading-[1.1] mb-6 max-w-[760px] reveal">
       Você se identifica com alguma dessas situações?
     </h2>
+    <p class="text-text-secondary text-base leading-[1.7] max-w-[640px] mb-10 md:mb-14 reveal">
+      Se você chegou até aqui, provavelmente não é porque falta projeto. É porque boa parte da sua semana desaparece resolvendo problema que nunca deveria voltar.
+    </p>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 reveal">
 
       <div class="problema-item bg-surface-raised rounded-card border border-border-subtle p-6 flex flex-col">
@@ -198,35 +167,51 @@
     </div>
   </section>
 
-  <!-- COMO FUNCIONA (resumo) -->
-  <section id="diagnostico" class="border-t border-border-subtle grid grid-cols-1 md:grid-cols-[380px_1fr]">
-    <div class="p-8 md:p-12 flex flex-col justify-between bg-surface-base border-b md:border-b-0 md:border-r border-border-subtle reveal">
-      <div>
-        <img src="assets/laroia-wordmark.svg" alt="LARÔ.IA" class="h-6 w-auto mb-4">
-        <p class="text-text-secondary text-[0.95rem]">Implementação de IA feita para arquitetura, engenharia de compatibilização e design de interiores</p>
+  <!-- PROVA LÓGICA — POR QUE ISSO ACONTECE -->
+  <section id="causa" class="px-4 sm:px-6 md:px-12 py-16 md:py-24 border-t border-border-subtle bg-surface-overlay">
+    <div class="max-w-[760px]">
+      <p class="font-display font-bold text-[0.72rem] tracking-[0.22em] uppercase text-brand-accent mb-4 reveal">Por que isso acontece</p>
+      <h2 class="font-display font-extrabold text-[clamp(1.8rem,4vw,3rem)] leading-[1.1] mb-8 reveal">
+        O problema não é falta de IA.<br>É que o processo mora na memória de alguém.
+      </h2>
+      <div class="text-text-secondary text-base leading-[1.8] space-y-5 reveal">
+        <p>Cobrar revisão extra parece quebrar a parceria com o cliente, então ninguém cobra e ninguém registra. Admitir que um conflito passou despercebido parece expor falha técnica, então ninguém fala. O resultado: cada escopo, cada aprovação e cada especificação vive espalhado entre e-mail, WhatsApp e a cabeça de quem estava na reunião.</p>
+        <p>Quando o processo depende da memória, o escopo muda sem registro, as revisões se acumulam sem histórico e o erro aparece tarde demais, já na obra.</p>
+        <p class="text-text-primary font-medium">Não adianta empilhar mais uma ferramenta em cima disso. Primeiro se organiza o fluxo, depois se automatiza. É nessa ordem que a LARÔ.IA trabalha.</p>
       </div>
     </div>
-    <div class="flex flex-col">
-      <div class="p-8 md:p-10 border-b border-border-subtle reveal">
-        <span class="font-display font-extrabold text-brand-accent text-[1.3rem] mr-3">01</span>
-        <span class="font-display font-extrabold text-[1.3rem] uppercase">Diagnóstico</span>
-        <p class="text-text-secondary text-[0.9rem] mt-2 max-w-[560px]">Avaliamos onde seu escritório está perdendo tempo e dinheiro. Gratuito, em 15 minutos. Sem consultores presenciais. Resultado honesto.</p>
+  </section>
+
+  <!-- COMO TRABALHAMOS — FLUXOGRAMA -->
+  <section id="diagnostico" class="px-4 sm:px-6 md:px-12 py-16 md:py-24 border-t border-border-subtle">
+    <p class="font-display font-bold text-[0.72rem] tracking-[0.22em] uppercase text-brand-accent mb-4 reveal">Como trabalhamos</p>
+    <h2 class="font-display font-extrabold text-[clamp(1.8rem,4vw,3rem)] leading-[1.1] mb-4 max-w-[760px] reveal">
+      Da primeira conversa até sua equipe operando sozinha.
+    </h2>
+    <p class="text-text-secondary text-[0.95rem] max-w-[640px] mb-10 md:mb-14 reveal">Implementação de IA feita para arquitetura, engenharia de compatibilização e design de interiores.</p>
+
+    <div class="flex flex-col md:flex-row items-stretch gap-2 reveal">
+      <div class="flex-1 bg-surface-raised rounded-card border border-border-subtle p-6 flex flex-col">
+        <p class="font-display font-extrabold text-brand-accent text-[1.1rem] mb-2">01 · Diagnóstico</p>
+        <p class="text-text-secondary text-[0.85rem] leading-[1.6]">Avaliamos onde seu escritório está perdendo tempo e dinheiro. Gratuito, em 15 minutos. Sem consultores presenciais. Resultado honesto.</p>
       </div>
-      <div class="p-8 md:p-10 border-b border-border-subtle reveal reveal-delay-1">
-        <span class="font-display font-extrabold text-brand-accent text-[1.3rem] mr-3">02</span>
-        <span class="font-display font-extrabold text-[1.3rem] uppercase">Treinamento</span>
-        <p class="text-text-secondary text-[0.9rem] mt-2 max-w-[560px]">Capacitamos sua equipe com IA prática e aplicada ao fluxo do seu escritório. Baseado nas lacunas reais, não em conteúdo genérico.</p>
+      <div class="flex items-center justify-center text-brand-accent text-2xl font-bold shrink-0 rotate-90 md:rotate-0 leading-none py-1 md:py-0">→</div>
+      <div class="flex-1 bg-surface-raised rounded-card border border-border-subtle p-6 flex flex-col">
+        <p class="font-display font-extrabold text-brand-accent text-[1.1rem] mb-2">02 · Desenvolvimento</p>
+        <p class="text-text-secondary text-[0.85rem] leading-[1.6]">Construímos a solução sob medida: controle de escopo, cruzamento de disciplinas, geração de memorial. Rápido, acessível, focado no seu problema.</p>
       </div>
-      <div class="p-8 md:p-10 border-b border-border-subtle reveal reveal-delay-2">
-        <span class="font-display font-extrabold text-brand-accent text-[1.3rem] mr-3">03</span>
-        <span class="font-display font-extrabold text-[1.3rem] uppercase">Desenvolvimento</span>
-        <p class="text-text-secondary text-[0.9rem] mt-2 max-w-[560px]">Construímos a solução sob medida: controle de escopo, cruzamento de disciplinas, geração de memorial. Rápido, acessível, focado no seu problema.</p>
+      <div class="flex items-center justify-center text-brand-accent text-2xl font-bold shrink-0 rotate-90 md:rotate-0 leading-none py-1 md:py-0">→</div>
+      <div class="flex-1 bg-surface-raised rounded-card border border-border-subtle p-6 flex flex-col">
+        <p class="font-display font-extrabold text-brand-accent text-[1.1rem] mb-2">03 · Treinamento</p>
+        <p class="text-text-secondary text-[0.85rem] leading-[1.6]">Capacitamos sua equipe com IA prática e aplicada ao fluxo do seu escritório. Baseado nas lacunas reais, não em conteúdo genérico.</p>
       </div>
-      <div class="p-8 md:p-10 reveal reveal-delay-2">
-        <p class="text-text-secondary text-[0.9rem] mb-4 max-w-[560px]">Quer ver o método funcionando num caso real, de ponta a ponta?</p>
+      <div class="flex items-center justify-center text-brand-accent text-2xl font-bold shrink-0 rotate-90 md:rotate-0 leading-none py-1 md:py-0">→</div>
+      <div class="flex-1 bg-brand-accent/10 rounded-card border border-brand-accent p-6 flex flex-col">
+        <p class="font-display font-extrabold text-brand-accent text-[1.1rem] mb-2">04 · Autonomia</p>
+        <p class="text-text-secondary text-[0.85rem] leading-[1.6] mb-4">O sistema fica com você. Sua equipe opera sozinha, sem depender da gente pra sempre.</p>
         <a href="demonstrativo_obra.html"
-           class="inline-flex items-center gap-2 font-display font-bold text-[0.85rem] tracking-[0.02em] no-underline
-                  text-brand-accent border border-brand-accent px-6 py-3 rounded-pill
+           class="mt-auto inline-flex items-center justify-center gap-2 font-display font-bold text-[0.78rem] tracking-[0.02em] no-underline uppercase
+                  text-brand-accent border border-brand-accent px-5 py-2.5 rounded-pill w-fit
                   hover:bg-brand-accent hover:text-surface-base transition-colors duration-200">
           Ver na prática →
         </a>
@@ -236,8 +221,8 @@
 
   <!-- EXEMPLOS REAIS — ARQUITETURA -->
   <section class="px-4 sm:px-6 md:px-12 py-16 md:py-24 border-t border-border-subtle">
-    <p class="font-display font-bold text-[0.7rem] tracking-[0.2em] uppercase text-brand-accent mb-4 reveal">Exemplos reais — arquitetura</p>
-    <h2 class="font-display font-extrabold text-[clamp(1.8rem,4vw,3rem)] mb-2 reveal">Escritórios de arquitetura</h2>
+    <p class="font-display font-bold text-[0.7rem] tracking-[0.2em] uppercase text-brand-accent mb-4 reveal">Exemplos reais · arquitetura</p>
+    <h2 class="font-display font-extrabold text-[clamp(1.8rem,4vw,3rem)] mb-2 reveal">Escritórios de Arquitetura</h2>
     <p class="font-display font-bold text-[0.7rem] tracking-[0.14em] uppercase text-text-tertiary mb-10 reveal">O que a LARÔ.IA faz pelo seu escritório</p>
     <div class="flex flex-col reveal rounded-card border border-border-subtle overflow-hidden">
       <div class="flex gap-6 p-6">
@@ -265,8 +250,8 @@
 
   <!-- EXEMPLOS REAIS — ENGENHARIA DE COMPATIBILIZAÇÃO -->
   <section class="px-4 sm:px-6 md:px-12 py-16 md:py-24 border-t border-border-subtle bg-surface-overlay">
-    <p class="font-display font-bold text-[0.7rem] tracking-[0.2em] uppercase text-brand-accent mb-4 reveal">Exemplos reais — engenharia de compatibilização</p>
-    <h2 class="font-display font-extrabold text-[clamp(1.8rem,4vw,3rem)] mb-2 reveal">Escritórios de engenharia</h2>
+    <p class="font-display font-bold text-[0.7rem] tracking-[0.2em] uppercase text-brand-accent mb-4 reveal">Exemplos reais · engenharia de compatibilização</p>
+    <h2 class="font-display font-extrabold text-[clamp(1.8rem,4vw,3rem)] mb-2 reveal">Escritórios de Engenharia</h2>
     <p class="font-display font-bold text-[0.7rem] tracking-[0.14em] uppercase text-text-tertiary mb-10 reveal">O que a LARÔ.IA faz pelo seu escritório</p>
     <div class="flex flex-col reveal rounded-card border border-border-subtle overflow-hidden">
       <div class="flex gap-6 p-6">
@@ -294,8 +279,8 @@
 
   <!-- EXEMPLOS REAIS — DESIGN DE INTERIORES -->
   <section class="px-4 sm:px-6 md:px-12 py-16 md:py-24 border-t border-border-subtle">
-    <p class="font-display font-bold text-[0.7rem] tracking-[0.2em] uppercase text-brand-accent mb-4 reveal">Exemplos reais — design de interiores</p>
-    <h2 class="font-display font-extrabold text-[clamp(1.8rem,4vw,3rem)] mb-2 reveal">Estúdios de design de interiores</h2>
+    <p class="font-display font-bold text-[0.7rem] tracking-[0.2em] uppercase text-brand-accent mb-4 reveal">Exemplos reais · design de interiores</p>
+    <h2 class="font-display font-extrabold text-[clamp(1.8rem,4vw,3rem)] mb-2 reveal">Estúdios de Design de Interiores</h2>
     <p class="font-display font-bold text-[0.7rem] tracking-[0.14em] uppercase text-text-tertiary mb-10 reveal">O que a LARÔ.IA faz pelo seu estúdio</p>
     <div class="flex flex-col reveal rounded-card border border-border-subtle overflow-hidden">
       <div class="flex gap-6 p-6">
@@ -321,6 +306,41 @@
     </div>
   </section>
 
+  <!-- ANTES E DEPOIS -->
+  <section class="px-4 sm:px-6 md:px-12 py-16 md:py-24 border-t border-border-subtle">
+    <h2 class="font-display font-extrabold uppercase tracking-[-0.02em] leading-[0.95] text-[clamp(2rem,5.5vw,4rem)] mb-10 md:mb-14 reveal">
+      Antes e<br><span class="text-brand-accent">depois.</span>
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 reveal">
+      <div class="rounded-card border border-border-subtle overflow-hidden">
+        <div class="p-5 border-b border-border-subtle bg-surface-raised">
+          <p class="font-display font-bold text-[0.75rem] tracking-[0.14em] uppercase text-text-tertiary">Sem a LARÔ.IA</p>
+        </div>
+        <div class="divide-y divide-border-subtle">
+          <div class="flex items-start gap-3 p-5"><span class="text-text-tertiary shrink-0 mt-0.5">✕</span><p class="text-text-secondary text-[0.92rem] leading-[1.6]">Revisão fora de escopo vira favor, ninguém cobra</p></div>
+          <div class="flex items-start gap-3 p-5"><span class="text-text-tertiary shrink-0 mt-0.5">✕</span><p class="text-text-secondary text-[0.92rem] leading-[1.6]">Conflito entre disciplinas só aparece na obra</p></div>
+          <div class="flex items-start gap-3 p-5"><span class="text-text-tertiary shrink-0 mt-0.5">✕</span><p class="text-text-secondary text-[0.92rem] leading-[1.6]">Memorial de acabamento redigitado do zero a cada projeto</p></div>
+          <div class="flex items-start gap-3 p-5"><span class="text-text-tertiary shrink-0 mt-0.5">✕</span><p class="text-text-secondary text-[0.92rem] leading-[1.6]">Orçamento comparativo remontado manualmente toda vez</p></div>
+          <div class="flex items-start gap-3 p-5"><span class="text-text-tertiary shrink-0 mt-0.5">✕</span><p class="text-text-secondary text-[0.92rem] leading-[1.6]">Sexta-feira sem saber quantas horas viraram retrabalho</p></div>
+          <div class="flex items-start gap-3 p-5"><span class="text-text-tertiary shrink-0 mt-0.5">✕</span><p class="text-text-secondary text-[0.92rem] leading-[1.6]">Decisão de cobrar baseada em desconforto, não em dado</p></div>
+        </div>
+      </div>
+      <div class="rounded-card border border-brand-accent overflow-hidden">
+        <div class="p-5 border-b border-brand-accent bg-brand-accent/10">
+          <p class="font-display font-bold text-[0.75rem] tracking-[0.14em] uppercase text-brand-accent">Com a LARÔ.IA</p>
+        </div>
+        <div class="divide-y divide-border-subtle">
+          <div class="flex items-start gap-3 p-5"><span class="text-brand-accent shrink-0 mt-0.5">✓</span><p class="text-text-secondary text-[0.92rem] leading-[1.6]">Revisão fora de escopo registrada, com decisão de cobrar ou não</p></div>
+          <div class="flex items-start gap-3 p-5"><span class="text-brand-accent shrink-0 mt-0.5">✓</span><p class="text-text-secondary text-[0.92rem] leading-[1.6]">Conflito entre disciplinas apontado antes da reunião</p></div>
+          <div class="flex items-start gap-3 p-5"><span class="text-brand-accent shrink-0 mt-0.5">✓</span><p class="text-text-secondary text-[0.92rem] leading-[1.6]">Memorial gerado a partir do que já foi usado antes</p></div>
+          <div class="flex items-start gap-3 p-5"><span class="text-brand-accent shrink-0 mt-0.5">✓</span><p class="text-text-secondary text-[0.92rem] leading-[1.6]">Orçamento montado a partir de cotações já registradas</p></div>
+          <div class="flex items-start gap-3 p-5"><span class="text-brand-accent shrink-0 mt-0.5">✓</span><p class="text-text-secondary text-[0.92rem] leading-[1.6]">Sexta-feira com número real de horas de revisão extra</p></div>
+          <div class="flex items-start gap-3 p-5"><span class="text-brand-accent shrink-0 mt-0.5">✓</span><p class="text-text-secondary text-[0.92rem] leading-[1.6]">Decisão de cobrar baseada em dado, não em desconforto</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CASOS DE USO E EFICIÊNCIA -->
   <section id="eficiencia" class="px-4 sm:px-6 md:px-12 py-16 md:py-24 border-t border-border-subtle">
     <p class="font-display font-bold text-[0.72rem] tracking-[0.22em] uppercase text-brand-accent mb-4 reveal">Casos de uso e eficiência</p>
@@ -334,39 +354,39 @@
       <div class="bg-surface-raised rounded-card border border-border-subtle overflow-hidden flex flex-col">
         <div class="p-6 border-b border-border-subtle">
           <p class="font-display font-bold text-[0.7rem] tracking-[0.14em] uppercase text-brand-accent mb-3">Arquitetura</p>
+          <p class="font-display font-extrabold text-brand-accent text-[1.5rem] mb-4">~3,5h/mês devolvidas</p>
           <p class="text-[0.88rem] text-text-secondary leading-[1.6] mb-2"><strong class="text-text-primary">Situação:</strong> cada revisão fora do escopo original é refeita sem controle, e a equipe gasta tempo tentando reconstituir o que já foi combinado com o cliente.</p>
           <p class="text-[0.88rem] text-text-secondary leading-[1.6]"><strong class="text-text-primary">A LARÔ.IA age:</strong> registra o escopo original e aponta automaticamente quando uma revisão já passou do combinado.</p>
         </div>
         <div class="p-6 mt-auto">
           <div class="flex justify-between text-[0.8rem] text-text-tertiary mb-1"><span>Sem sistema</span><span>~4h/mês</span></div>
-          <div class="flex justify-between text-[0.8rem] text-text-tertiary mb-3"><span>Com LARÔ.IA</span><span>~0,5h/mês</span></div>
-          <p class="font-display font-extrabold text-brand-accent text-[1.3rem]">~3,5h/mês devolvidas</p>
+          <div class="flex justify-between text-[0.8rem] text-text-tertiary"><span>Com LARÔ.IA</span><span>~0,5h/mês</span></div>
         </div>
       </div>
 
       <div class="bg-surface-raised rounded-card border border-border-subtle overflow-hidden flex flex-col">
         <div class="p-6 border-b border-border-subtle">
           <p class="font-display font-bold text-[0.7rem] tracking-[0.14em] uppercase text-brand-accent mb-3">Engenharia de compatibilização</p>
+          <p class="font-display font-extrabold text-brand-accent text-[1.5rem] mb-4">~10h/mês devolvidas</p>
           <p class="text-[0.88rem] text-text-secondary leading-[1.6] mb-2"><strong class="text-text-primary">Situação:</strong> cruzar arquitetura, elétrica e hidráulica prancha por prancha consome horas por projeto, e o conflito que passa despercebido só aparece na obra.</p>
           <p class="text-[0.88rem] text-text-secondary leading-[1.6]"><strong class="text-text-primary">A LARÔ.IA age:</strong> cruza os projetos automaticamente e aponta o conflito antes da reunião de compatibilização.</p>
         </div>
         <div class="p-6 mt-auto">
           <div class="flex justify-between text-[0.8rem] text-text-tertiary mb-1"><span>Sem sistema</span><span>~16h/mês</span></div>
-          <div class="flex justify-between text-[0.8rem] text-text-tertiary mb-3"><span>Com LARÔ.IA</span><span>~6h/mês</span></div>
-          <p class="font-display font-extrabold text-brand-accent text-[1.3rem]">~10h/mês devolvidas</p>
+          <div class="flex justify-between text-[0.8rem] text-text-tertiary"><span>Com LARÔ.IA</span><span>~6h/mês</span></div>
         </div>
       </div>
 
       <div class="bg-surface-raised rounded-card border border-border-subtle overflow-hidden flex flex-col">
         <div class="p-6 border-b border-border-subtle">
           <p class="font-display font-bold text-[0.7rem] tracking-[0.14em] uppercase text-brand-accent mb-3">Design de interiores</p>
+          <p class="font-display font-extrabold text-brand-accent text-[1.5rem] mb-4">~10,5h/mês devolvidas</p>
           <p class="text-[0.88rem] text-text-secondary leading-[1.6] mb-2"><strong class="text-text-primary">Situação:</strong> memorial de acabamento e orçamento comparativo são remontados do zero pra cada projeto, mesmo repetindo fornecedor e combinação de material.</p>
           <p class="text-[0.88rem] text-text-secondary leading-[1.6]"><strong class="text-text-primary">A LARÔ.IA age:</strong> gera memorial e orçamento a partir de projetos e fornecedores já registrados.</p>
         </div>
         <div class="p-6 mt-auto">
           <div class="flex justify-between text-[0.8rem] text-text-tertiary mb-1"><span>Sem sistema</span><span>~15h/mês</span></div>
-          <div class="flex justify-between text-[0.8rem] text-text-tertiary mb-3"><span>Com LARÔ.IA</span><span>~4,5h/mês</span></div>
-          <p class="font-display font-extrabold text-brand-accent text-[1.3rem]">~10,5h/mês devolvidas</p>
+          <div class="flex justify-between text-[0.8rem] text-text-tertiary"><span>Com LARÔ.IA</span><span>~4,5h/mês</span></div>
         </div>
       </div>
 
@@ -379,28 +399,115 @@
     <h2 class="font-display font-extrabold text-[clamp(1.8rem,4vw,3rem)] mb-10 md:mb-14 reveal">Por que a LARÔ.IA?</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 reveal">
       <div class="bg-surface-raised rounded-card border border-border-subtle p-6">
-        <p class="font-display font-bold text-[0.95rem] mb-2"><span class="text-brand-accent mr-2">01</span>Especialidade primeiro</p>
-        <p class="text-text-secondary text-[0.88rem] leading-[1.6]">Feita pra arquitetura, engenharia de compatibilização e design de interiores. Não é ferramenta genérica adaptada pra "escritório".</p>
+        <p class="font-display font-bold text-[0.95rem] mb-2"><span class="text-brand-accent mr-2">01</span>Feita pro fluxo de projeto, não pra "escritório" em geral</p>
+        <p class="text-text-secondary text-[0.88rem] leading-[1.6]">Revisão, compatibilização, memorial, orçamento. A LARÔ.IA opera nos processos de arquitetura, engenharia e design de interiores, não numa planilha genérica adaptada.</p>
       </div>
       <div class="bg-surface-raised rounded-card border border-border-subtle p-6">
-        <p class="font-display font-bold text-[0.95rem] mb-2"><span class="text-brand-accent mr-2">02</span>Diagnóstico honesto</p>
-        <p class="text-text-secondary text-[0.88rem] leading-[1.6]">Não empurramos solução. Mapeamos as lacunas reais primeiro. Você decide o que faz sentido.</p>
+        <p class="font-display font-bold text-[0.95rem] mb-2"><span class="text-brand-accent mr-2">02</span>Cada implementação nasce do seu diagnóstico</p>
+        <p class="text-text-secondary text-[0.88rem] leading-[1.6]">Não empurramos solução pronta. Mapeamos onde seu escritório perde tempo de verdade, e você decide o que faz sentido construir.</p>
       </div>
       <div class="bg-surface-raised rounded-card border border-border-subtle p-6">
-        <p class="font-display font-bold text-[0.95rem] mb-2"><span class="text-brand-accent mr-2">03</span>Rápido e prático</p>
-        <p class="text-text-secondary text-[0.88rem] leading-[1.6]">Do diagnóstico ao primeiro resultado em semanas, não meses. Sem burocracia.</p>
+        <p class="font-display font-bold text-[0.95rem] mb-2"><span class="text-brand-accent mr-2">03</span>Do diagnóstico ao primeiro resultado em semanas</p>
+        <p class="text-text-secondary text-[0.88rem] leading-[1.6]">Não é projeto de consultoria de seis meses. O sistema entra em operação por etapa, começando pelo ponto de maior dreno.</p>
       </div>
       <div class="bg-surface-raised rounded-card border border-border-subtle p-6">
-        <p class="font-display font-bold text-[0.95rem] mb-2"><span class="text-brand-accent mr-2">04</span>Nunca decide o projeto</p>
-        <p class="text-text-secondary text-[0.88rem] leading-[1.6]">Automatiza controle e cruzamento de dados. A decisão técnica e de projeto continua com você, sempre.</p>
+        <p class="font-display font-bold text-[0.95rem] mb-2"><span class="text-brand-accent mr-2">04</span>Aponta o conflito, nunca decide o projeto</p>
+        <p class="text-text-secondary text-[0.88rem] leading-[1.6]">O sistema cruza dados, registra escopo e sinaliza o que passou do combinado. A decisão técnica e de projeto continua com você, sempre.</p>
       </div>
       <div class="bg-surface-raised rounded-card border border-border-subtle p-6">
-        <p class="font-display font-bold text-[0.95rem] mb-2"><span class="text-brand-accent mr-2">05</span>Sistema sob medida</p>
-        <p class="text-text-secondary text-[0.88rem] leading-[1.6]">Não vendemos licença fechada. Desenvolvemos o que seu escritório precisa, e o sistema fica com você.</p>
+        <p class="font-display font-bold text-[0.95rem] mb-2"><span class="text-brand-accent mr-2">05</span>Não substitui seu processo. Organiza e acelera o que já funciona</p>
+        <p class="text-text-secondary text-[0.88rem] leading-[1.6]">Sem licença fechada, sem trocar de ferramenta de desenho. O sistema é construído em cima do seu fluxo atual e fica com você.</p>
       </div>
       <div class="bg-surface-raised rounded-card border border-border-subtle p-6">
-        <p class="font-display font-bold text-[0.95rem] mb-2"><span class="text-brand-accent mr-2">06</span>Autonomia real</p>
-        <p class="text-text-secondary text-[0.88rem] leading-[1.6]">Treinamos pra sua equipe ficar independente. O objetivo é você não precisar de nós pra sempre.</p>
+        <p class="font-display font-bold text-[0.95rem] mb-2"><span class="text-brand-accent mr-2">06</span>Sua equipe opera sozinha depois da entrega</p>
+        <p class="text-text-secondary text-[0.88rem] leading-[1.6]">Treinamento incluso e guia de operação escrito. O critério de sucesso é você não precisar da gente pra sempre.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUEM CONSTRÓI -->
+  <section class="px-4 sm:px-6 md:px-12 py-16 md:py-24 border-t border-border-subtle">
+    <div class="max-w-[760px] reveal">
+      <p class="font-display font-bold text-[0.72rem] tracking-[0.22em] uppercase text-brand-accent mb-6">Quem constrói</p>
+      <p class="text-text-secondary text-base leading-[1.8] mb-4">A LARÔ.IA é uma parceria entre a <strong class="text-text-primary font-semibold">Nebu Co.</strong> e a <strong class="text-text-primary font-semibold">Affectio</strong>: uma entrega a implementação técnica, a outra garante que o sistema respeita como as pessoas do seu escritório realmente trabalham. Nasceu resolvendo a mesma lacuna em outro setor: escritórios de psiquiatria, neurologia e atendimento a TEA, perdendo tempo com processo que ninguém documentava.</p>
+      <p class="text-text-secondary text-base leading-[1.8]">O método validado lá (diagnóstico honesto, treinamento aplicado, sistema sob medida que fica com o cliente) é o mesmo que chega agora pra arquitetura, engenharia de compatibilização e design de interiores. Não é ferramenta de prateleira adaptada. É o mesmo processo, testado antes de chegar no seu escritório.</p>
+    </div>
+  </section>
+
+  <!-- CASO REAL -->
+  <section id="caso-real" class="px-4 sm:px-6 md:px-12 py-16 md:py-24 border-t border-border-subtle bg-surface-overlay">
+    <div class="max-w-[760px]">
+      <p class="font-display font-bold text-[0.72rem] tracking-[0.22em] uppercase text-brand-accent mb-4 reveal">Caso real</p>
+      <h2 class="font-display font-extrabold text-[clamp(1.8rem,4vw,3rem)] leading-[1.1] mb-6 reveal">
+        Uma obra em andamento já roda esse método.
+      </h2>
+      <p class="text-text-secondary text-base leading-[1.8] mb-4 reveal">
+        Um cliente que usa o Vobi pra gestão de obra precisava de duas coisas automatizadas: controle de prazo e memorial de acabamento. O agente cruza os dias corridos da obra com o prazo contratado e sugere o acabamento a partir do que já foi decidido em obras anteriores. A responsável confirma tudo, o sistema nunca decide sozinho.
+      </p>
+      <p class="text-text-secondary text-base leading-[1.8] mb-8 reveal">
+        Nesse caso, a conta ficou em torno de <strong class="text-brand-accent">3 horas devolvidas por mês, por obra ativa</strong>. Estimativa de rotina típica desse cliente, não medição validada em escala. Tem um demonstrativo interativo pra você ver o passo a passo, clicável.
+      </p>
+      <a href="demonstrativo_obra.html"
+         class="inline-flex items-center gap-2 font-display font-bold text-[0.85rem] tracking-[0.02em] no-underline uppercase
+                text-brand-accent border border-brand-accent px-6 py-3 rounded-pill
+                hover:bg-brand-accent hover:text-surface-base transition-colors duration-200 reveal">
+        Ver o demonstrativo interativo →
+      </a>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="border-t border-border-subtle grid grid-cols-1 md:grid-cols-[380px_1fr] px-4 sm:px-6 md:px-12 py-16 md:py-24">
+    <div class="md:pr-12 mb-10 md:mb-0 reveal">
+      <h2 class="font-display font-extrabold uppercase tracking-[-0.02em] leading-[0.95] text-[clamp(1.8rem,4vw,3rem)]">
+        Perguntas que<br>sempre<br><span class="text-brand-accent">aparecem.</span>
+      </h2>
+    </div>
+    <div class="flex flex-col reveal">
+      <div class="faq-item border-b border-border-subtle py-5 cursor-pointer">
+        <div class="flex items-center justify-between gap-4">
+          <p class="font-display font-bold text-[0.9rem] sm:text-[0.95rem] uppercase tracking-[0.01em]">O sistema decide a solução técnica de compatibilização?</p>
+          <button type="button" class="faq-toggle shrink-0 w-6 h-6 rounded-full border border-brand-accent text-brand-accent flex items-center justify-center text-[0.8rem] font-bold leading-none" aria-expanded="false">+</button>
+        </div>
+        <div class="faq-a">
+          <p class="text-text-secondary text-[0.9rem] leading-[1.6] pt-4 max-w-[560px]">Não. Ele cruza os projetos e aponta o conflito. A decisão de engenharia continua sempre com o profissional responsável.</p>
+        </div>
+      </div>
+      <div class="faq-item border-b border-border-subtle py-5 cursor-pointer">
+        <div class="flex items-center justify-between gap-4">
+          <p class="font-display font-bold text-[0.9rem] sm:text-[0.95rem] uppercase tracking-[0.01em]">Preciso saber programar ou mexer em código?</p>
+          <button type="button" class="faq-toggle shrink-0 w-6 h-6 rounded-full border border-brand-accent text-brand-accent flex items-center justify-center text-[0.8rem] font-bold leading-none" aria-expanded="false">+</button>
+        </div>
+        <div class="faq-a">
+          <p class="text-text-secondary text-[0.9rem] leading-[1.6] pt-4 max-w-[560px]">Não. O treinamento é aplicado ao fluxo real da sua equipe, e o guia de operação vem pronto pra qualquer pessoa do escritório usar.</p>
+        </div>
+      </div>
+      <div class="faq-item border-b border-border-subtle py-5 cursor-pointer">
+        <div class="flex items-center justify-between gap-4">
+          <p class="font-display font-bold text-[0.9rem] sm:text-[0.95rem] uppercase tracking-[0.01em]">Quanto custa?</p>
+          <button type="button" class="faq-toggle shrink-0 w-6 h-6 rounded-full border border-brand-accent text-brand-accent flex items-center justify-center text-[0.8rem] font-bold leading-none" aria-expanded="false">+</button>
+        </div>
+        <div class="faq-a">
+          <p class="text-text-secondary text-[0.9rem] leading-[1.6] pt-4 max-w-[560px]">Treinamento aplicado a partir de R$ 490, desenvolvimento sob medida a partir de R$ 2.200, variando pela complexidade. O valor exato do seu escritório sai do diagnóstico, que é gratuito.</p>
+        </div>
+      </div>
+      <div class="faq-item border-b border-border-subtle py-5 cursor-pointer">
+        <div class="flex items-center justify-between gap-4">
+          <p class="font-display font-bold text-[0.9rem] sm:text-[0.95rem] uppercase tracking-[0.01em]">E se eu fizer o diagnóstico e decidir não seguir?</p>
+          <button type="button" class="faq-toggle shrink-0 w-6 h-6 rounded-full border border-brand-accent text-brand-accent flex items-center justify-center text-[0.8rem] font-bold leading-none" aria-expanded="false">+</button>
+        </div>
+        <div class="faq-a">
+          <p class="text-text-secondary text-[0.9rem] leading-[1.6] pt-4 max-w-[560px]">Sem problema. Nenhum compromisso financeiro é exigido antes da entrega do diagnóstico. Você sai com os pontos de maior dreno priorizados de qualquer forma.</p>
+        </div>
+      </div>
+      <div class="faq-item py-5 cursor-pointer">
+        <div class="flex items-center justify-between gap-4">
+          <p class="font-display font-bold text-[0.9rem] sm:text-[0.95rem] uppercase tracking-[0.01em]">O sistema substitui meu CAD ou BIM?</p>
+          <button type="button" class="faq-toggle shrink-0 w-6 h-6 rounded-full border border-brand-accent text-brand-accent flex items-center justify-center text-[0.8rem] font-bold leading-none" aria-expanded="false">+</button>
+        </div>
+        <div class="faq-a">
+          <p class="text-text-secondary text-[0.9rem] leading-[1.6] pt-4 max-w-[560px]">Não. A LARÔ.IA opera em cima do fluxo de gestão e controle do projeto, não da ferramenta de desenho.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -410,14 +517,20 @@
     <img src="assets/laroia-symbol.svg" alt="" aria-hidden="true" class="h-10 w-auto mb-6 reveal">
     <h2 class="font-display font-extrabold uppercase tracking-[-0.03em] leading-[0.95]
                text-[clamp(2rem,6vw,4.5rem)] max-w-[900px] mb-8 reveal">
-      Pronto para não<br>ficar para trás?
+      Descubra onde seu<br>escritório perde horas<span class="text-brand-accent"> que nunca<br> entram na proposta.</span>
     </h2>
-    <p class="text-base text-text-secondary mb-8 reveal">O primeiro passo é gratuito. Faça o diagnóstico agora.</p>
-    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 max-w-[640px] reveal reveal-delay-1">
-      <a href="https://wa.me/55719996551316?text=Ol%C3%A1!%20Quero%20solicitar%20uma%20proposta%20da%20Lar%C3%B4.IA" target="_blank" rel="noopener"
+    <p class="text-base text-text-secondary mb-8 reveal">Em 15 minutos, gratuito, você sai com os 3 pontos de maior dreno do seu escritório, priorizados.</p>
+    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 reveal reveal-delay-1">
+      <a href="diagnostico.html"
          class="inline-flex items-center justify-center gap-2 bg-brand-accent hover:bg-brand-accent-h
-                text-surface-base font-display font-bold text-[0.95rem] no-underline px-6 py-4 rounded-pill transition-colors duration-200">
-        Solicitar proposta
+                text-surface-base font-display font-bold text-[0.95rem] no-underline uppercase px-6 py-4 rounded-pill transition-colors duration-200 sm:whitespace-nowrap sm:shrink-0">
+        Fazer o diagnóstico gratuito
+      </a>
+      <a href="https://wa.me/55719996551316?text=Ol%C3%A1!%20Quero%20solicitar%20uma%20proposta%20da%20Lar%C3%B4.IA" target="_blank" rel="noopener"
+         class="inline-flex items-center justify-center border border-border-default text-text-secondary
+                font-display font-semibold text-[0.9rem] no-underline uppercase px-6 py-4 rounded-pill
+                hover:text-text-primary hover:border-text-secondary transition-colors duration-200 sm:whitespace-nowrap sm:shrink-0">
+        Já sei o que quero, solicitar proposta
       </a>
     </div>
   </section>
@@ -444,6 +557,14 @@
     document.querySelectorAll('.problema-toggle').forEach(btn => {
       btn.addEventListener('click', () => {
         const item = btn.closest('.problema-item');
+        const isOpen = item.classList.toggle('open');
+        btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+    });
+
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const btn = item.querySelector('.faq-toggle');
         const isOpen = item.classList.toggle('open');
         btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       });
