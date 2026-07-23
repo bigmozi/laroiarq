@@ -1,0 +1,471 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - link "LARÔ.IA" [ref=e3] [cursor=pointer]:
+      - /url: "#"
+      - img [ref=e4]
+      - img "LARÔ.IA" [ref=e5]
+    - link "Diagnóstico gratuito" [ref=e6] [cursor=pointer]:
+      - /url: diagnostico.html
+  - generic [ref=e7]:
+    - img
+    - paragraph [ref=e8]: Implementação de IA · Arquitetura
+    - heading "Você refaz. O cliente não paga." [level=1] [ref=e9]:
+      - text: Você refaz.
+      - generic [ref=e10]:
+        - text: O cliente
+        - text: não paga.
+    - paragraph [ref=e11]: Revisão sem controle de escopo, compatibilização feita no olho, memorial reescrito do zero. São horas que nunca entram na proposta. A LARÔ.IA transforma essas horas em capacidade de entregar mais projetos, com mais controle e menos desgaste.
+    - generic [ref=e12]:
+      - link "Fazer o diagnóstico gratuito" [ref=e13] [cursor=pointer]:
+        - /url: diagnostico.html
+      - link "Conhecer a solução" [ref=e14] [cursor=pointer]:
+        - /url: "#diagnostico"
+  - generic [ref=e15]:
+    - paragraph [ref=e16]: O problema
+    - heading "Você se identifica com alguma dessas situações?" [level=2] [ref=e17]
+    - paragraph [ref=e18]: Se você chegou até aqui, provavelmente não é porque falta projeto. É porque boa parte da sua semana desaparece resolvendo problema que nunca deveria voltar, e no fim do mês a sensação é de ter trabalhado muito e faturado menos do que devia.
+    - generic [ref=e19]:
+      - generic [ref=e20] [cursor=pointer]:
+        - generic [ref=e21]:
+          - paragraph [ref=e22]: Cliente pede a quarta revisão fora do escopo original do contrato
+          - button "+" [ref=e23]
+        - generic [ref=e24]: Risco alto
+        - generic [ref=e25]:
+          - paragraph [ref=e26]: Como a LARÔ.IA resolve
+          - paragraph [ref=e27]: Registra o escopo original do contrato e aponta automaticamente quando uma revisão já passou do combinado.
+      - generic [ref=e28] [cursor=pointer]:
+        - generic [ref=e29]:
+          - paragraph [ref=e30]: Erro de compatibilização entre elétrica e estrutura só aparece na obra
+          - button "+" [ref=e31]
+        - generic [ref=e32]: Risco alto
+        - generic [ref=e33]:
+          - paragraph [ref=e34]: Como a LARÔ.IA resolve
+          - paragraph [ref=e35]: Cruza automaticamente os projetos de cada disciplina e aponta o conflito antes da reunião de compatibilização.
+      - generic [ref=e36] [cursor=pointer]:
+        - generic [ref=e37]:
+          - paragraph [ref=e38]: Memorial de acabamento é redigitado do zero pra cada ambiente
+          - button "+" [ref=e39]
+        - generic [ref=e40]: Risco médio
+        - generic [ref=e41]:
+          - paragraph [ref=e42]: Como a LARÔ.IA resolve
+          - paragraph [ref=e43]: Gera o memorial a partir de especificações e fornecedores já usados em projetos anteriores.
+      - generic [ref=e44] [cursor=pointer]:
+        - generic [ref=e45]:
+          - paragraph [ref=e46]: Já tentou usar ChatGPT genérico pra isso e travou depois de duas semanas
+          - button "+" [ref=e47]
+        - generic [ref=e48]: Atenção redobrada
+        - generic [ref=e49]:
+          - paragraph [ref=e50]: Como a LARÔ.IA resolve
+          - paragraph [ref=e51]: Diagnóstico mapeia seu fluxo real antes de qualquer ferramenta. Sistema é construído sob medida pro seu processo.
+      - generic [ref=e52] [cursor=pointer]:
+        - generic [ref=e53]:
+          - paragraph [ref=e54]: Orçamento comparativo de fornecedor é remontado manualmente toda vez
+          - button "+" [ref=e55]
+        - generic [ref=e56]: Risco médio
+        - generic [ref=e57]:
+          - paragraph [ref=e58]: Como a LARÔ.IA resolve
+          - paragraph [ref=e59]: Monta o comparativo a partir de cotações e fornecedores já registrados em projetos anteriores.
+      - generic [ref=e60] [cursor=pointer]:
+        - generic [ref=e61]:
+          - paragraph [ref=e62]: Cliente cobra pra adiantar a entrega, mas só pagou a parcela do ato do contrato
+          - button "+" [ref=e63]
+        - generic [ref=e64]: Atenção redobrada
+        - generic [ref=e65]:
+          - paragraph [ref=e66]: Como a LARÔ.IA resolve
+          - paragraph [ref=e67]: Cruza o cronograma de entrega com o cronograma financeiro do contrato e mostra qual parcela está pendente antes de qualquer pressão de prazo.
+    - paragraph [ref=e69]: A LARÔ.IA resolve todas essas dores.
+  - generic [ref=e71]:
+    - paragraph [ref=e72]: Por que isso acontece
+    - heading "O problema não é falta de IA. É que o processo mora na memória de alguém." [level=2] [ref=e73]:
+      - text: O problema não é falta de IA.
+      - text: É que o processo mora na memória de alguém.
+    - generic [ref=e74]:
+      - paragraph [ref=e75]: "Cobrar revisão extra parece quebrar a parceria com o cliente, então ninguém cobra e ninguém registra. Admitir que um conflito passou despercebido parece expor falha técnica, então ninguém fala. O resultado: cada escopo, cada aprovação e cada especificação vive espalhado entre e-mail, WhatsApp e a cabeça de quem estava na reunião."
+      - paragraph [ref=e76]: Quando o processo depende da memória, o escopo muda sem registro, as revisões se acumulam sem histórico e o erro aparece tarde demais, já na obra.
+      - paragraph [ref=e77]: Não adianta empilhar mais uma ferramenta em cima disso. Primeiro se organiza o fluxo, depois se automatiza. É nessa ordem que a LARÔ.IA trabalha.
+  - generic [ref=e78]:
+    - img
+    - generic [ref=e79]:
+      - paragraph [ref=e80]: O que isso libera
+      - heading "Escritório não cresce trabalhando mais. Cresce repetindo qualidade sem repetir esforço." [level=2] [ref=e81]:
+        - text: Escritório não cresce trabalhando mais.
+        - text: Cresce repetindo qualidade sem repetir esforço.
+      - paragraph [ref=e82]: Cada hora que deixa de virar retrabalho não cobrado é uma hora que pode virar projeto novo, sem precisar contratar mais gente pra sustentar o mesmo padrão. Cada conflito apontado antes da obra é margem que não vira prejuízo. Cada decisão que já não depende só de quem "sabe tudo de cabeça" é um escritório que aguenta crescer sem travar.
+      - generic [ref=e83]:
+        - generic [ref=e84]:
+          - generic [ref=e85]: →
+          - paragraph [ref=e86]: Mais margem por projeto, revisão cobrada com dado
+        - generic [ref=e87]:
+          - generic [ref=e88]: →
+          - paragraph [ref=e89]: Mais previsibilidade pro cliente final
+        - generic [ref=e90]:
+          - generic [ref=e91]: →
+          - paragraph [ref=e92]: Capacidade de assumir mais projeto sem contratar mais gente
+        - generic [ref=e93]:
+          - generic [ref=e94]: →
+          - paragraph [ref=e95]: Menos dependência de quem "sabe tudo de cabeça"
+  - generic [ref=e96]:
+    - paragraph [ref=e97]: Como trabalhamos
+    - heading "Da primeira conversa até sua equipe operando sozinha." [level=2] [ref=e98]
+    - paragraph [ref=e99]: Implementação de IA feita para arquitetura, engenharia de compatibilização e design de interiores.
+    - generic [ref=e100]:
+      - generic [ref=e101]:
+        - paragraph [ref=e102]: 01 · Diagnóstico
+        - paragraph [ref=e103]: Avaliamos onde seu escritório está perdendo tempo e dinheiro. Gratuito, em 15 minutos. Você sai com os pontos priorizados mesmo se decidir não seguir adiante.
+      - generic [ref=e104]: →
+      - generic [ref=e105]:
+        - paragraph [ref=e106]: 02 · Desenvolvimento
+        - paragraph [ref=e107]: "Construímos a solução sob medida: controle de escopo, cruzamento de disciplinas, geração de memorial. Rápido, acessível, focado no seu problema."
+      - generic [ref=e108]: →
+      - generic [ref=e109]:
+        - paragraph [ref=e110]: 03 · Treinamento
+        - paragraph [ref=e111]: Capacitamos sua equipe com IA prática e aplicada ao fluxo do seu escritório. Baseado nas lacunas reais, não em conteúdo genérico.
+      - generic [ref=e112]: →
+      - generic [ref=e113]:
+        - paragraph [ref=e114]: 04 · Autonomia
+        - paragraph [ref=e115]: O sistema fica com você. Sua equipe opera sozinha, sem depender da gente pra sempre.
+        - link "Ver na prática →" [ref=e116] [cursor=pointer]:
+          - /url: demonstrativo_obra.html
+  - generic [ref=e117]:
+    - paragraph [ref=e118]: Exemplos reais · arquitetura
+    - heading "Escritórios de Arquitetura" [level=2] [ref=e119]
+    - paragraph [ref=e120]: O que a LARÔ.IA faz pelo seu escritório
+    - generic [ref=e121]:
+      - generic [ref=e122]:
+        - generic [ref=e123]: "01"
+        - generic [ref=e124]:
+          - paragraph [ref=e125]: Controle automático de escopo de revisão
+          - paragraph [ref=e126]: Registra o escopo original do contrato e aponta quando uma revisão do cliente já passou do combinado.
+      - generic [ref=e127]:
+        - generic [ref=e128]: "02"
+        - generic [ref=e129]:
+          - paragraph [ref=e130]: Histórico de decisões do projeto
+          - paragraph [ref=e131]: Organiza o que já foi aprovado pelo cliente em cada rodada, sem depender de e-mail perdido.
+      - generic [ref=e132]:
+        - generic [ref=e133]: "03"
+        - generic [ref=e134]:
+          - paragraph [ref=e135]: Ata de reunião gerada automaticamente
+          - paragraph [ref=e136]: Resume as decisões da reunião de alinhamento em formato pronto pra enviar ao cliente.
+      - generic [ref=e137]:
+        - generic [ref=e138]: "04"
+        - generic [ref=e139]:
+          - paragraph [ref=e140]: Alerta de prazo por etapa
+          - paragraph [ref=e141]: Avisa quando uma etapa do cronograma de projeto está em risco de atraso.
+      - generic [ref=e142]:
+        - generic [ref=e143]: "05"
+        - generic [ref=e144]:
+          - paragraph [ref=e145]: Atendimento inicial de novo cliente
+          - paragraph [ref=e146]: Chatbot pré-qualifica escopo, prazo e orçamento esperado antes da primeira reunião.
+  - generic [ref=e147]:
+    - paragraph [ref=e148]: Exemplos reais · engenharia de compatibilização
+    - heading "Escritórios de Engenharia" [level=2] [ref=e149]
+    - paragraph [ref=e150]: O que a LARÔ.IA faz pelo seu escritório
+    - generic [ref=e151]:
+      - generic [ref=e152]:
+        - generic [ref=e153]: "01"
+        - generic [ref=e154]:
+          - paragraph [ref=e155]: Cruzamento automático entre disciplinas
+          - paragraph [ref=e156]: Compara projeto de arquitetura, elétrica e hidráulica e aponta pontos de conflito.
+      - generic [ref=e157]:
+        - generic [ref=e158]: "02"
+        - generic [ref=e159]:
+          - paragraph [ref=e160]: Alerta de conflito estrutural
+          - paragraph [ref=e161]: Sinaliza quando uma instalação atravessa elemento estrutural antes da obra começar.
+      - generic [ref=e162]:
+        - generic [ref=e163]: "03"
+        - generic [ref=e164]:
+          - paragraph [ref=e165]: Histórico de compatibilização por projeto
+          - paragraph [ref=e166]: Registra quais conflitos já foram revisados e aprovados.
+      - generic [ref=e167]:
+        - generic [ref=e168]: "04"
+        - generic [ref=e169]:
+          - paragraph [ref=e170]: Checklist de compatibilização por etapa
+          - paragraph [ref=e171]: Organiza o que falta revisar antes de liberar o projeto pra obra.
+      - generic [ref=e172]:
+        - generic [ref=e173]: "05"
+        - generic [ref=e174]:
+          - paragraph [ref=e175]: Relatório de compatibilização pro cliente
+          - paragraph [ref=e176]: Resume os pontos verificados em linguagem que o cliente final entende.
+  - generic [ref=e177]:
+    - paragraph [ref=e178]: Exemplos reais · design de interiores
+    - heading "Estúdios de Design de Interiores" [level=2] [ref=e179]
+    - paragraph [ref=e180]: O que a LARÔ.IA faz pelo seu estúdio
+    - generic [ref=e181]:
+      - generic [ref=e182]:
+        - generic [ref=e183]: "01"
+        - generic [ref=e184]:
+          - paragraph [ref=e185]: Memorial de acabamento automático
+          - paragraph [ref=e186]: Gera especificação de material e fornecedor a partir de projetos anteriores.
+      - generic [ref=e187]:
+        - generic [ref=e188]: "02"
+        - generic [ref=e189]:
+          - paragraph [ref=e190]: Orçamento comparativo de fornecedores
+          - paragraph [ref=e191]: Monta o comparativo a partir de cotações já registradas.
+      - generic [ref=e192]:
+        - generic [ref=e193]: "03"
+        - generic [ref=e194]:
+          - paragraph [ref=e195]: Atualização de status pro cliente
+          - paragraph [ref=e196]: Resume o andamento do projeto em linguagem acessível, sem reescrever do zero.
+      - generic [ref=e197]:
+        - generic [ref=e198]: "04"
+        - generic [ref=e199]:
+          - paragraph [ref=e200]: Lembrete de aprovação pendente
+          - paragraph [ref=e201]: Avisa quando o cliente está com uma decisão de acabamento parada há tempo.
+      - generic [ref=e202]:
+        - generic [ref=e203]: "05"
+        - generic [ref=e204]:
+          - paragraph [ref=e205]: Triagem de novo projeto
+          - paragraph [ref=e206]: Pré-qualifica escopo e orçamento esperado antes da primeira reunião.
+  - generic [ref=e207]:
+    - img
+    - heading "Antes e depois." [level=2] [ref=e208]:
+      - text: Antes e
+      - text: depois.
+    - paragraph [ref=e209]: O desconforto de cobrar uma revisão extra. O receio de descobrir um conflito só na obra. A frustração de refazer o que já foi feito dezenas de vezes. É isso que muda.
+    - generic [ref=e210]:
+      - generic [ref=e211]:
+        - paragraph [ref=e213]: Sem a LARÔ.IA
+        - generic [ref=e214]:
+          - generic [ref=e215]:
+            - generic [ref=e216]: ✕
+            - paragraph [ref=e217]: Revisão fora de escopo vira favor, ninguém cobra
+          - generic [ref=e218]:
+            - generic [ref=e219]: ✕
+            - paragraph [ref=e220]: Conflito entre disciplinas só aparece na obra
+          - generic [ref=e221]:
+            - generic [ref=e222]: ✕
+            - paragraph [ref=e223]: Memorial de acabamento redigitado do zero a cada projeto
+          - generic [ref=e224]:
+            - generic [ref=e225]: ✕
+            - paragraph [ref=e226]: Orçamento comparativo remontado manualmente toda vez
+          - generic [ref=e227]:
+            - generic [ref=e228]: ✕
+            - paragraph [ref=e229]: Sexta-feira sem saber quantas horas viraram retrabalho
+          - generic [ref=e230]:
+            - generic [ref=e231]: ✕
+            - paragraph [ref=e232]: Decisão de cobrar baseada em desconforto, não em dado
+      - generic [ref=e233]:
+        - paragraph [ref=e235]: Com a LARÔ.IA
+        - generic [ref=e236]:
+          - generic [ref=e237]:
+            - generic [ref=e238]: ✓
+            - paragraph [ref=e239]: Revisão fora de escopo registrada, com decisão de cobrar ou não
+          - generic [ref=e240]:
+            - generic [ref=e241]: ✓
+            - paragraph [ref=e242]: Conflito entre disciplinas apontado antes da reunião
+          - generic [ref=e243]:
+            - generic [ref=e244]: ✓
+            - paragraph [ref=e245]: Memorial gerado a partir do que já foi usado antes
+          - generic [ref=e246]:
+            - generic [ref=e247]: ✓
+            - paragraph [ref=e248]: Orçamento montado a partir de cotações já registradas
+          - generic [ref=e249]:
+            - generic [ref=e250]: ✓
+            - paragraph [ref=e251]: Sexta-feira com número real de horas de revisão extra
+          - generic [ref=e252]:
+            - generic [ref=e253]: ✓
+            - paragraph [ref=e254]: Decisão de cobrar baseada em dado, não em desconforto
+  - generic [ref=e255]:
+    - paragraph [ref=e256]: Casos de uso e eficiência
+    - heading "Da situação real ao tempo devolvido." [level=2] [ref=e257]
+    - paragraph [ref=e258]: Estimativa baseada em rotina típica relatada em diagnóstico. O número exato do seu escritório sai do seu diagnóstico gratuito.
+    - generic [ref=e259]:
+      - generic [ref=e260]:
+        - generic [ref=e261]:
+          - paragraph [ref=e262]: Arquitetura
+          - paragraph [ref=e263]: ~3,5h/mês devolvidas
+          - paragraph [ref=e264]:
+            - strong [ref=e265]: "Situação:"
+            - text: cada revisão fora do escopo original é refeita sem controle, e a equipe gasta tempo tentando reconstituir o que já foi combinado com o cliente.
+          - paragraph [ref=e266]:
+            - strong [ref=e267]: "A LARÔ.IA age:"
+            - text: registra o escopo original e aponta automaticamente quando uma revisão já passou do combinado.
+        - generic [ref=e268]:
+          - generic [ref=e269]:
+            - generic [ref=e270]: Sem sistema
+            - generic [ref=e271]: ~4h/mês
+          - generic [ref=e272]:
+            - generic [ref=e273]: Com LARÔ.IA
+            - generic [ref=e274]: ~0,5h/mês
+      - generic [ref=e275]:
+        - generic [ref=e276]:
+          - paragraph [ref=e277]: Engenharia de compatibilização
+          - paragraph [ref=e278]: ~10h/mês devolvidas
+          - paragraph [ref=e279]:
+            - strong [ref=e280]: "Situação:"
+            - text: cruzar arquitetura, elétrica e hidráulica prancha por prancha consome horas por projeto, e o conflito que passa despercebido só aparece na obra.
+          - paragraph [ref=e281]:
+            - strong [ref=e282]: "A LARÔ.IA age:"
+            - text: cruza os projetos automaticamente e aponta o conflito antes da reunião de compatibilização.
+        - generic [ref=e283]:
+          - generic [ref=e284]:
+            - generic [ref=e285]: Sem sistema
+            - generic [ref=e286]: ~16h/mês
+          - generic [ref=e287]:
+            - generic [ref=e288]: Com LARÔ.IA
+            - generic [ref=e289]: ~6h/mês
+      - generic [ref=e290]:
+        - generic [ref=e291]:
+          - paragraph [ref=e292]: Design de interiores
+          - paragraph [ref=e293]: ~10,5h/mês devolvidas
+          - paragraph [ref=e294]:
+            - strong [ref=e295]: "Situação:"
+            - text: memorial de acabamento e orçamento comparativo são remontados do zero pra cada projeto, mesmo repetindo fornecedor e combinação de material.
+          - paragraph [ref=e296]:
+            - strong [ref=e297]: "A LARÔ.IA age:"
+            - text: gera memorial e orçamento a partir de projetos e fornecedores já registrados.
+        - generic [ref=e298]:
+          - generic [ref=e299]:
+            - generic [ref=e300]: Sem sistema
+            - generic [ref=e301]: ~15h/mês
+          - generic [ref=e302]:
+            - generic [ref=e303]: Com LARÔ.IA
+            - generic [ref=e304]: ~4,5h/mês
+  - generic [ref=e305]:
+    - paragraph [ref=e306]: Diferenciais
+    - heading "Por que a LARÔ.IA?" [level=2] [ref=e307]
+    - generic [ref=e308]:
+      - generic [ref=e309]:
+        - paragraph [ref=e310]: 01Feita pro fluxo de projeto, não pra "escritório" em geral
+        - paragraph [ref=e311]: Revisão, compatibilização, memorial, orçamento. A LARÔ.IA opera nos processos de arquitetura, engenharia e design de interiores, não numa planilha genérica adaptada.
+      - generic [ref=e312]:
+        - paragraph [ref=e313]: 02Cada implementação nasce do seu diagnóstico
+        - paragraph [ref=e314]: Não empurramos solução pronta. Mapeamos onde seu escritório perde tempo de verdade, e você decide o que faz sentido construir.
+      - generic [ref=e315]:
+        - paragraph [ref=e316]: 03Do diagnóstico ao primeiro resultado em semanas
+        - paragraph [ref=e317]: Não é projeto de consultoria de seis meses. O sistema entra em operação por etapa, começando pelo ponto de maior dreno.
+      - generic [ref=e318]:
+        - paragraph [ref=e319]: 04Aponta o conflito, nunca decide o projeto
+        - paragraph [ref=e320]: O sistema cruza dados, registra escopo e sinaliza o que passou do combinado. A decisão técnica e de projeto continua com você, sempre.
+      - generic [ref=e321]:
+        - paragraph [ref=e322]: 05Não substitui seu processo. Organiza e acelera o que já funciona
+        - paragraph [ref=e323]: Sem licença fechada, sem trocar de ferramenta de desenho. O sistema é construído em cima do seu fluxo atual e fica com você.
+      - generic [ref=e324]:
+        - paragraph [ref=e325]: 06Sua equipe opera sozinha depois da entrega
+        - paragraph [ref=e326]: Treinamento incluso e guia de operação escrito. O critério de sucesso é você não precisar da gente pra sempre.
+  - generic [ref=e328]:
+    - paragraph [ref=e329]: Quem constrói
+    - paragraph [ref=e330]:
+      - text: A LARÔ.IA é uma parceria entre a
+      - strong [ref=e331]: Nebu Co.
+      - text: e a
+      - strong [ref=e332]: Affectio
+      - text: ". Em conversas com clientes de setores bem diferentes entre si, o mesmo padrão aparecia repetido: processo que só existia na memória de alguém, decisão que nunca virava registro, erro que só aparecia tarde demais. Primeiro em escritórios de psiquiatria, neurologia e atendimento a TEA. Depois em arquitetura, engenharia de compatibilização e design de interiores."
+    - paragraph [ref=e333]: "Perceber esse padrão se repetindo foi o que fez a dupla decidir construir um método replicável, em vez de resolver caso a caso: diagnóstico honesto, treinamento aplicado, sistema sob medida que fica com o cliente. Não é ferramenta de prateleira adaptada. É o mesmo processo, testado antes de chegar no seu escritório."
+  - generic [ref=e334]:
+    - generic [ref=e335]:
+      - paragraph [ref=e336]: Caso real
+      - heading "Uma obra em andamento já roda esse método." [level=2] [ref=e337]
+      - paragraph [ref=e338]: "Um cliente que usa o Vobi pra gestão de obra precisava de duas coisas automatizadas: controle de prazo e memorial de acabamento. O agente cruza os dias corridos da obra com o prazo contratado e sugere o acabamento a partir do que já foi decidido em obras anteriores. A responsável confirma tudo, o sistema nunca decide sozinho."
+      - paragraph [ref=e339]:
+        - text: Nesse caso, a conta ficou em torno de
+        - strong [ref=e340]: 3 horas devolvidas por mês, por obra ativa
+        - text: . Estimativa de rotina típica desse cliente, não medição validada em escala. Abaixo, o demonstrativo interativo real, direto na página.
+    - generic [ref=e341]:
+      - generic [ref=e346]: demonstrativo_obra
+      - iframe [ref=e347]
+    - link "Abrir em tela cheia →" [ref=e349] [cursor=pointer]:
+      - /url: demonstrativo_obra.html
+  - generic [ref=e350]:
+    - generic [ref=e351]:
+      - paragraph [ref=e352]: Investimento
+      - heading "Quanto vale destravar o tempo que seu escritório já perde?" [level=2] [ref=e353]
+    - generic [ref=e354]:
+      - generic [ref=e355]:
+        - generic [ref=e356]: Primeiro passo
+        - paragraph [ref=e357]: Diagnóstico + implementação
+        - paragraph [ref=e358]: Treinamento aplicado
+        - paragraph [ref=e359]: Valores a partir de
+        - generic [ref=e360]:
+          - generic [ref=e361]:
+            - paragraph [ref=e362]: Treinamento
+            - paragraph [ref=e363]: R$ 497
+          - generic [ref=e364]:
+            - paragraph [ref=e365]: Desenvolvimento
+            - paragraph [ref=e366]: R$ 2.200
+        - paragraph [ref=e367]: Varia pela complexidade. Valor exato sai do diagnóstico gratuito.
+        - generic [ref=e368]:
+          - link "Fazer o diagnóstico gratuito →" [ref=e369] [cursor=pointer]:
+            - /url: diagnostico.html
+          - link "Solicitar proposta →" [ref=e370] [cursor=pointer]:
+            - /url: https://wa.me/55719996551316?text=Ol%C3%A1!%20Quero%20solicitar%20uma%20proposta%20da%20Lar%C3%B4.IA
+      - generic [ref=e371]:
+        - paragraph [ref=e372]: Tudo que você leva
+        - paragraph [ref=e373]: Diagnóstico, treinamento e sistema.
+        - generic [ref=e374]:
+          - generic [ref=e375]:
+            - generic [ref=e376]: ✓
+            - generic [ref=e377]:
+              - paragraph [ref=e378]: Diagnóstico honesto
+              - paragraph [ref=e379]: Mapeamento dos 3 pontos de maior dreno do seu escritório, priorizados.
+          - generic [ref=e380]:
+            - generic [ref=e381]: ✓
+            - generic [ref=e382]:
+              - paragraph [ref=e383]: Treinamento aplicado
+              - paragraph [ref=e384]: IA prática, baseada nas lacunas reais da sua equipe.
+          - generic [ref=e385]:
+            - generic [ref=e386]: ✓
+            - generic [ref=e387]:
+              - paragraph [ref=e388]: Sistema sob medida
+              - paragraph [ref=e389]: Controle de escopo, cruzamento de disciplinas, geração de memorial.
+          - generic [ref=e390]:
+            - generic [ref=e391]: ✓
+            - generic [ref=e392]:
+              - paragraph [ref=e393]: Guia de operação
+              - paragraph [ref=e394]: Escrito, pra qualquer pessoa do escritório usar sem depender da gente.
+          - generic [ref=e395]:
+            - generic [ref=e396]: ✓
+            - generic [ref=e397]:
+              - paragraph [ref=e398]: Sem licença fechada
+              - paragraph [ref=e399]: O sistema fica com você. Autonomia real é o critério de sucesso.
+  - generic [ref=e400]:
+    - heading "Perguntas que sempre aparecem." [level=2] [ref=e402]:
+      - text: Perguntas que
+      - text: sempre
+      - text: aparecem.
+    - generic [ref=e403]:
+      - generic [ref=e404] [cursor=pointer]:
+        - generic [ref=e405]:
+          - paragraph [ref=e406]: O sistema decide a solução técnica de compatibilização?
+          - button "+" [ref=e407]
+        - paragraph [ref=e408]: Não. Ele cruza os projetos e aponta o conflito. A decisão de engenharia continua sempre com o profissional responsável.
+      - generic [ref=e409] [cursor=pointer]:
+        - generic [ref=e410]:
+          - paragraph [ref=e411]: Preciso saber programar ou mexer em código?
+          - button "+" [ref=e412]
+        - paragraph [ref=e413]: Não. O treinamento é aplicado ao fluxo real da sua equipe, e o guia de operação vem pronto pra qualquer pessoa do escritório usar.
+      - generic [ref=e414] [cursor=pointer]:
+        - generic [ref=e415]:
+          - paragraph [ref=e416]: Quanto custa?
+          - button "+" [ref=e417]
+        - paragraph [ref=e418]: Treinamento aplicado a partir de R$ 497, desenvolvimento sob medida a partir de R$ 2.200, variando pela complexidade. O valor exato do seu escritório sai do diagnóstico, que é gratuito.
+      - generic [ref=e419] [cursor=pointer]:
+        - generic [ref=e420]:
+          - paragraph [ref=e421]: E se eu fizer o diagnóstico e decidir não seguir?
+          - button "+" [ref=e422]
+        - paragraph [ref=e423]: Sem problema. Nenhum compromisso financeiro é exigido antes da entrega do diagnóstico. Você sai com os pontos de maior dreno priorizados de qualquer forma.
+      - generic [ref=e424] [cursor=pointer]:
+        - generic [ref=e425]:
+          - paragraph [ref=e426]: O sistema substitui meu CAD ou BIM?
+          - button "+" [ref=e427]
+        - paragraph [ref=e428]: Não. A LARÔ.IA opera em cima do fluxo de gestão e controle do projeto, não da ferramenta de desenho.
+  - generic [ref=e429]:
+    - img
+    - img [ref=e430]
+    - heading "Descubra onde seu escritório perde horas que nunca entram na proposta." [level=2] [ref=e431]:
+      - text: Descubra onde seu
+      - text: escritório perde horas
+      - generic [ref=e432]:
+        - text: que nunca
+        - text: entram na proposta.
+    - paragraph [ref=e433]: Em 15 minutos, gratuito, você sai com os 3 pontos de maior dreno do seu escritório, priorizados.
+    - generic [ref=e434]:
+      - link "Fazer o diagnóstico gratuito" [ref=e435] [cursor=pointer]:
+        - /url: diagnostico.html
+      - link "Já sei o que quero, solicitar proposta" [ref=e436] [cursor=pointer]:
+        - /url: https://wa.me/55719996551316?text=Ol%C3%A1!%20Quero%20solicitar%20uma%20proposta%20da%20Lar%C3%B4.IA
+  - contentinfo [ref=e437]:
+    - generic [ref=e438]:
+      - img [ref=e439]
+      - img "LARÔ.IA" [ref=e440]
+    - paragraph [ref=e441]: Implementação de IA
