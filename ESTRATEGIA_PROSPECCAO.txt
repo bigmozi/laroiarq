@@ -1,0 +1,83 @@
+ESTRATEGIA DE PROSPECCAO - LARO.IA
+
+Produto: implementacao de IA sob medida para escritorios de arquitetura, engenharia de compatibilizacao e estudios de design de interiores. Funil declarado no site: Diagnostico gratuito (15-20min) -> Treinamento (R$497+) -> Desenvolvimento sob medida (R$2.200+) -> Autonomia.
+
+
+1. ICP (PERFIL DE CLIENTE IDEAL)
+
+Segmentar por dor, nao so por segmento - cada persona tem gatilho diferente:
+
+- Escritorios de arquitetura (3-15 pessoas)
+  Dor principal: revisao fora de escopo nao cobrada, retrabalho de memorial
+  Prova no site: ~3,5h/mes devolvidas
+
+- Engenharia de compatibilizacao
+  Dor principal: conflito entre disciplinas so aparece na obra
+  Prova no site: ~10h/mes devolvidas
+
+- Design de interiores
+  Dor principal: memorial e orcamento remontados do zero a cada projeto
+  Prova no site: ~10,5h/mes devolvidas
+
+Sinais de prontidao para priorizar no ICP:
+- Escritorio cresceu recentemente (mais projetos simultaneos) e sente a dor de escala
+- Ja tentou ChatGPT generico e travou (friccao real, consciente do problema)
+- Trabalha com gestao de obra digital (ex.: usa Vobi) - ja tem cultura de sistema, caso real do site e referencia direta
+- Tem socio tecnico incomodado com retrabalho nao cobrado (dor financeira, nao so operacional)
+
+Desqualificar cedo: escritorios de 1 pessoa sem equipe (baixo ticket, baixa alavancagem) e escritorios que so querem "ferramenta pronta" sem abertura para diagnostico (a proposta de valor da LARO.IA e sob medida, nao licenca de prateleira).
+
+
+2. CANAIS DE PROSPECCAO, EM ORDEM DE PRIORIDADE
+
+2.1 Outbound direcionado (maior controle, comecar aqui)
+- LinkedIn: buscar socios/diretores de escritorios de arquitetura e engenharia de compatibilizacao na regiao de atuacao. Mensagem nao vende o sistema, vende o diagnostico gratuito - objecao baixa porque nao pede compromisso financeiro.
+- Instagram: escritorios de arquitetura e design de interiores postam portfolio ativamente - canal nativo do publico. Comentar/DM com abordagem consultiva citando uma dor especifica visivel no perfil (ex.: projeto com muitas revisoes publicas).
+- Indicacao ativa dentro da rede Nebu Co. / Affectio: os fundadores ja tem relacao com escritorios de psiquiatria/neuro/TEA que passaram pelo mesmo metodo - pedir indicacao cruzada para contatos de arquitetura/engenharia que esses clientes conhecem (afinidade de perfil: donos de negocio tecnico com o mesmo problema de processo na memoria de alguem).
+- Parceiros de ecossistema: empresas de gestao de obra (tipo Vobi, ja e caso real) e comunidades/associacoes de arquitetos e engenheiros (CAU, sindicatos regionais) como canal de indicacao, nao so cliente.
+
+2.2 Inbound / autoridade (sustenta o outbound, nao substitui)
+- Conteudo curto em LinkedIn/Instagram nos moldes do site: "situacao real -> como a IA resolve" (os 6 cards de "O problema" do index.html ja sao roteiro pronto de posts).
+- Caso real do Vobi como estudo de caso replicavel em conteudo e em conversa de prospeccao - prova social concreta, nao promessa.
+- SEO local basico para "IA para escritorio de arquitetura" / "IA compatibilizacao de projetos" - baixo volume mas alta intencao.
+
+2.3 Cold outreach direto (WhatsApp) - so depois de qualificacao minima
+O CTA ja existe no site (wa.me/55719996551316). Usar WhatsApp como canal de fechamento do diagnostico, nao de primeiro contato frio em massa - abordagem fria por WhatsApp sem contexto previo tem alta taxa de rejeicao nesse publico.
+
+
+3. MENSAGEM DE ABORDAGEM (OUTBOUND)
+
+Estrutura testavel, baseada no angulo do proprio site ("Voce refaz. O cliente nao paga."):
+
+1. Abertura com dor especifica e nomeada, nao generica de IA - cite o problema do segmento (revisao fora de escopo, conflito de compatibilizacao, memorial redigitado).
+2. Prova de que nao e ferramenta generica: "diagnostico mapeia seu fluxo real antes de qualquer ferramenta" - desarma a objecao de "ja tentei ChatGPT e nao funcionou".
+3. Oferta de baixo atrito: diagnostico gratuito de 15-20min, sem compromisso, sem venda empurrada.
+4. CTA unico: agendar o diagnostico (link diagnostico.html ou WhatsApp), nunca dois pedidos na mesma mensagem.
+
+Exemplo de mensagem LinkedIn/Instagram DM:
+"Vi que voces [referencia especifica ao perfil/portfolio]. Uma coisa comum em escritorios de arquitetura e a revisao que sai do escopo do contrato e nunca e cobrada - cada uma dessas e uma hora que nao vira projeto novo. A gente faz um diagnostico gratuito de 15min pra mapear onde isso mais pesa no seu fluxo, sem compromisso nenhum depois. Faz sentido eu te mandar o link?"
+
+
+4. CADENCIA DE FOLLOW-UP
+
+- Dia 0: primeiro contato (canal prioritario do ICP: LinkedIn para arquitetura/engenharia, Instagram para design de interiores)
+- Dia 3: follow-up com prova social (caso real do Vobi ou estatistica de horas devolvidas do segmento)
+- Dia 7: follow-up final oferecendo o diagnostico como conteudo de valor mesmo sem intencao de compra ("voce sai com os pontos priorizados mesmo se decidir nao seguir adiante" - ja e a promessa do site, reforca consistencia)
+- Sem resposta apos 3 toques: mover para nutricao de conteudo (seguir, curtir, comentar organicamente) em vez de insistir
+
+
+5. METRICAS PARA ACOMPANHAR
+
+- Contatos qualificados abordados/semana -> volume de topo de funil
+- Taxa de agendamento do diagnostico -> eficacia da mensagem de abordagem
+- Taxa de comparecimento ao diagnostico -> qualidade da qualificacao previa
+- Taxa de conversao diagnostico -> treinamento/desenvolvimento -> eficacia do proprio diagnostico como ferramenta de venda
+- Ticket medio por segmento (arquitetura vs. engenharia vs. interiores) -> priorizar o segmento mais lucrativo, hoje aparenta ser engenharia de compatibilizacao (~10h/mes devolvidas, dor de maior risco tecnico)
+
+
+6. PRIORIZACAO RECOMENDADA DE EXECUCAO
+
+1. Ativar indicacao cruzada na base de clientes existente (Nebu Co./Affectio) - custo zero, maior taxa de conversao esperada por afinidade de perfil.
+2. Outbound direcionado em LinkedIn para engenharia de compatibilizacao - maior valor de horas devolvidas (~10h/mes), dor de maior risco (erro so aparece na obra).
+3. Outbound/Instagram para arquitetura e design de interiores em paralelo, com conteudo de prova social alimentando o mesmo canal.
+4. Parceria com Vobi (ou similar) como canal de indicacao recorrente, ja validado pelo caso real do site.
