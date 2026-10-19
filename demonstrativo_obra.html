@@ -1,279 +1,283 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>LARÔ.IA · Demonstrativo: acompanhamento de obra</title>
-<link rel="icon" type="image/svg+xml" href="assets/laroia-symbol.svg" />
-<link rel="stylesheet" href="assets/tokens.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Demonstrativo: acompanhamento de obra · LARÔ.IA</title>
+  <meta name="description" content="Simulação clicável do Apontador, agente de obra da LARÔ.IA: controle de prazo e memorial de acabamento numa obra real." />
+  <meta name="theme-color" content="#0b0b0b" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
 
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="assets/tailwind.config.js"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/tokens.css">
+  <link rel="stylesheet" href="assets/style.css">
 </head>
 
-<body class="font-body bg-surface-base text-text-primary leading-relaxed antialiased">
+<body>
+
+  <!-- Marca LARÔ.IA: o desenho mora aqui, a cor vem do CSS (--color-logo). Tridente simétrico, sem a haste de baixo. -->
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <symbol id="laroia-simbolo" viewBox="409.3 150.5 256 309.5">
+      <path d="M417.2,254.6l21,11.2,1.3,2.4.2,93.2c1.6,17.6,23,15.8,25,.8.9-6.6-1.4-13.5-3.6-19.6s-4.1-7.7-5-10.6.2-1.7,1.3-1.3,11.1,12.4,12.5,14.3c11.5,14.7,18.8,28.4,19.9,47.4.3,4.5,1.1,24.1-2.6,26s-2.3.7-3.5,0l-64.4-64.3c-.6-.9-2.1-4-2.1-4.8v-94.6Z"/>
+      <path transform="matrix(-1 0 0 1 1074.6 0)" d="M417.2,254.6l21,11.2,1.3,2.4.2,93.2c1.6,17.6,23,15.8,25,.8.9-6.6-1.4-13.5-3.6-19.6s-4.1-7.7-5-10.6.2-1.7,1.3-1.3,11.1,12.4,12.5,14.3c11.5,14.7,18.8,28.4,19.9,47.4.3,4.5,1.1,24.1-2.6,26s-2.3.7-3.5,0l-64.4-64.3c-.6-.9-2.1-4-2.1-4.8v-94.6Z"/>
+      <path d="M520.1,430V377.5C520.1,375.5 520.9,373.6 521,371.5C522.4,319.8 524.6,266.7 529.6,215.1C531.1,199.5 532.8,181.1 535.7,165.9C536.4,162.4 536.9,160.2 537.3,158.5C537.7,160.2 538.2,162.4 538.9,165.9C541.8,181.1 543.5,199.5 545,215.1C550,266.7 552.2,319.8 553.6,371.5C553.7,373.6 554.5,375.5 554.5,377.5V430L537.3,452Z"/>
+    </symbol>
+    <symbol id="laroia-wordmark" viewBox="45 572 1000 233">
+      <path d="M491.1,627.7c49.7,5.3,60.1,64.7,14.8,84.8l-17.9,5c3.2.6,7.9,2.6,10.7,4.5,12.7,8.7,25.2,38.3,35.3,52s11.1,12.6,18,17.9c-20.6,6.4-42,4.7-60.4-6.5s-32.1-38.8-47-60.1c-2.2-3.2-5.6-6.2-7.5-8.9s-1.2-.9-.8-2.2c27.3,2,50.8-21.8,42.1-49.4-5.8-18.3-24-25.2-41.7-25.8-2.6,0-4.8,1.8-7.3,0-.7.7,4.3,6.2,4.3,8.2v146.4h-53.6v-165.9h111Z"/>
+      <path d="M1034,793.6h-187.5v-18.6c0-2.6,2-9.7,2.8-12.7,8.7-32.7,33.9-55.6,61.9-72.4,3.2,5.2-1.9,7.8-4.5,12.4-13.3,23.9-10.6,54.3,10.1,73.2,17.6,16,52.3,16.1,45.8-14.7l-57.4-133.1h63.5l65.2,165.9Z"/>
+      <path d="M309.2,627.7l66.5,165.9h-174.5c-6.4-41.7,17.7-82.2,53.1-102.8,3.3,4.2-1.7,8.7-3.4,13-9,23.2-6.5,53.7,12.1,71.7,17.5,16.9,51.4,15.2,39.1-15.8l-55.9-131.9h63.1Z"/>
+      <path d="M112.3,627.7v144.7c0,2.8-2.4,7-4.3,9.1h13.4c3.6,0,15.6-4,19.4-5.6,18.6-7.6,32.4-22.4,46.7-35.8v53.6H57v-165.9h55.3Z"/>
+      <rect x="780" y="627.7" width="53.6" height="165.9"/>
+      <path d="M636.6,794.4c13.9-10.4,19.3-26.7,23.1-43,7.2-31.4,6.9-74-6.2-103.8-3.6-8.2-8.8-17.3-16.8-21.6-.2-1.4,1.2-.8,2.1-.8,27.6-1.6,58.3,20.5,70.6,44.3,28.5,55.3-9.5,125-72.7,125Z"/>
+      <path d="M632.3,625.1l-6.5,4.3c-22.1,28.5-25.2,74.5-20.1,109.2s8.9,43.6,25.8,55.4c-32.6,1.6-64.2-22-76-51.8-21.8-55.1,16.7-117.5,76.9-117.1Z"/>
+      <path d="M736.6,754.1c30.3-5.2,33,41.4,3.2,41.1s-26.2-37.1-3.2-41.1Z"/>
+      <path d="M667.7,608.7l-11.2-.5-22.1-14.8-23.7,14.9-10.4.4,24.2-29.8c4-.3,18.8-1.5,21.1.4l22,29.4Z"/>
+    </symbol>
+  </svg>
 
   <!-- NAV -->
-  <nav class="sticky top-0 z-50 flex justify-between items-center px-4 sm:px-8 h-[64px] bg-black/85 backdrop-blur-md border-b border-border-subtle">
-    <a href="index.html" class="inline-flex items-center gap-2 no-underline">
-      <img src="assets/laroia-symbol.svg" alt="" aria-hidden="true" class="h-5 w-auto">
-      <img src="assets/laroia-wordmark.svg" alt="LARÔ.IA" class="h-3.5 w-auto">
-    </a>
-    <span class="font-display font-bold text-[0.62rem] tracking-[0.14em] uppercase text-text-tertiary hidden sm:block">
-      Demonstrativo de 1 caso · não é o framework completo
-    </span>
+  <nav class="nav nav--static" aria-label="Principal">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__brand" target="_top" aria-label="LARÔ.IA Soluções em IA, voltar ao início">
+        <span class="nav__brand-mark">
+          <svg class="logo logo--simbolo" aria-hidden="true"><use href="#laroia-simbolo"/></svg>
+          <svg class="logo logo--wordmark" role="img" aria-label="LARÔ.IA"><use href="#laroia-wordmark"/></svg>
+        </span>
+        <span class="nav__tag">Soluções<br>em IA</span>
+      </a>
+      <span class="nav__meta">Demonstrativo de 1 agente · não é o catálogo completo</span>
+    </div>
   </nav>
 
-  <!-- HERO -->
-  <section class="px-4 sm:px-8 pt-14 pb-12 max-w-[900px] mx-auto">
-    <p class="font-display font-bold text-[0.7rem] tracking-[0.2em] uppercase text-brand-accent mb-4">Caso real · acompanhamento de obra</p>
-    <h1 class="font-display font-extrabold uppercase tracking-[-0.02em] leading-[1.02] text-[clamp(1.9rem,5vw,3.2rem)] mb-6">
-      Um fluxo só, de ponta a ponta,<span class="text-brand-accent">pra você ver como <br> o método funciona.</span>
-    </h1>
-    <p class="text-text-secondary text-[1.02rem] max-w-[640px] mb-4">
-      Este demonstrativo usa <strong class="text-text-primary">um único caso real</strong>: uma obra em andamento que já usa o Vobi pra gestão, e precisa de duas coisas automatizadas: o controle de prazo/atraso da obra e a especificação técnica de acabamento (tinta, piso, textura). Identidade do cliente preservada.
-    </p>
-    <p class="text-text-tertiary text-[0.85rem] max-w-[640px]">
-      Propositalmente não mostra o framework inteiro da LARÔ.IA (Diagnóstico → Treinamento → Desenvolvimento aplicado a outras especialidades). É um exemplo prático, não o catálogo completo.
-    </p>
-  </section>
+  <main>
 
-  <!-- 1. COMO CONSTRUÍMOS O FLUXO -->
-  <section class="px-4 sm:px-8 py-14 border-t border-border-subtle max-w-[1000px] mx-auto">
-    <p class="font-display font-bold text-[0.7rem] tracking-[0.2em] uppercase text-brand-accent mb-3">01 · Como construímos o fluxo</p>
-    <h2 class="font-display font-extrabold text-[clamp(1.5rem,3.2vw,2.2rem)] mb-10">Da fonte de dado bagunçada até o memorial pronto</h2>
-
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-      <div class="bg-surface-raised border border-border-subtle rounded-card p-5">
-        <span class="inline-block w-7 h-7 rounded-full bg-brand-accent/15 text-brand-accent font-display font-bold text-[0.8rem] flex items-center justify-center mb-4">1</span>
-        <p class="font-display font-bold text-[0.95rem] mb-2">Fontes reais</p>
-        <p class="text-[0.82rem] text-text-secondary leading-[1.55]">Vobi (cronograma e checklist da obra), decisões de acabamento de obras anteriores, prazo contratado.</p>
+    <!-- HERO -->
+    <section class="demo-hero">
+      <div class="container container--narrow">
+        <p class="eyebrow">Caso real · o Apontador, agente de obra</p>
+        <h1>Um fluxo só, de ponta a ponta, <span class="text-highlight">pra você ver como o agente funciona.</span></h1>
+        <p>Este demonstrativo usa <strong>um único caso real</strong>: uma obra em andamento que já usa o Vobi pra gestão e precisa de duas coisas automatizadas, o controle de prazo e atraso da obra e a especificação técnica de acabamento (tinta, piso, textura). Identidade do cliente preservada.</p>
+        <p>Propositalmente mostra só um dos agentes da LARÔ.IA. Os outros (Fiscal, Compatibilizador, Memorialista, Orçamentista, Recepcionista, Escrivão e Tabelião) seguem o mesmo método.</p>
       </div>
-      <div class="bg-surface-raised border border-border-subtle rounded-card p-5">
-        <span class="inline-block w-7 h-7 rounded-full bg-brand-accent/15 text-brand-accent font-display font-bold text-[0.8rem] flex items-center justify-center mb-4">2</span>
-        <p class="font-display font-bold text-[0.95rem] mb-2">Motor LARÔ.IA</p>
-        <p class="text-[0.82rem] text-text-secondary leading-[1.55]">Cruza dias corridos com o prazo contratado e cruza a etapa marcada no checklist com decisões repetidas de acabamento.</p>
-      </div>
-      <div class="bg-surface-raised border border-border-subtle rounded-card p-5">
-        <span class="inline-block w-7 h-7 rounded-full bg-brand-accent/15 text-brand-accent font-display font-bold text-[0.8rem] flex items-center justify-center mb-4">3</span>
-        <p class="font-display font-bold text-[0.95rem] mb-2">Saída sinalizada</p>
-        <p class="text-[0.82rem] text-text-secondary leading-[1.55]">Status de prazo colorido (no prazo/atenção/atrasado) e memorial de acabamento pré-preenchido por ambiente.</p>
-      </div>
-      <div class="bg-surface-raised border border-border-subtle rounded-card p-5">
-        <span class="inline-block w-7 h-7 rounded-full bg-brand-accent/15 text-brand-accent font-display font-bold text-[0.8rem] flex items-center justify-center mb-4">4</span>
-        <p class="font-display font-bold text-[0.95rem] mb-2">Revisão humana</p>
-        <p class="text-[0.82rem] text-text-secondary leading-[1.55]">A responsável pela obra confirma ou ajusta. O agente aponta, nunca decide sozinho.</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- 2. COMO O AGENTE SE COMPORTA -->
-  <section class="px-4 sm:px-8 py-14 border-t border-border-subtle max-w-[1000px] mx-auto">
-    <p class="font-display font-bold text-[0.7rem] tracking-[0.2em] uppercase text-brand-accent mb-3">02 · Como o agente se comporta</p>
-    <h2 class="font-display font-extrabold text-[clamp(1.5rem,3.2vw,2.2rem)] mb-4">Simulação clicável</h2>
-    <p class="text-text-secondary text-[0.92rem] mb-8 max-w-[640px]">Clique em "Avançar simulação" pra ver o agente reagir, passo a passo, exatamente como reagiria com dado real da obra.</p>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-      <!-- Checklist -->
-      <div class="bg-surface-raised border border-border-subtle rounded-card p-6">
-        <p class="font-display font-bold text-[0.72rem] tracking-[0.1em] uppercase text-text-secondary mb-4">Checklist da obra (Vobi)</p>
-        <ul id="checklist" class="space-y-3 text-[0.9rem]"></ul>
-      </div>
-
-      <!-- Painel do agente -->
-      <div class="bg-surface-raised border border-border-subtle rounded-card p-6 flex flex-col">
-        <p class="font-display font-bold text-[0.72rem] tracking-[0.1em] uppercase text-text-secondary mb-4">Painel do agente LARÔ.IA</p>
-
-        <div class="bg-surface-overlay rounded-card-sm p-4 mb-4">
-          <div class="flex justify-between items-center mb-1">
-            <span class="text-[0.78rem] text-text-secondary">Prazo da obra</span>
-            <span id="status-badge" class="chip px-3 py-1 rounded-pill text-[0.65rem] font-display font-bold uppercase tracking-[0.06em] bg-white/10 text-text-secondary">aguardando dado</span>
+    <!-- 1. COMO CONSTRUÍMOS O FLUXO -->
+    <section class="section">
+      <div class="container container--narrow">
+        <p class="eyebrow">01 · Como construímos o fluxo</p>
+        <h2 class="h2">Da fonte de dado bagunçada até o memorial pronto</h2>
+        <div class="demo-steps">
+          <div class="card">
+            <span class="demo-steps__num">1</span>
+            <p class="card__title">Fontes reais</p>
+            <p>Vobi (cronograma e checklist da obra), decisões de acabamento de obras anteriores, prazo contratado.</p>
           </div>
-          <p id="dias-info" class="font-display font-bold text-[1.1rem]">Sem dado de prazo ainda</p>
+          <div class="card">
+            <span class="demo-steps__num">2</span>
+            <p class="card__title">Agente LARÔ.IA</p>
+            <p>Cruza dias corridos com o prazo contratado e cruza a etapa marcada no checklist com decisões repetidas de acabamento.</p>
+          </div>
+          <div class="card">
+            <span class="demo-steps__num">3</span>
+            <p class="card__title">Saída sinalizada</p>
+            <p>Status de prazo colorido (no prazo, atenção, atrasado) e memorial de acabamento pré-preenchido por ambiente.</p>
+          </div>
+          <div class="card">
+            <span class="demo-steps__num">4</span>
+            <p class="card__title">Revisão humana</p>
+            <p>A responsável pela obra confirma ou ajusta. O agente aponta e nunca decide sozinho.</p>
+          </div>
         </div>
-
-        <p class="font-display font-bold text-[0.72rem] tracking-[0.1em] uppercase text-text-secondary mb-2">Memorial de acabamento (auto-preenchido)</p>
-        <div id="memorial" class="space-y-2 text-[0.84rem] flex-1 mb-4 min-h-[80px]">
-          <p class="text-text-tertiary italic">Nenhum ambiente lançado ainda.</p>
-        </div>
-
-        <div id="agent-log" class="border-t border-border-subtle pt-3 space-y-2 text-[0.8rem] text-text-secondary min-h-[40px]"></div>
       </div>
-    </div>
+    </section>
 
-    <div class="flex flex-wrap gap-3 mt-6">
-      <button onclick="nextStep()" class="bg-brand-accent hover:bg-brand-accent-h text-surface-base font-display font-bold text-[0.85rem] px-6 py-3 rounded-pill transition-colors">Avançar simulação</button>
-      <button onclick="resetSim()" class="border border-border-default text-text-secondary hover:text-text-primary font-display font-semibold text-[0.85rem] px-6 py-3 rounded-pill transition-colors">Reiniciar</button>
-    </div>
-  </section>
+    <!-- 2. COMO O AGENTE SE COMPORTA -->
+    <section class="section">
+      <div class="container container--narrow">
+        <p class="eyebrow">02 · Como o agente se comporta</p>
+        <h2 class="h2">Simulação clicável</h2>
+        <p class="lead sim-intro">Clique em "Avançar simulação" pra ver o agente reagir, passo a passo, como reagiria com dado real da obra.</p>
 
-  <!-- 3. ESTIMATIVA -->
-  <section class="px-4 sm:px-8 py-14 border-t border-border-subtle max-w-[1000px] mx-auto">
-    <p class="font-display font-bold text-[0.7rem] tracking-[0.2em] uppercase text-brand-accent mb-3">03 · Estimativa de ganho de tempo e fricção</p>
-    <h2 class="font-display font-extrabold text-[clamp(1.5rem,3.2vw,2.2rem)] mb-6">A conta, por trás do número</h2>
+        <div class="sim">
+          <div class="card">
+            <p class="label-sm sim__label">Checklist da obra (Vobi)</p>
+            <ul id="checklist" class="sim__checklist"></ul>
+          </div>
 
-    <div class="bg-surface-raised border border-border-subtle rounded-card overflow-hidden mb-6">
-      <table class="w-full text-[0.85rem]">
-        <thead>
-          <tr class="border-b border-border-subtle text-text-secondary text-left">
-            <th class="p-4 font-display font-semibold">Atividade</th>
-            <th class="p-4 font-display font-semibold">Sem sistema</th>
-            <th class="p-4 font-display font-semibold">Com LARÔ.IA</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="border-b border-border-subtle">
-            <td class="p-4">Checar status de prazo/atraso (4x/mês)</td>
-            <td class="p-4 text-text-secondary">35 min × 4 = 140 min/mês</td>
-            <td class="p-4 text-text-secondary">10 min × 4 = 40 min/mês</td>
-          </tr>
-          <tr class="border-b border-border-subtle">
-            <td class="p-4">Especificar acabamento por ambiente (~4/mês)</td>
-            <td class="p-4 text-text-secondary">30 min × 4 = 120 min/mês</td>
-            <td class="p-4 text-text-secondary">8 min × 4 = 32 min/mês</td>
-          </tr>
-          <tr>
-            <td class="p-4 font-display font-bold">Total mensal</td>
-            <td class="p-4 font-display font-bold">260 min (~4,3h)</td>
-            <td class="p-4 font-display font-bold text-brand-accent">72 min (~1,2h)</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+          <div class="card sim__panel">
+            <p class="label-sm sim__label">Painel do Apontador</p>
+            <div class="sim__status">
+              <div class="sim__status-row">
+                <span>Prazo da obra</span>
+                <span id="status-badge" class="badge badge--idle">aguardando dado</span>
+              </div>
+              <p id="dias-info" class="sim__days">Sem dado de prazo ainda</p>
+            </div>
+            <p class="label-sm sim__label sim__label--tight">Memorial de acabamento (auto-preenchido)</p>
+            <div id="memorial" class="sim__memorial">
+              <p class="sim__empty">Nenhum ambiente lançado ainda.</p>
+            </div>
+            <div id="agent-log" class="sim__log" aria-live="polite"></div>
+          </div>
+        </div>
 
-    <div class="bg-brand-accent/10 border border-brand-accent/30 rounded-card p-6 mb-6">
-      <p class="font-display font-extrabold text-[1.3rem] text-brand-accent mb-1">Economia estimada: ~3,1h por mês, por obra ativa</p>
-      <p class="text-[0.85rem] text-text-secondary">Além do tempo, reduz a fricção de reconstituir decisão antiga por WhatsApp e de discutir atraso sem dado por trás.</p>
-    </div>
+        <div class="sim__actions">
+          <button type="button" id="sim-next" class="btn btn--primary btn--sm">Avançar simulação</button>
+          <button type="button" id="sim-reset" class="btn btn--ghost btn--sm">Reiniciar</button>
+        </div>
+      </div>
+    </section>
 
-    <p class="text-[0.78rem] text-text-tertiary max-w-[640px]">
-      Números acima são <strong>estimativa de rotina típica</strong>, construída a partir do relato real do cliente, não medição validada. Mesmo padrão de honestidade usado no restante do material da LARÔ.IA: nenhum número vira alegação de marketing antes de um diagnóstico real confirmar.
-    </p>
-  </section>
+    <!-- 3. ESTIMATIVA -->
+    <section class="section">
+      <div class="container container--narrow">
+        <p class="eyebrow">03 · Estimativa de ganho de tempo e fricção</p>
+        <h2 class="h2">A conta, por trás do número</h2>
 
-  <!-- FOOTER -->
-  <section class="px-4 sm:px-8 py-12 border-t border-border-subtle max-w-[900px] mx-auto text-center">
-    <img src="assets/laroia-symbol.svg" alt="" aria-hidden="true" class="h-8 w-auto mx-auto mb-6">
-    <p class="text-text-secondary text-[0.9rem] mb-6">Este é 1 dos vários casos possíveis dentro do mesmo método. Mostramos só este pra manter o foco na conversa.</p>
-    <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
-      <a href="https://wa.me/5571996551316?text=Ol%C3%A1!%20Vi%20o%20demonstrativo%20e%20quero%20solicitar%20uma%20proposta%20da%20Lar%C3%B4.IA" target="_blank" rel="noopener"
-         class="inline-flex items-center justify-center bg-brand-accent hover:bg-brand-accent-h
-                text-surface-base font-display font-bold text-[0.85rem] no-underline
-                px-6 py-3 rounded-pill transition-colors duration-200">
-        Pra você ver como funciona
-      </a>
-      <a href="index.html"
-         class="inline-flex items-center justify-center border border-border-default text-text-secondary
-                font-display font-semibold text-[0.85rem] no-underline
-                px-6 py-3 rounded-pill hover:text-text-primary hover:border-text-secondary transition-colors duration-200">
-        ← Voltar pra LARÔ.IA
-      </a>
-    </div>
-  </section>
+        <div class="table-wrap">
+          <table class="table">
+            <thead>
+              <tr><th scope="col">Atividade</th><th scope="col">Sem sistema</th><th scope="col">Com LARÔ.IA</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Checar status de prazo e atraso (4x por mês)</td><td>35 min × 4 = 140 min/mês</td><td>10 min × 4 = 40 min/mês</td></tr>
+              <tr><td>Especificar acabamento por ambiente (~4 por mês)</td><td>30 min × 4 = 120 min/mês</td><td>8 min × 4 = 32 min/mês</td></tr>
+            </tbody>
+            <tfoot>
+              <tr><td>Total mensal</td><td>260 min (~4,3h)</td><td>72 min (~1,2h)</td></tr>
+            </tfoot>
+          </table>
+        </div>
 
-<script>
-  const checklistItems = [
-    { label: 'Fundação e estrutura', done: false },
-    { label: 'Alvenaria e instalações', done: false },
-    { label: 'Pintura da sala', done: false },
-    { label: 'Piso da sala', done: false },
-    { label: 'Pintura do quarto 2', done: false },
-  ];
+        <div class="callout">
+          <p class="callout__title">Economia estimada: ~3,1h por mês, por obra ativa</p>
+          <p>Além do tempo, reduz a fricção de reconstituir decisão antiga por WhatsApp e de discutir atraso sem dado por trás.</p>
+        </div>
 
-  const steps = [
-    {
-      check: 0,
-      dias: '18 dias corridos / 90 dias contratados',
-      status: { text: 'no prazo', cls: 'bg-brand-green/15 text-brand-green' },
-      log: 'Agente registrou o início da obra e o prazo contratado. Nenhum atraso até aqui.',
-    },
-    {
-      check: 1,
-      dias: '52 dias corridos / 90 dias contratados',
-      status: { text: 'atenção', cls: 'bg-brand-yellow/15 text-brand-yellow' },
-      log: 'Ritmo de execução ficou abaixo do esperado pra essa fase. Agente sinaliza atenção: não decide se é atraso real, só aponta o desvio de ritmo pra responsável confirmar.',
-    },
-    {
-      check: 2,
-      dias: '61 dias corridos / 90 dias contratados',
-      status: { text: 'atenção', cls: 'bg-brand-yellow/15 text-brand-yellow' },
-      memorial: { ambiente: 'Pintura da sala', spec: 'Tinta acrílica fosca, cor Cinza Concreto, sem padrão geométrico.', origem: 'repetido de obra anterior, mesmo cliente' },
-      log: 'Item "Pintura da sala" marcado no checklist. Agente já preenche o memorial de acabamento puxando a última decisão de tinta usada com esse cliente, pra responsável só confirmar.',
-    },
-    {
-      check: 3,
-      memorial: { ambiente: 'Piso da sala', spec: 'Porcelanato acetinado, tom Cimento Queimado, sem geométrico.', origem: 'repetido de obra anterior, mesmo cliente' },
-      log: 'Item "Piso da sala" marcado. Mesmo raciocínio: memorial preenchido a partir do padrão já usado, revisão da responsável ainda é obrigatória antes de virar documento oficial.',
-    },
-    {
-      check: 4,
-      dias: '74 dias corridos / 90 dias contratados',
-      status: { text: 'atrasado', cls: 'bg-brand-accent/20 text-brand-accent' },
-      memorial: { ambiente: 'Pintura do quarto 2', spec: 'Tinta acrílica acetinada, cor Areia Clara.', origem: 'nova combinação, sem repetição anterior' },
-      log: 'Ritmo confirma atraso frente ao prazo contratado. Agente sinaliza "atrasado" com o dado por trás (dias corridos x contratado), pra decisão de cobrar ou negociar prazo ser feita com número, não com desconforto.',
-    },
-  ];
+        <p class="note">Os números acima são <strong>estimativa de rotina típica</strong>, construída a partir do relato real do cliente, sem medição validada. Mesmo padrão de honestidade do restante do material da LARÔ.IA: nenhum número vira alegação de marketing antes de um diagnóstico real confirmar.</p>
+      </div>
+    </section>
 
-  let stepIndex = 0;
+    <!-- FECHAMENTO -->
+    <section class="section">
+      <div class="container container--narrow demo-close">
+        <svg class="logo logo--simbolo cta-final__mark" aria-hidden="true"><use href="#laroia-simbolo"/></svg>
+        <p class="lead">Este é 1 dos agentes possíveis dentro do mesmo método. Mostramos só este pra manter o foco na conversa.</p>
+        <div class="hero__ctas">
+          <a href="https://wa.me/5571996551316?text=Ol%C3%A1!%20Vi%20o%20demonstrativo%20e%20quero%20solicitar%20uma%20proposta%20da%20LAR%C3%94.IA." target="_blank" rel="noopener" class="btn btn--primary">Quero um agente assim</a>
+          <a href="index.html" target="_top" class="btn btn--ghost">← Voltar pra LARÔ.IA</a>
+        </div>
+      </div>
+    </section>
 
-  function renderChecklist() {
-    const ul = document.getElementById('checklist');
-    ul.innerHTML = checklistItems.map((item, i) => `
-      <li class="flex items-center gap-3">
-        <input type="checkbox" class="sim-check" disabled ${item.done ? 'checked' : ''}>
-        <span class="${item.done ? 'check-done' : ''}">${item.label}</span>
-      </li>
-    `).join('');
-  }
+  </main>
 
-  function nextStep() {
-    if (stepIndex >= steps.length) return;
-    const s = steps[stepIndex];
+  <script src="assets/main.js"></script>
+  <script>
+    const checklistItems = [
+      { label: 'Fundação e estrutura', done: false },
+      { label: 'Alvenaria e instalações', done: false },
+      { label: 'Pintura da sala', done: false },
+      { label: 'Piso da sala', done: false },
+      { label: 'Pintura do quarto 2', done: false },
+    ];
 
-    checklistItems[s.check].done = true;
-    renderChecklist();
+    const steps = [
+      {
+        check: 0,
+        dias: '18 dias corridos / 90 dias contratados',
+        status: { text: 'no prazo', mod: 'ok' },
+        log: 'Agente registrou o início da obra e o prazo contratado. Nenhum atraso até aqui.',
+      },
+      {
+        check: 1,
+        dias: '52 dias corridos / 90 dias contratados',
+        status: { text: 'atenção', mod: 'warn' },
+        log: 'Ritmo de execução ficou abaixo do esperado pra essa fase. Agente sinaliza atenção: não decide se é atraso real, só aponta o desvio de ritmo pra responsável confirmar.',
+      },
+      {
+        check: 2,
+        dias: '61 dias corridos / 90 dias contratados',
+        status: { text: 'atenção', mod: 'warn' },
+        memorial: { ambiente: 'Pintura da sala', spec: 'Tinta acrílica fosca, cor Cinza Concreto, sem padrão geométrico.', origem: 'repetido de obra anterior, mesmo cliente' },
+        log: 'Item "Pintura da sala" marcado no checklist. Agente já preenche o memorial de acabamento puxando a última decisão de tinta usada com esse cliente, pra responsável só confirmar.',
+      },
+      {
+        check: 3,
+        memorial: { ambiente: 'Piso da sala', spec: 'Porcelanato acetinado, tom Cimento Queimado, sem geométrico.', origem: 'repetido de obra anterior, mesmo cliente' },
+        log: 'Item "Piso da sala" marcado. Mesmo raciocínio: memorial preenchido a partir do padrão já usado, revisão da responsável ainda é obrigatória antes de virar documento oficial.',
+      },
+      {
+        check: 4,
+        dias: '74 dias corridos / 90 dias contratados',
+        status: { text: 'atrasado', mod: 'risk' },
+        memorial: { ambiente: 'Pintura do quarto 2', spec: 'Tinta acrílica acetinada, cor Areia Clara.', origem: 'nova combinação, sem repetição anterior' },
+        log: 'Ritmo confirma atraso frente ao prazo contratado. Agente sinaliza "atrasado" com o dado por trás (dias corridos x contratado), pra decisão de cobrar ou negociar prazo sair com número na mão.',
+      },
+    ];
 
-    if (s.dias) document.getElementById('dias-info').textContent = s.dias;
-    if (s.status) {
-      const badge = document.getElementById('status-badge');
-      badge.textContent = s.status.text;
-      badge.className = 'chip px-3 py-1 rounded-pill text-[0.65rem] font-display font-bold uppercase tracking-[0.06em] ' + s.status.cls;
-    }
-
-    if (s.memorial) {
-      const memorialEl = document.getElementById('memorial');
-      if (memorialEl.querySelector('.italic')) memorialEl.innerHTML = '';
-      memorialEl.innerHTML += `
-        <div class="agent-bubble bg-surface-overlay rounded-card-sm p-3">
-          <p class="font-display font-bold text-[0.8rem] mb-1">${s.memorial.ambiente}</p>
-          <p class="text-text-secondary text-[0.8rem] mb-1">${s.memorial.spec}</p>
-          <p class="text-text-tertiary text-[0.7rem] uppercase tracking-[0.05em]">${s.memorial.origem}</p>
-        </div>`;
-    }
-
-    const log = document.getElementById('agent-log');
-    log.innerHTML = `<p class="agent-bubble"><span class="text-brand-accent font-display font-bold">Agente:</span> ${s.log}</p>` + log.innerHTML;
-
-    stepIndex++;
-  }
-
-  function resetSim() {
-    stepIndex = 0;
-    checklistItems.forEach(i => i.done = false);
-    renderChecklist();
-    document.getElementById('dias-info').textContent = '— dias corridos / — dias contratados';
+    let stepIndex = 0;
     const badge = document.getElementById('status-badge');
-    badge.textContent = 'aguardando dado';
-    badge.className = 'chip px-3 py-1 rounded-pill text-[0.65rem] font-display font-bold uppercase tracking-[0.06em] bg-white/10 text-text-secondary';
-    document.getElementById('memorial').innerHTML = '<p class="text-text-tertiary italic">Nenhum ambiente lançado ainda.</p>';
-    document.getElementById('agent-log').innerHTML = '';
-  }
+    const diasEl = document.getElementById('dias-info');
+    const memorialEl = document.getElementById('memorial');
+    const logEl = document.getElementById('agent-log');
 
-  renderChecklist();
-</script>
+    function setBadge(text, mod) {
+      badge.textContent = text;
+      badge.className = `badge badge--${mod}`;
+    }
+
+    function renderChecklist() {
+      const ul = document.getElementById('checklist');
+      ul.innerHTML = checklistItems.map((item) => `
+        <li>
+          <input type="checkbox" disabled ${item.done ? 'checked' : ''} aria-label="${item.label}">
+          <span class="${item.done ? 'is-done' : ''}">${item.label}</span>
+        </li>`).join('');
+    }
+
+    function nextStep() {
+      if (stepIndex >= steps.length) return;
+      const s = steps[stepIndex];
+
+      checklistItems[s.check].done = true;
+      renderChecklist();
+
+      if (s.dias) diasEl.textContent = s.dias;
+      if (s.status) setBadge(s.status.text, s.status.mod);
+
+      if (s.memorial) {
+        const empty = memorialEl.querySelector('.sim__empty');
+        if (empty) empty.remove();
+        memorialEl.insertAdjacentHTML('beforeend', `
+          <div class="sim__memorial-item">
+            <strong>${s.memorial.ambiente}</strong>
+            <p>${s.memorial.spec}</p>
+            <small>${s.memorial.origem}</small>
+          </div>`);
+      }
+
+      logEl.insertAdjacentHTML('afterbegin', `<p><b>Agente:</b> ${s.log}</p>`);
+      stepIndex++;
+    }
+
+    function resetSim() {
+      stepIndex = 0;
+      checklistItems.forEach((i) => { i.done = false; });
+      renderChecklist();
+      diasEl.textContent = '— dias corridos / — dias contratados';
+      setBadge('aguardando dado', 'idle');
+      memorialEl.innerHTML = '<p class="sim__empty">Nenhum ambiente lançado ainda.</p>';
+      logEl.innerHTML = '';
+    }
+
+    document.getElementById('sim-next').addEventListener('click', nextStep);
+    document.getElementById('sim-reset').addEventListener('click', resetSim);
+    renderChecklist();
+  </script>
 
 </body>
 </html>

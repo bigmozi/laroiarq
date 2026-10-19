@@ -1,94 +1,182 @@
-/* LARÔ.IA — design tokens e estilos compartilhados
-   Usado por index.html, diagnostico.html e demonstrativo_obra.html.
-   Os valores aqui são a fonte única de verdade; o tailwind.config de cada
-   página só referencia essas variáveis (var(--color-...) etc.), nunca hex direto. */
+/* LARÔ.IA Soluções em IA — design tokens
+   Duas camadas:
+   1. Primitivos (--laro-*): a paleta crua da marca. Só este arquivo usa.
+   2. Semânticos (--color-*, --space-*, --text-* etc.): o que cada valor significa.
+      style.css e as páginas usam só esta camada, nunca hex nem primitivo direto.
+   Pra trocar o tema, mexe nos semânticos. Pra trocar a paleta, mexe nos primitivos. */
 
 :root {
-  /* Superfícies */
-  --color-surface-base: #0b0b0b;
-  --color-surface-raised: #141414;
-  --color-surface-overlay: #1a1a1a;
+  /* ── 1. PRIMITIVOS ─────────────────────────────────────────── */
+  --laro-black-950: #0b0b0b;
+  --laro-black-900: #141414;
+  --laro-black-850: #1a1a1a;
+  --laro-black-800: #1f1f1f;
+  --laro-black-700: #2f2f2f;
+  --laro-stone-500: #67655e;
+  --laro-stone-300: #9a9890;
+  --laro-bone-50: #f5f3ef;
+  --laro-gold-600: #8f7140;
+  --laro-gold-500: #b08d4f;
+  --laro-gold-300: #d9bd86;
+  --laro-sand-200: #d0d3c8;
+  --laro-green-500: #2ecc71;
+  --laro-yellow-500: #e8b02c;
+  --laro-whatsapp-500: #25d366;
 
-  /* Bordas */
-  --color-border-subtle: #1f1f1f;
-  --color-border-default: #2f2f2f;
+  /* ── 2. SEMÂNTICOS · COR ───────────────────────────────────── */
+  /* Fundo */
+  --color-bg-page: var(--laro-black-950);
+  --color-bg-surface: var(--laro-black-900);
+  --color-bg-surface-alt: var(--laro-black-850);
+  --color-bg-nav: rgb(11 11 11 / 0.82);
+  --color-bg-hover: rgb(255 255 255 / 0.03);
+
+  /* Borda */
+  --color-border-subtle: var(--laro-black-800);
+  --color-border-default: var(--laro-black-700);
+  --color-border-accent: var(--laro-gold-500);
 
   /* Texto */
-  --color-text-primary: #f5f3ef;
-  --color-text-secondary: #9a9890;
-  --color-text-tertiary: #67655e;
+  --color-text-primary: var(--laro-bone-50);
+  --color-text-secondary: var(--laro-stone-300);
+  --color-text-tertiary: var(--laro-stone-500);
+  --color-text-on-accent: var(--laro-black-950);
+  --color-text-highlight: var(--laro-gold-300);
+  --color-text-display-muted: var(--laro-stone-300);
+  --color-text-display: var(--laro-bone-50);
 
-  /* Marca */
-  --color-brand-accent: #b08d4f;
-  --color-brand-accent-hover: #8f7140;
-  --color-brand-sand: #d0d3c8;
-  --color-brand-green: #2ecc71;
-  --color-brand-yellow: #e8b02c;
+  /* Marca: o desenho do tridente e do LARÔ.IA mora no HTML, a cor vem daqui */
+  --color-logo: var(--laro-bone-50);
+  --color-logo-dim: var(--laro-stone-500);
+  --color-logo-lit: var(--laro-gold-300);
 
-  /* Tipografia */
-  --font-display: "Sora", sans-serif;
-  --font-body: "Inter", sans-serif;
+  /* Ação e destaque */
+  --color-accent: var(--laro-gold-500);
+  --color-accent-hover: var(--laro-gold-600);
+  --color-accent-strong: var(--laro-gold-300);
+  --color-accent-soft: rgb(176 141 79 / 0.12);
+  --color-accent-line: rgb(176 141 79 / 0.35);
+  --color-accent-glow: rgb(176 141 79 / 0.18);
 
-  /* Raio */
+  /* Status (severidade dos problemas e simulação de obra) */
+  --color-status-ok: var(--laro-green-500);
+  --color-status-ok-soft: rgb(46 204 113 / 0.14);
+  --color-status-warn: var(--laro-yellow-500);
+  --color-status-warn-soft: rgb(232 176 44 / 0.14);
+  --color-status-risk: var(--laro-gold-500);
+  --color-status-risk-soft: rgb(176 141 79 / 0.16);
+  --color-status-neutral: var(--laro-sand-200);
+  --color-status-neutral-soft: rgb(208 211 200 / 0.12);
+
+  /* Fluxograma de fundo do hero */
+  --color-grid-line: rgb(255 255 255 / 0.035);
+  --color-grid-line-lit: rgb(176 141 79 / 0.3);
+  --color-line: var(--laro-black-700);
+  --color-line-lit: var(--laro-gold-500);
+  --color-spotlight: rgb(176 141 79 / 0.14);
+  --color-veil: rgb(11 11 11 / 0.9);
+  --color-veil-soft: rgb(11 11 11 / 0.55);
+  --color-glyph: var(--laro-gold-500);
+
+  /* Canal externo */
+  --color-whatsapp: var(--laro-whatsapp-500);
+
+  /* Gradientes (só em fundo; texto é sempre cor chapada) */
+  --gradient-accent-fill: linear-gradient(135deg, var(--laro-gold-300) 0%, var(--laro-gold-500) 100%);
+  --gradient-hero-glow:
+    radial-gradient(60% 55% at 78% 40%, rgb(176 141 79 / 0.14) 0%, transparent 70%),
+    radial-gradient(45% 40% at 10% 10%, rgb(208 211 200 / 0.05) 0%, transparent 70%);
+  --gradient-section-glow: radial-gradient(50% 60% at 50% 0%, rgb(176 141 79 / 0.08) 0%, transparent 75%);
+
+  /* ── 2. SEMÂNTICOS · TIPOGRAFIA ────────────────────────────── */
+  --font-display: "Sora", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+
+  --text-2xs: 0.65rem;
+  --text-xs: 0.72rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-md: 1.0625rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.5rem;
+  --text-h3: 1.15rem;
+  --text-h2: clamp(1.8rem, 4vw, 2.9rem);
+  --text-h1: clamp(2.3rem, 4.6vw, 3.9rem);
+  --text-display: clamp(2rem, 6vw, 4.4rem);
+  --text-hero: clamp(1.7rem, 4.1vw, 3.6rem);
+
+  --weight-light: 300;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-black: 800;
+
+  --leading-tight: 1.02;
+  --leading-display: 1.14;
+  --leading-heading: 1.12;
+  --leading-snug: 1.4;
+  --leading-body: 1.7;
+
+  --tracking-tight: -0.03em;
+  --tracking-display: 0.01em;
+  --tracking-label: 0.14em;
+  --tracking-eyebrow: 0.22em;
+
+  /* ── 2. SEMÂNTICOS · ESPAÇO E LAYOUT ───────────────────────── */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  --gutter: 1rem;
+  --section-py: var(--space-16);
+  --container-max: 1200px;
+  --measure: 660px;
+  --nav-height: 64px;
+  --grid-size: 56px;
+  --spotlight-radius: 340px;
+  --parallax-x: -14px;
+  --parallax-y: -10px;
+
+  /* ── 2. SEMÂNTICOS · FORMA, SOMBRA, MOVIMENTO ──────────────── */
   --radius-card: 18px;
   --radius-card-sm: 10px;
+  --radius-icon: 12px;
   --radius-pill: 100px;
+
+  --border-width: 1px;
+
+  --shadow-card-hover: 0 0 0 1px var(--color-accent-line), 0 18px 40px -24px rgb(0 0 0 / 0.8);
+  --shadow-accent-glow: 0 10px 40px -10px var(--color-accent-glow);
+  --shadow-btn-glow: 0 0 34px -8px var(--color-accent-glow);
+  --shadow-btn-glow-hover: 0 0 46px -4px rgb(176 141 79 / 0.35);
+
+  --duration-fast: 0.2s;
+  --duration-base: 0.35s;
+  --duration-slow: 0.6s;
+  --duration-parallax: 0.9s;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --z-nav: 200;
+  --z-float: 150;
 }
 
-body { -webkit-font-smoothing: antialiased; }
-
-/* Animação de entrada ao rolar (todas as páginas) */
-.reveal { opacity: 0; transform: translateY(14px); transition: opacity .5s ease, transform .5s ease; }
-.reveal.visible { opacity: 1; transform: none; }
-.reveal-delay-1 { transition-delay: .06s; }
-.reveal-delay-2 { transition-delay: .12s; }
-#nav.scrolled { border-color: var(--color-border-subtle); }
-
-/* Accordion "o problema" (index.html) */
-.problema-item { transition: border-color .25s ease; cursor: pointer; }
-.problema-item:hover { border-color: var(--color-brand-accent); }
-.problema-a { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
-.problema-item.open .problema-a,
-.problema-item:hover .problema-a { max-height: 240px; }
-.problema-toggle { transition: transform .25s ease; cursor: pointer; }
-.problema-item.open .problema-toggle,
-.problema-item:hover .problema-toggle { transform: rotate(45deg); }
-
-/* Accordion FAQ (index.html) */
-.faq-a { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
-.faq-item.open .faq-a { max-height: 200px; }
-.faq-toggle { transition: transform .25s ease; }
-.faq-item.open .faq-toggle { transform: rotate(45deg); }
-
-/* Campos de formulário (diagnostico.html) */
-input, select, textarea {
-  background: var(--color-surface-raised);
-  border: 1px solid var(--color-border-default);
-  color: var(--color-text-primary);
-  border-radius: var(--radius-card-sm);
-  padding: 0.85rem 1rem;
-  font-family: var(--font-body);
-  font-size: 0.92rem;
-  width: 100%;
-  transition: border-color .2s ease;
-}
-input:focus, select:focus, textarea:focus { outline: none; border-color: var(--color-brand-accent); }
-input::placeholder, textarea::placeholder { color: var(--color-text-tertiary); }
-label {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 0.68rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-text-secondary);
-  display: block;
-  margin-bottom: 0.5rem;
+@media (min-width: 640px) {
+  :root { --gutter: 1.5rem; }
 }
 
-/* Simulação clicável (demonstrativo_obra.html) */
-.chip { transition: all .2s ease; }
-.step-line { background: linear-gradient(180deg, var(--color-border-default) 0%, var(--color-border-default) 100%); }
-.agent-bubble { animation: fadeIn .35s ease both; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
-.check-done { text-decoration: line-through; color: var(--color-text-tertiary); }
-input[type=checkbox].sim-check { accent-color: var(--color-brand-accent); width: 18px; height: 18px; }
+@media (min-width: 960px) {
+  :root {
+    --gutter: 3rem;
+    --section-py: var(--space-24);
+  }
+}
