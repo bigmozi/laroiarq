@@ -259,7 +259,6 @@ if (calc) {
   calc.addEventListener('submit', (e) => e.preventDefault());
   const brl = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 });
   const num = new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 0 });
-  const mes = new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 1 });
   const fields = {
     projetos: calc.querySelector('#calc-projetos'),
     revisoes: calc.querySelector('#calc-revisoes'),
@@ -293,29 +292,13 @@ if (calc) {
     out('calc-horas-mes').textContent = `${num.format(horasMes)}h`;
     out('calc-revisoes-mes').textContent = num.format(revisoesMes);
 
-    const anchor = out('anchor-value');
-    if (anchor) anchor.textContent = brl.format(mensal);
-
-    // A mesma conta sustenta a seção de investimento: a faixa que a rotina típica devolve
-    // (de 70% a 80% do que hoje não vira cobrança) e quanto tempo desse valor paga o
-    // desenvolvimento sob medida, cujo preço fica no data-price do próprio box.
-    const recMin = out('anchor-recovered-min');
-    const recMax = out('anchor-recovered-max');
-    if (recMin) recMin.textContent = brl.format(mensal * 0.7);
-    if (recMax) recMax.textContent = brl.format(mensal * 0.8);
-
-    const devRef = out('price-dev-ref');
-    const devBox = devRef && devRef.closest('[data-price]');
-    if (devRef && devBox) {
-      const preco = Number(devBox.dataset.price);
-      if (!mensal) {
-        devRef.textContent = 'Mexa na calculadora acima pra ver esse valor na régua do seu escritório.';
-      } else {
-        const meses = preco / mensal;
-        devRef.textContent = meses < 1
-          ? 'Menos de um mês do que você deixa de cobrar hoje.'
-          : `${mes.format(meses)} meses do que você deixa de cobrar hoje.`;
-      }
+    // O desenvolvimento sob medida, no investimento, sai da mesma conta: de 70% a 80%
+    // do que a revisão fora do escopo custa por mês. Sem revisão, não há régua.
+    const dev = out('price-dev-value');
+    if (dev) {
+      dev.textContent = mensal
+        ? `${brl.format(mensal * 0.7)} a\u00a0${brl.format(mensal * 0.8)}`
+        : 'Sob diagnóstico';
     }
 
     Object.values(fields).forEach(paintRange);

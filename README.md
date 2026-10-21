@@ -14,7 +14,7 @@ HTML, CSS e JavaScript puros, sem framework e sem etapa de build. A fonte de tí
 
 - `assets/tokens.css`: design tokens em duas camadas. Os primitivos (`--laro-*`) guardam a paleta e só são lidos ali dentro. Os semânticos (`--color-*`, `--space-*`, `--text-*`) dizem o papel de cada valor.
 - `assets/style.css`: componentes. Usa só os tokens semânticos: nenhum hex e nenhum número solto de tamanho de fonte, entrelinha ou espaçamento de letra.
-- `assets/main.js`: animação de entrada, nav, grafo do hero, acordeões, filtro de agentes, calculadora (ligada à âncora e à régua do investimento) e o número do WhatsApp do formulário.
+- `assets/main.js`: animação de entrada, nav, grafo do hero, acordeões, filtro de agentes, calculadora (o preço do desenvolvimento sob medida, no investimento, sai dela: de 70% a 80% do valor mensal) e o número do WhatsApp do formulário.
 - `assets/diagnostico.js`: monta a mensagem do formulário do diagnóstico e abre o WhatsApp.
 - `assets/demonstrativo.js`: simulação passo a passo do Apontador.
 - `assets/favicon.svg`: ícone da aba. A marca usada nas páginas fica num sprite SVG no começo de cada HTML, com a cor vinda dos tokens.

@@ -607,23 +607,19 @@
           <p class="lead reveal">Cada hora que deixa de virar retrabalho pode virar projeto novo, sem contratar mais gente pra sustentar o mesmo padrão.</p>
         </div>
 
-        <p class="anchor reveal">Pela sua conta na calculadora, a revisão fora do escopo já custa <strong id="anchor-value">R$&nbsp;2.880</strong> por mês. Use esse número como régua pra ler os valores abaixo.<span class="anchor__line">Na rotina típica, de 70% a 80% dessa hora volta pro escritório com os agentes rodando: entre <strong id="anchor-recovered-min">R$&nbsp;2.016</strong> e <strong id="anchor-recovered-max">R$&nbsp;2.304</strong> por mês.</span></p>
-
         <div class="pricing reveal">
           <div class="price-card">
             <span class="price-card__flag">Primeiro passo</span>
             <p class="label-sm">Diagnóstico gratuito + implementação</p>
             <p class="price-card__title">Agentes funcionando, equipe treinada</p>
-            <p class="note">Valores a partir de</p>
             <div class="price-grid">
               <div class="price-box">
-                <p class="label-sm">Treinamento aplicado</p>
+                <p class="label-sm">Treinamento aplicado a partir de</p>
                 <p class="price-box__value">R$&nbsp;497</p>
               </div>
-              <div class="price-box" data-price="2200">
-                <p class="label-sm">Desenvolvimento sob medida</p>
-                <p class="price-box__value">R$&nbsp;2.200</p>
-                <p class="price-box__ref" id="price-dev-ref">Menos de um mês do que você deixa de cobrar hoje.</p>
+              <div class="price-box">
+                <p class="label-sm">Desenvolvimento sob medida a partir de</p>
+                <p class="price-box__value" id="price-dev-value" aria-live="polite">R$&nbsp;2.016 a&nbsp;R$&nbsp;2.304</p>
               </div>
             </div>
             <p class="note">Varia pela complexidade de cada agente. O valor exato sai do diagnóstico gratuito.</p>
@@ -675,7 +671,7 @@
           </div>
           <div class="faq__item">
             <button type="button" class="faq__q" aria-expanded="false">Quanto custa?<span class="toggle" aria-hidden="true">+</span></button>
-            <div class="faq__a"><p>Treinamento aplicado a partir de R$ 497, desenvolvimento sob medida a partir de R$ 2.200, variando pela complexidade. O valor exato do seu escritório sai do diagnóstico, que é gratuito.</p></div>
+            <div class="faq__a"><p>Treinamento aplicado a partir de R$ 497. Desenvolvimento sob medida a partir de 70% a 80% do que a revisão fora do escopo custa por mês ao seu escritório, variando pela complexidade. O valor exato do seu escritório sai do diagnóstico, que é gratuito.</p></div>
           </div>
           <div class="faq__item">
             <button type="button" class="faq__q" aria-expanded="false">E se eu fizer o diagnóstico e decidir não seguir?<span class="toggle" aria-hidden="true">+</span></button>
@@ -691,9 +687,7 @@
 
     <!-- CTA FINAL -->
     <section id="cta" class="section cta-final">
-      <svg class="logo logo--simbolo cta-final__bg" aria-hidden="true"><use href="#laroia-simbolo"/></svg>
       <div class="container">
-        <svg class="logo logo--simbolo cta-final__mark reveal" aria-hidden="true"><use href="#laroia-simbolo"/></svg>
         <h2 class="cta-final__title reveal">Descubra onde seu escritório perde horas <span class="text-highlight">que nunca entram na proposta.</span></h2>
         <p class="reveal">Em 15 a 20 minutos, sem custo, você sai com os 3 pontos de maior dreno do escritório e os agentes que resolvem cada um.</p>
         <div class="hero__ctas reveal reveal--d1">

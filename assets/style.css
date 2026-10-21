@@ -935,21 +935,6 @@ strong { color: var(--color-text-primary); font-weight: var(--weight-semibold); 
 .feature p { color: var(--color-text-secondary); font-size: var(--text-ui); line-height: var(--leading-relaxed); }
 
 /* ── INVESTIMENTO ──────────────────────────────────────────────── */
-.anchor {
-  max-width: 1000px;
-  margin: 0 auto var(--space-8);
-  padding: var(--space-5) var(--space-6);
-  border: var(--border-width) solid var(--color-border-default);
-  border-radius: var(--radius-card);
-  background: var(--color-bg-surface);
-  text-align: center;
-  color: var(--color-text-secondary);
-  font-size: var(--text-body-sm);
-}
-.anchor strong { color: var(--color-accent-strong); font-family: var(--font-display); }
-/* Segunda linha da âncora: a faixa que volta pro escritório, calculada sobre o mesmo número */
-.anchor__line { display: block; margin-top: var(--space-2); color: var(--color-text-tertiary); }
-.price-box__ref { margin-top: var(--space-2); font-size: var(--text-2xs); color: var(--color-text-tertiary); }
 .pricing { display: grid; gap: var(--space-4); max-width: 1000px; margin-inline: auto; }
 @media (min-width: 860px) { .pricing { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .price-card {
@@ -976,6 +961,7 @@ strong { color: var(--color-text-primary); font-weight: var(--weight-semibold); 
 }
 .price-card__title { font-family: var(--font-display); font-weight: var(--weight-heading); text-transform: var(--case-heading); letter-spacing: var(--tracking-heading); font-size: var(--text-lg); margin: var(--space-1) 0 var(--space-5); }
 .price-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); margin: var(--space-2) 0 var(--space-3); }
+@media (max-width: 479px) { .price-grid { grid-template-columns: minmax(0, 1fr); } }
 .price-box { padding: var(--space-4); border: var(--border-width) solid var(--color-border-subtle); border-radius: var(--radius-card-sm); }
 .price-box__value { font-family: var(--font-display); font-weight: var(--weight-black); font-size: var(--text-title); color: var(--color-accent); line-height: var(--leading-none); margin-top: var(--space-1); }
 .price-card__actions { margin-top: auto; padding-top: var(--space-6); display: grid; gap: var(--space-3); }
@@ -1026,22 +1012,18 @@ strong { color: var(--color-text-primary); font-weight: var(--weight-semibold); 
 
 /* ── CTA FINAL ─────────────────────────────────────────────────── */
 .cta-final { position: relative; overflow: hidden; background-image: var(--gradient-hero-glow); }
-.cta-final__bg {
-  position: absolute; left: 50%; top: 50%;
-  width: 600px; max-width: none;
-  transform: translate(-50%, -50%);
-  opacity: 0.04;
-  pointer-events: none;
-}
 .cta-final__mark { height: 40px; margin-bottom: var(--space-6); }
 .cta-final__title {
   position: relative;
   font-family: var(--font-display); font-weight: var(--weight-heading);
   font-size: var(--text-display); line-height: var(--leading-heading); letter-spacing: var(--tracking-heading); text-transform: var(--case-heading);
-  max-width: 920px; margin-bottom: var(--space-8);
+  max-width: 920px; margin: 0 auto var(--space-8);
 }
-.cta-final p { position: relative; color: var(--color-text-secondary); margin-bottom: var(--space-8); max-width: var(--measure); }
-.cta-final .hero__ctas { position: relative; margin-bottom: 0; }
+.cta-final .container { text-align: center; }
+.cta-final p { position: relative; color: var(--color-text-secondary); margin: 0 auto var(--space-8); max-width: var(--measure); }
+.cta-final .hero__ctas { position: relative; margin-bottom: 0; justify-content: center; align-items: center; }
+/* Botões do fechamento no tamanho do CTA da nav */
+.cta-final .btn { font-size: var(--text-2xs); letter-spacing: var(--tracking-caps); text-transform: uppercase; padding: var(--space-2) var(--space-5); }
 
 /* ── RODAPÉ ────────────────────────────────────────────────────── */
 .footer { border-top: var(--border-width) solid var(--color-border-subtle); padding-block: var(--space-12) var(--space-8); }
