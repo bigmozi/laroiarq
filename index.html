@@ -55,9 +55,9 @@
         <span class="nav__tag">Soluções<br>em IA</span>
       </a>
       <div class="nav__links">
-        <a href="#solucoes">Soluções</a>
-        <a href="#fluxo">Como funciona</a>
         <a href="#calculadora">Calculadora</a>
+        <a href="#solucoes">Soluções</a>
+        <a href="#processo">Como funciona</a>
         <a href="#investimento">Investimento</a>
         <a href="#faq">Dúvidas</a>
       </div>
@@ -171,14 +171,14 @@
 
           <article class="problem">
             <div class="problem__top">
-              <h3 class="problem__title">Já tentou usar ChatGPT genérico pra isso e travou depois de duas semanas</h3>
-              <button type="button" class="toggle toggle--warn" aria-expanded="false" aria-label="Ver como a LARÔ.IA resolve">+</button>
+              <h3 class="problem__title">Cliente novo manda mensagem e espera resposta até alguém ter tempo</h3>
+              <button type="button" class="toggle toggle--mid" aria-expanded="false" aria-label="Ver como a LARÔ.IA resolve">+</button>
             </div>
-            <span class="badge badge--warn">Atenção redobrada</span>
+            <span class="badge badge--mid">Risco médio</span>
             <div class="problem__answer">
               <div class="problem__answer-inner">
-                <p class="problem__answer-label">Como a LARÔ.IA resolve</p>
-                <p>O diagnóstico mapeia seu fluxo real antes de qualquer ferramenta. Cada agente é construído sob medida pro seu processo.</p>
+                <p class="problem__answer-label">Agente que resolve: o Recepcionista</p>
+                <p>Responde na hora pelo WhatsApp ou Instagram, entende o projeto e marca a reunião só com quem tem perfil.</p>
               </div>
             </div>
           </article>
@@ -227,8 +227,72 @@
           <p>Cobrar revisão extra parece quebrar a parceria com o cliente, então ninguém cobra e ninguém registra. Admitir que um conflito passou despercebido parece expor falha técnica, então ninguém fala. Cada escopo, cada aprovação e cada especificação fica espalhado entre e-mail, WhatsApp e a cabeça de quem estava na reunião.</p>
           <p>Quando o processo depende da memória, o escopo muda sem registro, as revisões se acumulam sem histórico e o erro aparece tarde demais, já na obra.</p>
           <p class="prose__key">Empilhar mais uma ferramenta em cima disso não resolve. Primeiro se organiza o fluxo, depois se automatiza. É nessa ordem que a LARÔ.IA trabalha.</p>
-          <p class="prose__consequence">Escopo sem registro mais revisão sem contagem dá hora técnica que sai do contrato e não entra no caixa. <a href="#calculadora" class="text-accent">A calculadora mostra quanto isso dá no seu escritório →</a></p>
+          <p class="prose__consequence">Escopo sem registro mais revisão sem contagem dá hora técnica que sai do contrato e não entra no caixa. <a href="#calculadora" class="text-accent">Faça a conta do seu escritório ↓</a></p>
         </div>
+      </div>
+    </section>
+
+    <!-- CALCULADORA · prova lógica com o número do escritório -->
+    <section id="calculadora" class="section">
+      <div class="container">
+        <div class="section__head">
+          <p class="eyebrow reveal">Calculadora</p>
+          <h2 class="h2 reveal">Quanto a revisão fora do escopo já custa pro seu escritório</h2>
+          <p class="lead reveal">Ajuste os números da sua rotina. A conta mostra a hora técnica que sai do contrato sem virar cobrança.</p>
+        </div>
+
+        <div class="calc reveal">
+          <form id="calculadora-form" class="calc__inputs">
+            <div class="calc__field">
+              <div class="calc__row">
+                <label class="calc__label" for="calc-projetos">Projetos ativos por mês</label>
+                <output class="calc__out" id="calc-projetos-out" for="calc-projetos">3</output>
+              </div>
+              <input class="range" type="range" id="calc-projetos" min="1" max="20" step="1" value="3">
+            </div>
+            <div class="calc__field">
+              <div class="calc__row">
+                <label class="calc__label" for="calc-revisoes">Revisões fora do escopo, por projeto</label>
+                <output class="calc__out" id="calc-revisoes-out" for="calc-revisoes">2</output>
+              </div>
+              <input class="range" type="range" id="calc-revisoes" min="0" max="8" step="1" value="2">
+            </div>
+            <div class="calc__field">
+              <div class="calc__row">
+                <label class="calc__label" for="calc-horas">Horas de equipe por revisão</label>
+                <output class="calc__out" id="calc-horas-out" for="calc-horas">4h</output>
+              </div>
+              <input class="range" type="range" id="calc-horas" min="1" max="16" step="1" value="4">
+            </div>
+            <div class="calc__field">
+              <div class="calc__row">
+                <label class="calc__label" for="calc-valor">Valor da sua hora técnica</label>
+                <output class="calc__out" id="calc-valor-out" for="calc-valor">R$&nbsp;120</output>
+              </div>
+              <input class="range" type="range" id="calc-valor" min="50" max="400" step="10" value="120">
+            </div>
+          </form>
+
+          <div class="calc__result" aria-live="polite">
+            <p class="calc__result-label">Custo estimado</p>
+            <p class="calc__sub calc__sub--lead">Seu escritório deixa de cobrar cerca de</p>
+            <p class="calc__value text-highlight" id="calc-mensal">R$&nbsp;2.880</p>
+            <p class="calc__sub">por mês · <span id="calc-anual">R$&nbsp;34.560</span> por ano</p>
+            <div class="calc__stats">
+              <div class="stat">
+                <p class="stat__num" id="calc-horas-mes">24h</p>
+                <p class="stat__label">de equipe por mês em revisão sem cobrança</p>
+              </div>
+              <div class="stat">
+                <p class="stat__num" id="calc-revisoes-mes">6</p>
+                <p class="stat__label">revisões fora do escopo por mês</p>
+              </div>
+            </div>
+            <a href="diagnostico.html" class="btn btn--primary btn--block">Quero esse número no meu diagnóstico <span aria-hidden="true">→</span></a>
+            <p class="note">A conta usa só os números que você colocou. Não inclui conflito de compatibilização nem memorial redigitado.</p>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -239,7 +303,7 @@
           <div class="section__head">
             <p class="eyebrow reveal">Soluções de IA</p>
             <h2 class="h2 reveal">Agentes de IA que trabalham no fluxo de quem projeta</h2>
-            <p class="lead reveal">Cada agente leva o nome do ofício que faz no escritório: o Recepcionista atende, o Escrivão registra, o Compatibilizador cruza, o Memorialista especifica e o Apontador avisa. Roda em cima das ferramentas que você já usa e deixa a decisão final com quem assina o projeto.</p>
+            <p class="lead reveal">Cada agente leva o nome do ofício que faz no escritório e cobre uma etapa, do primeiro contato do cliente à obra entregue.</p>
           </div>
           <a href="diagnostico.html" class="btn btn--outline-accent reveal">Ver qual agente resolve o seu caso <span aria-hidden="true">→</span></a>
         </div>
@@ -452,88 +516,8 @@
       </div>
     </section>
 
-    <!-- COMO FUNCIONA · prova técnica do mecanismo -->
-    <section id="fluxo" class="section section--alt">
-      <div class="container">
-        <div class="section__head section__head--center">
-          <p class="eyebrow reveal">Como funciona</p>
-          <h2 class="h2 reveal">Do primeiro contato à <span class="text-highlight">obra entregue</span></h2>
-          <p class="lead reveal">Enquanto a equipe projeta, os agentes cuidam do que se repete em cada etapa. Você aprova o que sai.</p>
-        </div>
-
-        <ol class="flow reveal">
-          <li class="flow__step">
-            <span class="flow__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.6-5.2A8.5 8.5 0 1 1 21 11.5Z"/></svg>
-              <span class="flow__num">1</span>
-            </span>
-            <div>
-              <p class="flow__title">Cliente chama no WhatsApp</p>
-              <p class="flow__text">O agente responde, entende o projeto e marca a reunião.</p>
-              <span class="flow__agent">Recepcionista</span>
-            </div>
-          </li>
-          <li class="flow__step">
-            <span class="flow__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
-              <span class="flow__num">2</span>
-            </span>
-            <div>
-              <p class="flow__title">Proposta com escopo fechado</p>
-              <p class="flow__text">Revisões incluídas e parcelas já no contrato.</p>
-              <span class="flow__agent">Tabelião</span>
-            </div>
-          </li>
-          <li class="flow__step flow__step--key">
-            <span class="flow__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="m9 13 2 2 4-4"/></svg>
-              <span class="flow__num">3</span>
-            </span>
-            <div>
-              <p class="flow__title">Cada revisão é contada</p>
-              <p class="flow__text">Passou do combinado, o aditivo já está pronto.</p>
-              <span class="flow__agent">Fiscal</span>
-            </div>
-          </li>
-          <li class="flow__step">
-            <span class="flow__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="12" r="6"/><circle cx="15" cy="12" r="6"/></svg>
-              <span class="flow__num">4</span>
-            </span>
-            <div>
-              <p class="flow__title">Disciplinas cruzadas</p>
-              <p class="flow__text">O conflito aparece antes de virar obra.</p>
-              <span class="flow__agent">Compatibilizador</span>
-            </div>
-          </li>
-          <li class="flow__step">
-            <span class="flow__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>
-              <span class="flow__num">5</span>
-            </span>
-            <div>
-              <p class="flow__title">Memorial e orçamento</p>
-              <p class="flow__text">Montados a partir do que você já especificou.</p>
-              <span class="flow__agent">Memorialista · Orçamentista</span>
-            </div>
-          </li>
-          <li class="flow__step">
-            <span class="flow__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 18h20"/><path d="M4 18v-3a8 8 0 0 1 16 0v3"/><path d="M10 7.2V5h4v2.2"/></svg>
-              <span class="flow__num">6</span>
-            </span>
-            <div>
-              <p class="flow__title">Obra acompanhada</p>
-              <p class="flow__text">Prazo com número e cliente informado toda semana.</p>
-              <span class="flow__agent">Apontador</span>
-            </div>
-          </li>
-        </ol>
-      </div>
-    </section>
-
     <!-- CASO REAL · prova técnica e visual -->
-    <section id="caso-real" class="section">
+    <section id="caso-real" class="section section--alt">
       <div class="container">
         <div class="section__head">
           <p class="eyebrow reveal">Caso real</p>
@@ -554,161 +538,34 @@
       </div>
     </section>
 
-    <!-- CALCULADORA · prova lógica com o número do escritório -->
-    <section id="calculadora" class="section section--alt">
-      <div class="container">
-        <div class="section__head">
-          <p class="eyebrow reveal">Calculadora</p>
-          <h2 class="h2 reveal">Quanto a revisão fora do escopo já custa pro seu escritório</h2>
-          <p class="lead reveal">Ajuste os números da sua rotina. A conta mostra a hora técnica que sai do contrato sem virar cobrança.</p>
-        </div>
-
-        <div class="calc reveal">
-          <form id="calculadora-form" class="calc__inputs">
-            <div class="calc__field">
-              <div class="calc__row">
-                <label class="calc__label" for="calc-projetos">Projetos ativos por mês</label>
-                <output class="calc__out" id="calc-projetos-out" for="calc-projetos">3</output>
-              </div>
-              <input class="range" type="range" id="calc-projetos" min="1" max="20" step="1" value="3">
-            </div>
-            <div class="calc__field">
-              <div class="calc__row">
-                <label class="calc__label" for="calc-revisoes">Revisões fora do escopo, por projeto</label>
-                <output class="calc__out" id="calc-revisoes-out" for="calc-revisoes">2</output>
-              </div>
-              <input class="range" type="range" id="calc-revisoes" min="0" max="8" step="1" value="2">
-            </div>
-            <div class="calc__field">
-              <div class="calc__row">
-                <label class="calc__label" for="calc-horas">Horas de equipe por revisão</label>
-                <output class="calc__out" id="calc-horas-out" for="calc-horas">4h</output>
-              </div>
-              <input class="range" type="range" id="calc-horas" min="1" max="16" step="1" value="4">
-            </div>
-            <div class="calc__field">
-              <div class="calc__row">
-                <label class="calc__label" for="calc-valor">Valor da sua hora técnica</label>
-                <output class="calc__out" id="calc-valor-out" for="calc-valor">R$&nbsp;120</output>
-              </div>
-              <input class="range" type="range" id="calc-valor" min="50" max="400" step="10" value="120">
-            </div>
-          </form>
-
-          <div class="calc__result" aria-live="polite">
-            <p class="calc__result-label">Custo estimado</p>
-            <p class="calc__sub calc__sub--lead">Seu escritório deixa de cobrar cerca de</p>
-            <p class="calc__value text-highlight" id="calc-mensal">R$&nbsp;2.880</p>
-            <p class="calc__sub">por mês · <span id="calc-anual">R$&nbsp;34.560</span> por ano</p>
-            <div class="calc__stats">
-              <div class="stat">
-                <p class="stat__num" id="calc-horas-mes">24h</p>
-                <p class="stat__label">de equipe por mês em revisão sem cobrança</p>
-              </div>
-              <div class="stat">
-                <p class="stat__num" id="calc-revisoes-mes">6</p>
-                <p class="stat__label">revisões fora do escopo por mês</p>
-              </div>
-            </div>
-            <a href="diagnostico.html" class="btn btn--primary btn--block">Quero esse número no meu diagnóstico <span aria-hidden="true">→</span></a>
-            <p class="note">A conta usa só os números que você colocou. Não inclui conflito de compatibilização nem memorial redigitado.</p>
-          </div>
-        </div>
-
-        <p class="label-sm spec-title reveal">Horas devolvidas por mês, por especialidade · estimativa de rotina típica</p>
-        <div class="spec-grid reveal">
-          <div class="spec">
-            <p class="spec__seg">Arquitetura</p>
-            <p class="spec__num">~3,5h/mês</p>
-            <p>Revisão fora do escopo deixa de ser refeita sem controle, e a equipe para de reconstituir o que já foi combinado com o cliente.</p>
-            <div class="spec__bars"><div><span>Sem sistema</span><span>~4h/mês</span></div><div><span>Com LARÔ.IA</span><span>~0,5h/mês</span></div></div>
-          </div>
-          <div class="spec">
-            <p class="spec__seg">Engenharia de compatibilização</p>
-            <p class="spec__num">~10h/mês</p>
-            <p>O cruzamento de arquitetura, elétrica e hidráulica prancha por prancha sai da mão da equipe, e o conflito aparece antes da reunião.</p>
-            <div class="spec__bars"><div><span>Sem sistema</span><span>~16h/mês</span></div><div><span>Com LARÔ.IA</span><span>~6h/mês</span></div></div>
-          </div>
-          <div class="spec">
-            <p class="spec__seg">Design de interiores</p>
-            <p class="spec__num">~10,5h/mês</p>
-            <p>Memorial de acabamento e orçamento comparativo saem de projetos e fornecedores já registrados, sem remontar do zero.</p>
-            <div class="spec__bars"><div><span>Sem sistema</span><span>~15h/mês</span></div><div><span>Com LARÔ.IA</span><span>~4,5h/mês</span></div></div>
-          </div>
-        </div>
-        <p class="note reveal">Estimativa baseada em rotina típica relatada em conversa com escritórios. O número exato do seu sai do diagnóstico gratuito.</p>
-      </div>
-    </section>
-
-    <!-- ANTES E DEPOIS · o sonho tangível -->
-    <section id="antes-depois" class="section">
-      <div class="container">
-        <div class="section__head">
-          <p class="eyebrow reveal">O que muda</p>
-          <h2 class="h2 reveal">Antes e <span class="text-highlight">depois.</span></h2>
-          <p class="lead reveal">O desconforto de cobrar uma revisão extra. O receio de descobrir um conflito só na obra. A frustração de refazer o que já foi feito dezenas de vezes. Cada hora que deixa de virar retrabalho pode virar projeto novo, sem contratar mais gente pra sustentar o mesmo padrão.</p>
-        </div>
-        <div class="compare reveal">
-          <div class="compare__col">
-            <p class="compare__head">Sem a LARÔ.IA</p>
-            <p class="compare__row"><span class="compare__mark" aria-hidden="true">✕</span>Revisão fora de escopo vira favor, ninguém cobra</p>
-            <p class="compare__row"><span class="compare__mark" aria-hidden="true">✕</span>Conflito entre disciplinas só aparece na obra</p>
-            <p class="compare__row"><span class="compare__mark" aria-hidden="true">✕</span>Memorial de acabamento redigitado do zero a cada projeto</p>
-            <p class="compare__row"><span class="compare__mark" aria-hidden="true">✕</span>Orçamento comparativo remontado manualmente toda vez</p>
-            <p class="compare__row"><span class="compare__mark" aria-hidden="true">✕</span>Cliente novo esperando resposta até alguém ter tempo</p>
-            <p class="compare__row"><span class="compare__mark" aria-hidden="true">✕</span>Decisão de cobrar baseada em desconforto</p>
-          </div>
-          <div class="compare__col compare__col--after">
-            <p class="compare__head">Com a LARÔ.IA</p>
-            <p class="compare__row"><span class="compare__mark" aria-hidden="true">✓</span>Revisão fora de escopo registrada, com decisão de cobrar ou não</p>
-            <p class="compare__row"><span class="compare__mark" aria-hidden="true">✓</span>Conflito entre disciplinas apontado antes da reunião</p>
-            <p class="compare__row"><span class="compare__mark" aria-hidden="true">✓</span>Memorial gerado a partir do que já foi usado antes</p>
-            <p class="compare__row"><span class="compare__mark" aria-hidden="true">✓</span>Orçamento montado a partir de cotações já registradas</p>
-            <p class="compare__row"><span class="compare__mark" aria-hidden="true">✓</span>Cliente novo atendido na hora e reunião já marcada</p>
-            <p class="compare__row"><span class="compare__mark" aria-hidden="true">✓</span>Decisão de cobrar baseada em dado</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- PROCESSO · o plano -->
-    <section id="processo" class="section section--alt">
+    <section id="processo" class="section">
       <div class="container">
         <div class="section__head">
-          <p class="eyebrow reveal">Do diagnóstico à autonomia</p>
-          <h2 class="h2 reveal">Do problema ao agente rodando</h2>
-          <p class="lead reveal">Um caminho com etapa clara. Você sabe onde está, do primeiro contato até a equipe operando sozinha.</p>
+          <p class="eyebrow reveal">Como funciona</p>
+          <h2 class="h2 reveal">Do diagnóstico ao agente rodando</h2>
+          <p class="lead reveal">Nada de solução empurrada nem consultoria de seis meses. Você sabe em que etapa está, do diagnóstico à equipe operando sozinha.</p>
         </div>
         <ol class="steps reveal">
           <li class="steps__item">
             <span class="steps__num">01</span>
             <p class="steps__title">Você conta o fluxo</p>
-            <p class="steps__text">Diagnóstico gratuito de 15 a 20 minutos, sem compromisso.</p>
+            <p class="steps__text">Diagnóstico gratuito de 15 a 20 minutos. Você sai com os 3 pontos de maior dreno priorizados, siga ou não.</p>
           </li>
           <li class="steps__item">
             <span class="steps__num">02</span>
-            <p class="steps__title">Mapeamos onde perde tempo</p>
-            <p class="steps__text">Lista priorizada dos pontos de maior dreno.</p>
+            <p class="steps__title">Começa por um agente</p>
+            <p class="steps__text">O do ponto que mais consome hora. Os outros vêm por etapa, se fizer sentido.</p>
           </li>
           <li class="steps__item">
             <span class="steps__num">03</span>
-            <p class="steps__title">Escolhemos os agentes</p>
-            <p class="steps__text">Os que resolvem o seu caso, ajustados ao seu fluxo.</p>
-          </li>
-          <li class="steps__item">
-            <span class="steps__num">04</span>
-            <p class="steps__title">Desenvolvemos e integramos</p>
-            <p class="steps__text">Em cima do WhatsApp, do Drive e das planilhas que você já usa.</p>
-          </li>
-          <li class="steps__item">
-            <span class="steps__num">05</span>
-            <p class="steps__title">Treinamos a equipe</p>
-            <p class="steps__text">IA prática, aplicada ao fluxo real do escritório.</p>
+            <p class="steps__title">Roda em semanas</p>
+            <p class="steps__text">Construído em cima do WhatsApp, do Drive e das planilhas que o escritório já usa.</p>
           </li>
           <li class="steps__item steps__item--final">
-            <span class="steps__num">06</span>
-            <p class="steps__title">O sistema fica com você</p>
-            <p class="steps__text">Guia de operação escrito, sem licença fechada.</p>
+            <span class="steps__num">04</span>
+            <p class="steps__title">A equipe opera sozinha</p>
+            <p class="steps__text">Treinamento aplicado e guia de operação escrito. Sem licença fechada: o sistema fica com você.</p>
           </li>
         </ol>
 
@@ -730,55 +587,13 @@
       </div>
     </section>
 
-    <!-- DIFERENCIAIS · prova técnica -->
-    <section id="diferenciais" class="section">
-      <div class="container">
-        <div class="section__head">
-          <p class="eyebrow reveal">Diferenciais</p>
-          <h2 class="h2 reveal">Por que a LARÔ.IA</h2>
-        </div>
-        <div class="features reveal">
-          <div class="feature">
-            <p class="feature__num">01</p>
-            <p class="feature__title">Feita pro fluxo de projeto</p>
-            <p>Revisão, compatibilização, memorial, orçamento. Os agentes operam nos processos de arquitetura, engenharia e design de interiores, em vez de uma planilha genérica adaptada.</p>
-          </div>
-          <div class="feature">
-            <p class="feature__num">02</p>
-            <p class="feature__title">Cada implementação nasce do seu diagnóstico</p>
-            <p>Nada de solução empurrada. Mapeamos onde seu escritório perde tempo de verdade, e você decide o que faz sentido construir.</p>
-          </div>
-          <div class="feature">
-            <p class="feature__num">03</p>
-            <p class="feature__title">Do diagnóstico ao primeiro resultado em semanas</p>
-            <p>Sem projeto de consultoria de seis meses. O primeiro agente entra em operação pelo ponto de maior dreno, e os outros vêm por etapa.</p>
-          </div>
-          <div class="feature">
-            <p class="feature__num">04</p>
-            <p class="feature__title">Aponta o conflito, nunca decide o projeto</p>
-            <p>O agente cruza dados, registra escopo e sinaliza o que passou do combinado. A decisão técnica e de projeto continua com você, sempre.</p>
-          </div>
-          <div class="feature">
-            <p class="feature__num">05</p>
-            <p class="feature__title">Trabalha em cima do processo que já funciona</p>
-            <p>Sem licença fechada, sem trocar de ferramenta de desenho. O sistema é construído sobre o seu fluxo atual e fica com você.</p>
-          </div>
-          <div class="feature">
-            <p class="feature__num">06</p>
-            <p class="feature__title">Sua equipe opera sozinha depois da entrega</p>
-            <p>Treinamento incluso e guia de operação escrito. O critério de sucesso é você não precisar da gente pra sempre.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- QUEM CONSTRÓI · prova pessoal -->
     <section id="quem-constroi" class="section section--alt">
       <div class="container">
         <p class="eyebrow reveal">Quem constrói</p>
         <div class="prose reveal">
           <p>A LARÔ.IA é uma parceria entre a <strong>Nebu Co.</strong> e a <strong>Affectio</strong>. Em conversas com clientes de setores bem diferentes entre si, o mesmo padrão aparecia repetido: processo que só existia na memória de alguém, decisão que nunca virava registro, erro que só aparecia tarde demais. Primeiro em consultórios de psiquiatria, neurologia e atendimento a TEA. Depois em arquitetura, engenharia de compatibilização e design de interiores.</p>
-          <p>Perceber esse padrão se repetindo fez a dupla construir um método replicável, em vez de resolver caso a caso: diagnóstico honesto, agentes sob medida e treinamento aplicado, com o sistema ficando com o cliente. O mesmo processo, testado antes de chegar no seu escritório.</p>
+          <p>Perceber esse padrão se repetindo fez a dupla construir um método replicável, em vez de resolver caso a caso. O mesmo processo, testado antes de chegar no seu escritório.</p>
         </div>
       </div>
     </section>
@@ -789,6 +604,7 @@
         <div class="section__head section__head--center">
           <p class="eyebrow reveal">Investimento</p>
           <h2 class="h2 reveal">Quanto vale destravar o tempo que seu escritório já perde?</h2>
+          <p class="lead reveal">Cada hora que deixa de virar retrabalho pode virar projeto novo, sem contratar mais gente pra sustentar o mesmo padrão.</p>
         </div>
 
         <p class="anchor reveal">Pela sua conta na calculadora, a revisão fora do escopo já custa <strong id="anchor-value">R$&nbsp;2.880</strong> por mês. Use esse número como régua pra ler os valores abaixo.<span class="anchor__line">Na rotina típica, de 70% a 80% dessa hora volta pro escritório com os agentes rodando: entre <strong id="anchor-recovered-min">R$&nbsp;2.016</strong> e <strong id="anchor-recovered-max">R$&nbsp;2.304</strong> por mês.</span></p>
@@ -848,6 +664,10 @@
           <div class="faq__item">
             <button type="button" class="faq__q" aria-expanded="false">Os agentes funcionam no WhatsApp do escritório?<span class="toggle" aria-hidden="true">+</span></button>
             <div class="faq__a"><p>O agente de atendimento e os avisos de revisão, prazo e aprovação chegam pelo WhatsApp. Os outros trabalham em cima do Drive, das planilhas e do e-mail que vocês já usam.</p></div>
+          </div>
+          <div class="faq__item">
+            <button type="button" class="faq__q" aria-expanded="false">Já testei ChatGPT e travou em duas semanas. O que muda?<span class="toggle" aria-hidden="true">+</span></button>
+            <div class="faq__a"><p>O ChatGPT genérico não conhece o fluxo do seu escritório. O diagnóstico mapeia o processo real antes de qualquer ferramenta, e cada agente é construído sob medida pra ele.</p></div>
           </div>
           <div class="faq__item">
             <button type="button" class="faq__q" aria-expanded="false">Preciso contratar todos os agentes?<span class="toggle" aria-hidden="true">+</span></button>

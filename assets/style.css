@@ -876,8 +876,8 @@ strong { color: var(--color-text-primary); font-weight: var(--weight-semibold); 
 
 /* ── PROCESSO NUMERADO (do diagnóstico à autonomia) ────────────── */
 .steps { display: grid; gap: var(--space-6); }
-@media (min-width: 720px) { .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-8) var(--space-6); } }
-@media (min-width: 1080px) { .steps { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--space-4); } }
+@media (min-width: 720px) { .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-8) var(--space-6); } }
+@media (min-width: 1080px) { .steps { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-4); } }
 .steps__item { position: relative; }
 .steps__num {
   position: relative;
