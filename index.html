@@ -1,690 +1,929 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LARÔ.IA. Implementação de IA</title>
-  <meta name="description" content="Diagnóstico gratuito, treinamento e desenvolvimento sob medida de IA para escritórios de arquitetura, engenharia de compatibilização e design de interiores." />
-  <meta property="og:title" content="LARÔ.IA" />
-  <meta property="og:description" content="Diagnóstico grátis. Treinamento aplicado. Sistema desenvolvido sob medida." />
+  <title>LARÔ.IA · Soluções em IA para escritórios de projeto</title>
+  <meta name="description" content="Agentes de IA para escritórios de arquitetura, engenharia de compatibilização e design de interiores: controle de escopo, cruzamento de disciplinas, memorial, orçamento e atendimento no WhatsApp. Diagnóstico gratuito." />
+  <meta name="theme-color" content="#0b0b0b" />
+  <meta property="og:title" content="LARÔ.IA · Soluções em IA" />
+  <meta property="og:description" content="Agentes de IA que registram o escopo, cruzam as disciplinas e montam o memorial. Diagnóstico gratuito de 15 a 20 minutos." />
   <meta property="og:locale" content="pt_BR" />
+  <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="icon" type="image/svg+xml" href="assets/laroia-symbol.svg" />
-  <link rel="stylesheet" href="assets/tokens.css">
-
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="assets/tailwind.config.js"></script>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" href="assets/fonts/BDOGrotesk-VF.woff2" as="font" type="font/woff2" crossorigin>
+
+  <link rel="stylesheet" href="assets/tokens.css">
+  <link rel="stylesheet" href="assets/style.css">
 </head>
 
-<body class="font-body bg-surface-base text-text-primary text-lg leading-relaxed antialiased overflow-x-hidden">
+<body>
+
+  <!-- Marca LARÔ.IA: o desenho mora aqui, a cor vem do CSS (--color-logo). Tridente simétrico, sem a haste de baixo. -->
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <symbol id="laroia-simbolo" viewBox="409.3 150.5 256 309.5">
+      <path d="M417.2,254.6l21,11.2,1.3,2.4.2,93.2c1.6,17.6,23,15.8,25,.8.9-6.6-1.4-13.5-3.6-19.6s-4.1-7.7-5-10.6.2-1.7,1.3-1.3,11.1,12.4,12.5,14.3c11.5,14.7,18.8,28.4,19.9,47.4.3,4.5,1.1,24.1-2.6,26s-2.3.7-3.5,0l-64.4-64.3c-.6-.9-2.1-4-2.1-4.8v-94.6Z"/>
+      <path transform="matrix(-1 0 0 1 1074.6 0)" d="M417.2,254.6l21,11.2,1.3,2.4.2,93.2c1.6,17.6,23,15.8,25,.8.9-6.6-1.4-13.5-3.6-19.6s-4.1-7.7-5-10.6.2-1.7,1.3-1.3,11.1,12.4,12.5,14.3c11.5,14.7,18.8,28.4,19.9,47.4.3,4.5,1.1,24.1-2.6,26s-2.3.7-3.5,0l-64.4-64.3c-.6-.9-2.1-4-2.1-4.8v-94.6Z"/>
+      <path d="M520.1,430V377.5C520.1,375.5 520.9,373.6 521,371.5C522.4,319.8 524.6,266.7 529.6,215.1C531.1,199.5 532.8,181.1 535.7,165.9C536.4,162.4 536.9,160.2 537.3,158.5C537.7,160.2 538.2,162.4 538.9,165.9C541.8,181.1 543.5,199.5 545,215.1C550,266.7 552.2,319.8 553.6,371.5C553.7,373.6 554.5,375.5 554.5,377.5V430L537.3,452Z"/>
+    </symbol>
+    <symbol id="laroia-wordmark" viewBox="45 572 1000 233">
+      <path d="M491.1,627.7c49.7,5.3,60.1,64.7,14.8,84.8l-17.9,5c3.2.6,7.9,2.6,10.7,4.5,12.7,8.7,25.2,38.3,35.3,52s11.1,12.6,18,17.9c-20.6,6.4-42,4.7-60.4-6.5s-32.1-38.8-47-60.1c-2.2-3.2-5.6-6.2-7.5-8.9s-1.2-.9-.8-2.2c27.3,2,50.8-21.8,42.1-49.4-5.8-18.3-24-25.2-41.7-25.8-2.6,0-4.8,1.8-7.3,0-.7.7,4.3,6.2,4.3,8.2v146.4h-53.6v-165.9h111Z"/>
+      <path d="M1034,793.6h-187.5v-18.6c0-2.6,2-9.7,2.8-12.7,8.7-32.7,33.9-55.6,61.9-72.4,3.2,5.2-1.9,7.8-4.5,12.4-13.3,23.9-10.6,54.3,10.1,73.2,17.6,16,52.3,16.1,45.8-14.7l-57.4-133.1h63.5l65.2,165.9Z"/>
+      <path d="M309.2,627.7l66.5,165.9h-174.5c-6.4-41.7,17.7-82.2,53.1-102.8,3.3,4.2-1.7,8.7-3.4,13-9,23.2-6.5,53.7,12.1,71.7,17.5,16.9,51.4,15.2,39.1-15.8l-55.9-131.9h63.1Z"/>
+      <path d="M112.3,627.7v144.7c0,2.8-2.4,7-4.3,9.1h13.4c3.6,0,15.6-4,19.4-5.6,18.6-7.6,32.4-22.4,46.7-35.8v53.6H57v-165.9h55.3Z"/>
+      <rect x="780" y="627.7" width="53.6" height="165.9"/>
+      <path d="M636.6,794.4c13.9-10.4,19.3-26.7,23.1-43,7.2-31.4,6.9-74-6.2-103.8-3.6-8.2-8.8-17.3-16.8-21.6-.2-1.4,1.2-.8,2.1-.8,27.6-1.6,58.3,20.5,70.6,44.3,28.5,55.3-9.5,125-72.7,125Z"/>
+      <path d="M632.3,625.1l-6.5,4.3c-22.1,28.5-25.2,74.5-20.1,109.2s8.9,43.6,25.8,55.4c-32.6,1.6-64.2-22-76-51.8-21.8-55.1,16.7-117.5,76.9-117.1Z"/>
+      <path d="M736.6,754.1c30.3-5.2,33,41.4,3.2,41.1s-26.2-37.1-3.2-41.1Z"/>
+      <path d="M667.7,608.7l-11.2-.5-22.1-14.8-23.7,14.9-10.4.4,24.2-29.8c4-.3,18.8-1.5,21.1.4l22,29.4Z"/>
+    </symbol>
+  </svg>
 
   <!-- NAV -->
-  <nav id="nav"
-    class="fixed top-0 inset-x-0 z-[200] flex justify-between items-center
-           px-4 sm:px-6 md:px-8 h-[60px]
-           bg-black/[.8] backdrop-blur-[16px]
-           border-b border-transparent transition-[border-color] duration-300">
-    <a href="#" class="inline-flex items-center gap-2 no-underline">
-      <img src="assets/laroia-symbol.svg" alt="" aria-hidden="true" class="h-6 w-auto">
-      <img src="assets/laroia-wordmark.svg" alt="LARÔ.IA" class="h-4 w-auto">
-    </a>
-    <a href="diagnostico.html"
-       class="font-display font-bold text-[0.65rem] sm:text-[0.78rem] tracking-[0.12em] uppercase no-underline
-              bg-brand-accent text-surface-base px-4 sm:px-5 py-2.5 rounded-pill
-              hover:bg-brand-accent-h transition-colors duration-200 whitespace-nowrap">
-      Diagnóstico gratuito
-    </a>
+  <nav id="nav" class="nav" aria-label="Principal">
+    <div class="container nav__inner">
+      <a href="#" class="nav__brand" aria-label="LARÔ.IA Soluções em IA, início">
+        <span class="nav__brand-mark">
+          <svg class="logo logo--simbolo" aria-hidden="true"><use href="#laroia-simbolo"/></svg>
+          <svg class="logo logo--wordmark" role="img" aria-label="LARÔ.IA"><use href="#laroia-wordmark"/></svg>
+        </span>
+        <span class="nav__tag">Soluções<br>em IA</span>
+      </a>
+      <div class="nav__links">
+        <a href="#solucoes">Soluções</a>
+        <a href="#fluxo">Como funciona</a>
+        <a href="#calculadora">Calculadora</a>
+        <a href="#investimento">Investimento</a>
+        <a href="#faq">Dúvidas</a>
+      </div>
+      <div class="nav__actions">
+        <a href="https://wa.me/5571996551316?text=Ol%C3%A1!%20Quero%20conhecer%20as%20solu%C3%A7%C3%B5es%20em%20IA%20da%20LAR%C3%94.IA." target="_blank" rel="noopener" class="btn btn--ghost nav__wa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 11.6a8.5 8.5 0 0 1-12.5 7.5L3.5 20.5l1.4-4.3a8.5 8.5 0 1 1 15.6-4.6Z"/><path d="M9 8.7c.2-.4.5-.6.9-.6h.4c.2 0 .4.1.5.4l.6 1.5c.1.2 0 .4-.1.6l-.5.6c.5 1 1.2 1.7 2.1 2.1l.6-.5c.2-.1.4-.2.6-.1l1.5.6c.3.1.4.3.4.5v.4c0 .4-.2.7-.6.9-.6.3-1.4.4-2.3 0-1.9-.8-3.4-2.3-4.2-4.2-.4-.9-.3-1.7.1-2.2Z"/></svg>WhatsApp</a>
+        <a href="diagnostico.html" class="btn btn--primary nav__cta">Diagnóstico gratuito</a>
+      </div>
+    </div>
   </nav>
 
-  <!-- HERO -->
-  <section id="hero" class="relative overflow-hidden min-h-svh px-4 sm:px-6 md:px-12 pt-24 pb-16 flex flex-col justify-center max-w-[1100px]">
-    <img src="assets/laroia-symbol.svg" alt="" aria-hidden="true"
-         class="absolute -right-24 sm:-right-700 top-1/2 -translate-y-1/2 w-[420px] sm:w-[720px] max-w-none opacity-[0.01] pointer-events-none select-none -z-10">
-    <p class="font-display font-bold text-[0.72rem] tracking-[0.22em] uppercase text-brand-accent mb-6">Implementação de IA · Arquitetura </p>
-    <h1 class="font-display font-extrabold uppercase tracking-[-0.03em] leading-[0.95]
-               text-[clamp(2.4rem,6.5vw,5.5rem)] mb-8">
-      Você refaz.<br>
-      <span class="text-brand-accent">O cliente <br>não paga.</span>
-    </h1>
-    <p class="text-base text-text-secondary leading-[1.7] max-w-[620px] mb-8">
-      Revisão sem controle de escopo, compatibilização feita no olho, memorial reescrito do zero. São horas que nunca entram na proposta. A LARÔ.IA transforma essas horas em capacidade de entregar mais projetos, com mais controle e menos desgaste.
-    </p>
-    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3  ">
-      <a href="diagnostico.html"
-         class="inline-flex items-center justify-center gap-2 bg-brand-accent hover:bg-brand-accent-h
-                text-surface-base font-display font-bold text-[0.95rem] tracking-[0.02em] no-underline uppercase
-                px-6 py-4 rounded-pill transition-colors duration-200 sm:whitespace-nowrap sm:shrink-0">
-        Fazer o diagnóstico gratuito
-      </a>
-      <a href="#diagnostico"
-         class="inline-flex items-center justify-center border border-border-default text-text-secondary
-                font-display font-semibold text-[0.9rem] no-underline uppercase px-6 py-4 rounded-pill
-                hover:text-text-primary hover:border-text-secondary transition-colors duration-200 sm:whitespace-nowrap sm:shrink-0">
-        Conhecer a solução
-      </a>
-    </div>
-  </section>
+  <main>
 
-  <!-- O PROBLEMA -->
-  <section id="problema" class="px-4 sm:px-6 md:px-12 py-16 md:py-24 border-t border-border-subtle">
-    <p class="font-display font-bold text-[0.72rem] tracking-[0.22em] uppercase text-brand-accent mb-4 reveal">O problema</p>
-    <h2 class="font-display font-extrabold text-[clamp(1.8rem,4vw,3rem)] leading-[1.1] mb-6 max-w-[760px] reveal">
-      Você se identifica com alguma dessas situações?
-    </h2>
-    <p class="text-text-secondary text-base leading-[1.7] max-w-[640px] mb-10 md:mb-14 reveal">
-      Se você chegou até aqui, provavelmente não é porque falta projeto. É porque boa parte da sua semana desaparece resolvendo problema que nunca deveria voltar, e no fim do mês a sensação é de ter trabalhado muito e faturado menos do que devia.
-    </p>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 reveal">
+    <!-- HERO · o grafo dos agentes de fundo, com a headline sobreposta.
+         O grafo segue o canvas do Obsidian: a palavra puxa o tridente, o tridente puxa as três áreas,
+         cada área puxa os agentes dela. data-parent é a ligação principal (desenhada na entrada);
+         data-links são as outras áreas que o agente também atende (aparecem no hover).
+         A posição de cada nó fica no style.css; o main.js desenha as linhas e anima. -->
+    <section id="hero" class="hero hero--home">
+      <!-- Camada de fundo: o grafo dos agentes ocupa o hero inteiro e o texto vem por cima -->
+      <div class="hero__graph">
+        <div class="graph" aria-hidden="true">
+          <svg class="graph__edges"></svg>
 
-      <div class="problema-item bg-surface-raised rounded-card border border-border-subtle p-6 flex flex-col">
-        <div class="flex items-start justify-between gap-3 mb-3">
-          <p class="font-display font-bold text-[1.05rem] leading-[1.25]">Cliente pede a quarta revisão fora do escopo original do contrato</p>
-          <button type="button" class="problema-toggle shrink-0 w-6 h-6 rounded-full border border-brand-accent text-brand-accent flex items-center justify-center text-[0.8rem] font-bold leading-none" aria-expanded="false">+</button>
+          <span class="graph__node graph__node--anchor" data-id="palavra"></span>
+          <span class="graph__node graph__node--root" data-id="laroia" data-parent="palavra"><svg class="logo logo--simbolo"><use href="#laroia-simbolo"/></svg></span>
+
+          <span class="graph__node graph__node--area" data-id="arq" data-parent="laroia"><span class="graph__label">Arquitetura</span></span>
+          <span class="graph__node graph__node--area" data-id="eng" data-parent="laroia"><span class="graph__label">Engenharia</span></span>
+          <span class="graph__node graph__node--area" data-id="int" data-parent="laroia"><span class="graph__label">Interiores</span></span>
+
+          <span class="graph__node graph__node--agent" data-id="fiscal" data-parent="arq" data-links="int"><span class="graph__label">Fiscal</span></span>
+          <span class="graph__node graph__node--agent" data-id="compatibilizador" data-parent="arq" data-links="eng"><span class="graph__label">Compatibilizador</span></span>
+          <span class="graph__node graph__node--agent" data-id="tabeliao" data-parent="arq" data-links="eng int"><span class="graph__label">Tabelião</span></span>
+
+          <span class="graph__node graph__node--agent" data-id="apontador" data-parent="eng" data-links="arq int"><span class="graph__label">Apontador</span></span>
+          <span class="graph__node graph__node--agent" data-id="recepcionista" data-parent="eng" data-links="arq int"><span class="graph__label">Recepcionista</span></span>
+          <span class="graph__node graph__node--agent" data-id="escrivao" data-parent="eng" data-links="arq int"><span class="graph__label">Escrivão</span></span>
+
+          <span class="graph__node graph__node--agent" data-id="memorialista" data-parent="int" data-links="arq"><span class="graph__label">Memorialista</span></span>
+          <span class="graph__node graph__node--agent" data-id="orcamentista" data-parent="int"><span class="graph__label">Orçamentista</span></span>
         </div>
-        <span class="inline-block w-fit px-3 py-1 rounded-pill bg-brand-accent/15 text-brand-accent font-display font-bold text-[0.65rem] tracking-[0.08em] uppercase">Risco alto</span>
-        <div class="problema-a">
-          <div class="border-t border-border-subtle pt-4 mt-4">
-            <p class="font-display font-bold text-[0.65rem] tracking-[0.14em] uppercase text-brand-accent mb-2">Como a LARÔ.IA resolve</p>
-            <p class="text-[0.88rem] text-text-secondary leading-[1.6]">Registra o escopo original do contrato e aponta automaticamente quando uma revisão já passou do combinado.</p>
+      </div>
+
+      <div class="container hero__content">
+        <p class="hero__eyebrow reveal">Arquitetura · Engenharia · Interiores</p>
+        <h1 class="hero__display reveal">
+          <span class="hero__line"><span class="glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="m9 13 2 2 4-4"/></svg></span>Revise, <span class="glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="12" r="6"/><circle cx="15" cy="12" r="6"/></svg></span>compatibilize</span>
+          <span class="hero__line">e <span class="glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg></span>especifique</span>
+          <span class="hero__line hero__line--bright">sem trabalhar de graça.</span>
+        </h1>
+        <p class="hero__lead reveal reveal--d1">Oito agentes de IA, cada um com um ofício do seu escritório. A decisão de projeto continua sua.</p>
+        <div class="hero__ctas reveal reveal--d2">
+          <a href="diagnostico.html" class="btn btn--glow">Fazer o diagnóstico gratuito</a>
+          <a href="#solucoes" class="hero__alt">Conhecer os 8 agentes <span aria-hidden="true">↓</span></a>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- O PROBLEMA · ativação do estado mental -->
+    <section id="problema" class="section">
+      <div class="container">
+        <div class="section__head">
+          <p class="eyebrow reveal">O problema</p>
+          <h2 class="h2 reveal">Seis cenas que se repetem em escritório de projeto.</h2>
+          <p class="lead reveal">Se você chegou até aqui, provavelmente tem projeto de sobra. O que some é a semana, resolvendo problema que nunca deveria voltar. No fim do mês, fica a sensação de ter trabalhado muito e faturado menos do que devia.</p>
+        </div>
+
+        <div class="problem-grid reveal">
+          <article class="problem">
+            <div class="problem__top">
+              <h3 class="problem__title">Cliente pede a quarta revisão fora do escopo original do contrato</h3>
+              <button type="button" class="toggle" aria-expanded="false" aria-label="Ver como a LARÔ.IA resolve">+</button>
+            </div>
+            <span class="badge badge--risk">Risco alto</span>
+            <div class="problem__answer">
+              <div class="problem__answer-inner">
+                <p class="problem__answer-label">Agente que resolve: o Fiscal</p>
+                <p>Registra o escopo original do contrato e aponta automaticamente quando uma revisão já passou do combinado.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="problem">
+            <div class="problem__top">
+              <h3 class="problem__title">Erro de compatibilização entre elétrica e estrutura só aparece na obra</h3>
+              <button type="button" class="toggle" aria-expanded="false" aria-label="Ver como a LARÔ.IA resolve">+</button>
+            </div>
+            <span class="badge badge--risk">Risco alto</span>
+            <div class="problem__answer">
+              <div class="problem__answer-inner">
+                <p class="problem__answer-label">Agente que resolve: o Compatibilizador</p>
+                <p>Cruza os projetos de cada disciplina e aponta o conflito antes da reunião de compatibilização.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="problem">
+            <div class="problem__top">
+              <h3 class="problem__title">Memorial de acabamento é redigitado do zero pra cada ambiente</h3>
+              <button type="button" class="toggle toggle--mid" aria-expanded="false" aria-label="Ver como a LARÔ.IA resolve">+</button>
+            </div>
+            <span class="badge badge--mid">Risco médio</span>
+            <div class="problem__answer">
+              <div class="problem__answer-inner">
+                <p class="problem__answer-label">Agente que resolve: o Memorialista</p>
+                <p>Gera o memorial a partir de especificações e fornecedores já usados em projetos anteriores.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="problem">
+            <div class="problem__top">
+              <h3 class="problem__title">Já tentou usar ChatGPT genérico pra isso e travou depois de duas semanas</h3>
+              <button type="button" class="toggle toggle--warn" aria-expanded="false" aria-label="Ver como a LARÔ.IA resolve">+</button>
+            </div>
+            <span class="badge badge--warn">Atenção redobrada</span>
+            <div class="problem__answer">
+              <div class="problem__answer-inner">
+                <p class="problem__answer-label">Como a LARÔ.IA resolve</p>
+                <p>O diagnóstico mapeia seu fluxo real antes de qualquer ferramenta. Cada agente é construído sob medida pro seu processo.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="problem">
+            <div class="problem__top">
+              <h3 class="problem__title">Orçamento comparativo de fornecedor é remontado manualmente toda vez</h3>
+              <button type="button" class="toggle toggle--mid" aria-expanded="false" aria-label="Ver como a LARÔ.IA resolve">+</button>
+            </div>
+            <span class="badge badge--mid">Risco médio</span>
+            <div class="problem__answer">
+              <div class="problem__answer-inner">
+                <p class="problem__answer-label">Agente que resolve: o Orçamentista</p>
+                <p>Monta o comparativo a partir de cotações e fornecedores já registrados em projetos anteriores.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="problem">
+            <div class="problem__top">
+              <h3 class="problem__title">Cliente cobra pra adiantar a entrega, mas só pagou a parcela do ato do contrato</h3>
+              <button type="button" class="toggle toggle--warn" aria-expanded="false" aria-label="Ver como a LARÔ.IA resolve">+</button>
+            </div>
+            <span class="badge badge--warn">Atenção redobrada</span>
+            <div class="problem__answer">
+              <div class="problem__answer-inner">
+                <p class="problem__answer-label">Agente que resolve: o Tabelião</p>
+                <p>Cruza o cronograma de entrega com o cronograma financeiro do contrato e mostra qual parcela está pendente antes de qualquer pressão de prazo.</p>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <p class="closing-line reveal">Cada uma dessas cenas tem um agente desenhado pra ela. <a href="#solucoes" class="text-accent">Ver os agentes →</a></p>
+      </div>
+    </section>
+
+    <!-- POR QUE ISSO ACONTECE · prova lógica -->
+    <section id="causa" class="section section--alt">
+      <div class="container">
+        <div class="section__head section__head--tight">
+          <p class="eyebrow reveal">Por que isso acontece</p>
+          <h2 class="h2 reveal">O processo do escritório mora na memória de alguém.</h2>
+        </div>
+        <div class="prose reveal">
+          <p>Cobrar revisão extra parece quebrar a parceria com o cliente, então ninguém cobra e ninguém registra. Admitir que um conflito passou despercebido parece expor falha técnica, então ninguém fala. Cada escopo, cada aprovação e cada especificação fica espalhado entre e-mail, WhatsApp e a cabeça de quem estava na reunião.</p>
+          <p>Quando o processo depende da memória, o escopo muda sem registro, as revisões se acumulam sem histórico e o erro aparece tarde demais, já na obra.</p>
+          <p class="prose__key">Empilhar mais uma ferramenta em cima disso não resolve. Primeiro se organiza o fluxo, depois se automatiza. É nessa ordem que a LARÔ.IA trabalha.</p>
+          <p class="prose__consequence">Escopo sem registro mais revisão sem contagem dá hora técnica que sai do contrato e não entra no caixa. <a href="#calculadora" class="text-accent">A calculadora mostra quanto isso dá no seu escritório →</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOLUÇÕES DE IA · agentes por função -->
+    <section id="solucoes" class="section section--glow">
+      <div class="container">
+        <div class="agents__top">
+          <div class="section__head">
+            <p class="eyebrow reveal">Soluções de IA</p>
+            <h2 class="h2 reveal">Agentes de IA que trabalham no fluxo de quem projeta</h2>
+            <p class="lead reveal">Cada agente leva o nome do ofício que faz no escritório: o Recepcionista atende, o Escrivão registra, o Compatibilizador cruza, o Memorialista especifica e o Apontador avisa. Roda em cima das ferramentas que você já usa e deixa a decisão final com quem assina o projeto.</p>
+          </div>
+          <a href="diagnostico.html" class="btn btn--outline-accent reveal">Ver qual agente resolve o seu caso <span aria-hidden="true">→</span></a>
+        </div>
+
+        <div class="filter reveal" role="group" aria-label="Filtrar agentes por área">
+          <p class="filter__label">Comece por aqui: escolha sua área</p>
+          <button type="button" class="chip" data-filter="todos" aria-pressed="true">Todos</button>
+          <button type="button" class="chip" data-filter="arquitetura" aria-pressed="false">Arquitetura</button>
+          <button type="button" class="chip" data-filter="engenharia" aria-pressed="false">Engenharia</button>
+          <button type="button" class="chip" data-filter="interiores" aria-pressed="false">Interiores</button>
+        </div>
+        <p id="agent-count" class="sr-only" aria-live="polite"></p>
+
+        <div class="agent-grid">
+
+          <article class="agent agent--wide reveal" data-seg="arquitetura interiores">
+            <div class="agent__head">
+              <span class="agent__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="m9 13 2 2 4-4"/></svg>
+              </span>
+              <div>
+                <h3 class="agent__name">Fiscal</h3>
+                <p class="agent__tag">Controle de revisão fora do escopo</p>
+              </div>
+            </div>
+            <p class="agent__seg">Arquitetura · Interiores</p>
+            <p class="agent__desc">Registra o escopo do contrato e conta cada rodada de revisão do cliente. Quando o pedido passa do combinado, o agente avisa na hora e deixa o aditivo pronto. Você decide se cobra, agora com o histórico na mão.</p>
+            <ul class="tags">
+              <li>Escopo registrado por projeto</li>
+              <li>Alerta de revisão extra</li>
+              <li>Aditivo pronto pra enviar</li>
+            </ul>
+            <div class="agent__links">
+              <a href="diagnostico.html?agente=Fiscal" class="link-accent">Incluir no diagnóstico <span aria-hidden="true">→</span></a>
+              <a href="https://wa.me/5571996551316?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Fiscal%20da%20LAR%C3%94.IA." target="_blank" rel="noopener" class="link-wa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 11.6a8.5 8.5 0 0 1-12.5 7.5L3.5 20.5l1.4-4.3a8.5 8.5 0 1 1 15.6-4.6Z"/><path d="M9 8.7c.2-.4.5-.6.9-.6h.4c.2 0 .4.1.5.4l.6 1.5c.1.2 0 .4-.1.6l-.5.6c.5 1 1.2 1.7 2.1 2.1l.6-.5c.2-.1.4-.2.6-.1l1.5.6c.3.1.4.3.4.5v.4c0 .4-.2.7-.6.9-.6.3-1.4.4-2.3 0-1.9-.8-3.4-2.3-4.2-4.2-.4-.9-.3-1.7.1-2.2Z"/></svg> Falar agora</a>
+            </div>
+          </article>
+
+          <article class="agent reveal" data-seg="engenharia arquitetura">
+            <div class="agent__head">
+              <span class="agent__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="12" r="6"/><circle cx="15" cy="12" r="6"/></svg>
+              </span>
+              <div>
+                <h3 class="agent__name">Compatibilizador</h3>
+                <p class="agent__tag">Cruzamento entre disciplinas</p>
+              </div>
+            </div>
+            <p class="agent__seg">Engenharia · Arquitetura</p>
+            <p class="agent__desc">Cruza arquitetura, estrutura, elétrica e hidráulica e lista os conflitos antes da reunião de compatibilização. A solução técnica continua com o engenheiro responsável.</p>
+            <ul class="checklist">
+              <li>Conflitos listados por prioridade</li>
+              <li>Histórico do que já foi resolvido</li>
+              <li>Checklist de liberação pra obra</li>
+            </ul>
+            <div class="agent__links">
+              <a href="diagnostico.html?agente=Compatibilizador" class="link-accent">Incluir no diagnóstico <span aria-hidden="true">→</span></a>
+              <a href="https://wa.me/5571996551316?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Compatibilizador%20da%20LAR%C3%94.IA." target="_blank" rel="noopener" class="link-wa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 11.6a8.5 8.5 0 0 1-12.5 7.5L3.5 20.5l1.4-4.3a8.5 8.5 0 1 1 15.6-4.6Z"/><path d="M9 8.7c.2-.4.5-.6.9-.6h.4c.2 0 .4.1.5.4l.6 1.5c.1.2 0 .4-.1.6l-.5.6c.5 1 1.2 1.7 2.1 2.1l.6-.5c.2-.1.4-.2.6-.1l1.5.6c.3.1.4.3.4.5v.4c0 .4-.2.7-.6.9-.6.3-1.4.4-2.3 0-1.9-.8-3.4-2.3-4.2-4.2-.4-.9-.3-1.7.1-2.2Z"/></svg> Falar agora</a>
+            </div>
+          </article>
+
+          <article class="agent reveal" data-seg="interiores arquitetura">
+            <div class="agent__head">
+              <span class="agent__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>
+              </span>
+              <div>
+                <h3 class="agent__name">Memorialista</h3>
+                <p class="agent__tag">Memorial de acabamento automático</p>
+              </div>
+            </div>
+            <p class="agent__seg">Interiores · Arquitetura</p>
+            <p class="agent__desc">Monta o memorial por ambiente a partir das especificações e dos fornecedores que você já usou em outros projetos. A equipe revisa e envia, sem redigitar do zero.</p>
+            <ul class="checklist">
+              <li>Memorial por ambiente</li>
+              <li>Puxa do histórico de projetos</li>
+              <li>Revisão humana antes de enviar</li>
+            </ul>
+            <div class="agent__links">
+              <a href="diagnostico.html?agente=Memorialista" class="link-accent">Incluir no diagnóstico <span aria-hidden="true">→</span></a>
+              <a href="https://wa.me/5571996551316?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Memorialista%20da%20LAR%C3%94.IA." target="_blank" rel="noopener" class="link-wa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 11.6a8.5 8.5 0 0 1-12.5 7.5L3.5 20.5l1.4-4.3a8.5 8.5 0 1 1 15.6-4.6Z"/><path d="M9 8.7c.2-.4.5-.6.9-.6h.4c.2 0 .4.1.5.4l.6 1.5c.1.2 0 .4-.1.6l-.5.6c.5 1 1.2 1.7 2.1 2.1l.6-.5c.2-.1.4-.2.6-.1l1.5.6c.3.1.4.3.4.5v.4c0 .4-.2.7-.6.9-.6.3-1.4.4-2.3 0-1.9-.8-3.4-2.3-4.2-4.2-.4-.9-.3-1.7.1-2.2Z"/></svg> Falar agora</a>
+            </div>
+          </article>
+
+          <article class="agent reveal" data-seg="interiores">
+            <div class="agent__head">
+              <span class="agent__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><rect x="5" y="11" width="3" height="7" rx="0.5"/><rect x="10.5" y="5" width="3" height="13" rx="0.5"/><rect x="16" y="14" width="3" height="4" rx="0.5"/></svg>
+              </span>
+              <div>
+                <h3 class="agent__name">Orçamentista</h3>
+                <p class="agent__tag">Comparativo de fornecedores</p>
+              </div>
+            </div>
+            <p class="agent__seg">Interiores</p>
+            <p class="agent__desc">Organiza as cotações que chegam por e-mail e WhatsApp e monta o comparativo pronto pra apresentar ao cliente, com histórico de preço por fornecedor.</p>
+            <ul class="checklist">
+              <li>Cotações num lugar só</li>
+              <li>Comparativo em planilha</li>
+              <li>Histórico de preço por fornecedor</li>
+            </ul>
+            <div class="agent__links">
+              <a href="diagnostico.html?agente=Orçamentista" class="link-accent">Incluir no diagnóstico <span aria-hidden="true">→</span></a>
+              <a href="https://wa.me/5571996551316?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Or%C3%A7amentista%20da%20LAR%C3%94.IA." target="_blank" rel="noopener" class="link-wa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 11.6a8.5 8.5 0 0 1-12.5 7.5L3.5 20.5l1.4-4.3a8.5 8.5 0 1 1 15.6-4.6Z"/><path d="M9 8.7c.2-.4.5-.6.9-.6h.4c.2 0 .4.1.5.4l.6 1.5c.1.2 0 .4-.1.6l-.5.6c.5 1 1.2 1.7 2.1 2.1l.6-.5c.2-.1.4-.2.6-.1l1.5.6c.3.1.4.3.4.5v.4c0 .4-.2.7-.6.9-.6.3-1.4.4-2.3 0-1.9-.8-3.4-2.3-4.2-4.2-.4-.9-.3-1.7.1-2.2Z"/></svg> Falar agora</a>
+            </div>
+          </article>
+
+          <article class="agent reveal" data-seg="arquitetura engenharia interiores">
+            <div class="agent__head">
+              <span class="agent__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.6-5.2A8.5 8.5 0 1 1 21 11.5Z"/><path d="M8.5 11.5h.01M12 11.5h.01M15.5 11.5h.01"/></svg>
+              </span>
+              <div>
+                <h3 class="agent__name">Recepcionista</h3>
+                <p class="agent__tag">Triagem de cliente novo no WhatsApp</p>
+              </div>
+            </div>
+            <p class="agent__seg">Todas as áreas</p>
+            <p class="agent__desc">Responde quem chega pelo WhatsApp ou Instagram a qualquer hora, pergunta tipo de projeto, metragem, prazo e verba, e agenda a primeira reunião só com quem tem perfil.</p>
+            <ul class="checklist">
+              <li>Responde 24 horas</li>
+              <li>Pré-qualifica escopo e verba</li>
+              <li>Agenda direto na sua agenda</li>
+            </ul>
+            <div class="agent__links">
+              <a href="diagnostico.html?agente=Recepcionista" class="link-accent">Incluir no diagnóstico <span aria-hidden="true">→</span></a>
+              <a href="https://wa.me/5571996551316?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Recepcionista%20da%20LAR%C3%94.IA." target="_blank" rel="noopener" class="link-wa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 11.6a8.5 8.5 0 0 1-12.5 7.5L3.5 20.5l1.4-4.3a8.5 8.5 0 1 1 15.6-4.6Z"/><path d="M9 8.7c.2-.4.5-.6.9-.6h.4c.2 0 .4.1.5.4l.6 1.5c.1.2 0 .4-.1.6l-.5.6c.5 1 1.2 1.7 2.1 2.1l.6-.5c.2-.1.4-.2.6-.1l1.5.6c.3.1.4.3.4.5v.4c0 .4-.2.7-.6.9-.6.3-1.4.4-2.3 0-1.9-.8-3.4-2.3-4.2-4.2-.4-.9-.3-1.7.1-2.2Z"/></svg> Falar agora</a>
+            </div>
+          </article>
+
+          <article class="agent reveal" data-seg="arquitetura engenharia interiores">
+            <div class="agent__head">
+              <span class="agent__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>
+              </span>
+              <div>
+                <h3 class="agent__name">Escrivão</h3>
+                <p class="agent__tag">Ata e histórico de decisões</p>
+              </div>
+            </div>
+            <p class="agent__seg">Todas as áreas</p>
+            <p class="agent__desc">Transforma a gravação ou as anotações da reunião em ata com decisões, pendências e responsáveis, pronta pra mandar ao cliente. Cada aprovação fica registrada por rodada.</p>
+            <ul class="checklist">
+              <li>Ata pronta no mesmo dia</li>
+              <li>Aprovações registradas por rodada</li>
+              <li>Resposta pronta pro "eu tinha aprovado outra coisa"</li>
+            </ul>
+            <div class="agent__links">
+              <a href="diagnostico.html?agente=Escrivão" class="link-accent">Incluir no diagnóstico <span aria-hidden="true">→</span></a>
+              <a href="https://wa.me/5571996551316?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Escriv%C3%A3o%20da%20LAR%C3%94.IA." target="_blank" rel="noopener" class="link-wa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 11.6a8.5 8.5 0 0 1-12.5 7.5L3.5 20.5l1.4-4.3a8.5 8.5 0 1 1 15.6-4.6Z"/><path d="M9 8.7c.2-.4.5-.6.9-.6h.4c.2 0 .4.1.5.4l.6 1.5c.1.2 0 .4-.1.6l-.5.6c.5 1 1.2 1.7 2.1 2.1l.6-.5c.2-.1.4-.2.6-.1l1.5.6c.3.1.4.3.4.5v.4c0 .4-.2.7-.6.9-.6.3-1.4.4-2.3 0-1.9-.8-3.4-2.3-4.2-4.2-.4-.9-.3-1.7.1-2.2Z"/></svg> Falar agora</a>
+            </div>
+          </article>
+
+          <article class="agent reveal" data-seg="arquitetura interiores engenharia">
+            <div class="agent__head">
+              <span class="agent__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 18h20"/><path d="M4 18v-3a8 8 0 0 1 16 0v3"/><path d="M10 7.2V5h4v2.2"/></svg>
+              </span>
+              <div>
+                <h3 class="agent__name">Apontador</h3>
+                <p class="agent__tag">Prazo e status de obra</p>
+              </div>
+            </div>
+            <p class="agent__seg">Todas as áreas · caso real rodando</p>
+            <p class="agent__desc">Cruza os dias corridos com o prazo do contrato, sinaliza atenção ou atraso com o número por trás e manda ao cliente um resumo de andamento em linguagem simples.</p>
+            <ul class="checklist">
+              <li>Status no prazo, atenção ou atrasado</li>
+              <li>Resumo de andamento pro cliente</li>
+              <li>Funciona com Vobi ou planilha</li>
+            </ul>
+            <div class="agent__links">
+              <a href="demonstrativo_obra.html" class="link-accent">Ver na prática <span aria-hidden="true">→</span></a>
+              <a href="https://wa.me/5571996551316?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Apontador%20da%20LAR%C3%94.IA." target="_blank" rel="noopener" class="link-wa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 11.6a8.5 8.5 0 0 1-12.5 7.5L3.5 20.5l1.4-4.3a8.5 8.5 0 1 1 15.6-4.6Z"/><path d="M9 8.7c.2-.4.5-.6.9-.6h.4c.2 0 .4.1.5.4l.6 1.5c.1.2 0 .4-.1.6l-.5.6c.5 1 1.2 1.7 2.1 2.1l.6-.5c.2-.1.4-.2.6-.1l1.5.6c.3.1.4.3.4.5v.4c0 .4-.2.7-.6.9-.6.3-1.4.4-2.3 0-1.9-.8-3.4-2.3-4.2-4.2-.4-.9-.3-1.7.1-2.2Z"/></svg> Falar agora</a>
+            </div>
+          </article>
+
+          <article class="agent reveal" data-seg="arquitetura interiores engenharia">
+            <div class="agent__head">
+              <span class="agent__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+              </span>
+              <div>
+                <h3 class="agent__name">Tabelião</h3>
+                <p class="agent__tag">Proposta e contrato com escopo fechado</p>
+              </div>
+            </div>
+            <p class="agent__seg">Todas as áreas</p>
+            <p class="agent__desc">Gera proposta e contrato a partir dos seus modelos, com número de revisões incluídas, etapas e parcelas já amarradas. Avisa quando a entrega está à frente do pagamento.</p>
+            <ul class="checklist">
+              <li>Proposta montada a partir do seu modelo</li>
+              <li>Revisões incluídas por escrito</li>
+              <li>Parcela pendente antes da próxima entrega</li>
+            </ul>
+            <div class="agent__links">
+              <a href="diagnostico.html?agente=Tabelião" class="link-accent">Incluir no diagnóstico <span aria-hidden="true">→</span></a>
+              <a href="https://wa.me/5571996551316?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Tabeli%C3%A3o%20da%20LAR%C3%94.IA." target="_blank" rel="noopener" class="link-wa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 11.6a8.5 8.5 0 0 1-12.5 7.5L3.5 20.5l1.4-4.3a8.5 8.5 0 1 1 15.6-4.6Z"/><path d="M9 8.7c.2-.4.5-.6.9-.6h.4c.2 0 .4.1.5.4l.6 1.5c.1.2 0 .4-.1.6l-.5.6c.5 1 1.2 1.7 2.1 2.1l.6-.5c.2-.1.4-.2.6-.1l1.5.6c.3.1.4.3.4.5v.4c0 .4-.2.7-.6.9-.6.3-1.4.4-2.3 0-1.9-.8-3.4-2.3-4.2-4.2-.4-.9-.3-1.7.1-2.2Z"/></svg> Falar agora</a>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="custom-banner reveal">
+          <div>
+            <p class="eyebrow">Sob medida</p>
+            <p class="custom-banner__title">Tem um fluxo que não aparece aqui?</p>
+            <p>Levantamento de legislação, checklist de aprovação na prefeitura, controle de RRT e ART. Se o processo se repete, dá pra virar agente. O diagnóstico mostra se compensa.</p>
+          </div>
+          <a href="https://wa.me/5571996551316?text=Ol%C3%A1!%20Tenho%20um%20fluxo%20no%20escrit%C3%B3rio%20que%20pode%20virar%20agente%20e%20quero%20contar%20meu%20caso." target="_blank" rel="noopener" class="btn btn--primary">Contar meu caso <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMO FUNCIONA · prova técnica do mecanismo -->
+    <section id="fluxo" class="section section--alt">
+      <div class="container">
+        <div class="section__head section__head--center">
+          <p class="eyebrow reveal">Como funciona</p>
+          <h2 class="h2 reveal">Do primeiro contato à <span class="text-highlight">obra entregue</span></h2>
+          <p class="lead reveal">Enquanto a equipe projeta, os agentes cuidam do que se repete em cada etapa. Você aprova o que sai.</p>
+        </div>
+
+        <ol class="flow reveal">
+          <li class="flow__step">
+            <span class="flow__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.6-5.2A8.5 8.5 0 1 1 21 11.5Z"/></svg>
+              <span class="flow__num">1</span>
+            </span>
+            <div>
+              <p class="flow__title">Cliente chama no WhatsApp</p>
+              <p class="flow__text">O agente responde, entende o projeto e marca a reunião.</p>
+              <span class="flow__agent">Recepcionista</span>
+            </div>
+          </li>
+          <li class="flow__step">
+            <span class="flow__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+              <span class="flow__num">2</span>
+            </span>
+            <div>
+              <p class="flow__title">Proposta com escopo fechado</p>
+              <p class="flow__text">Revisões incluídas e parcelas já no contrato.</p>
+              <span class="flow__agent">Tabelião</span>
+            </div>
+          </li>
+          <li class="flow__step flow__step--key">
+            <span class="flow__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="m9 13 2 2 4-4"/></svg>
+              <span class="flow__num">3</span>
+            </span>
+            <div>
+              <p class="flow__title">Cada revisão é contada</p>
+              <p class="flow__text">Passou do combinado, o aditivo já está pronto.</p>
+              <span class="flow__agent">Fiscal</span>
+            </div>
+          </li>
+          <li class="flow__step">
+            <span class="flow__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="12" r="6"/><circle cx="15" cy="12" r="6"/></svg>
+              <span class="flow__num">4</span>
+            </span>
+            <div>
+              <p class="flow__title">Disciplinas cruzadas</p>
+              <p class="flow__text">O conflito aparece antes de virar obra.</p>
+              <span class="flow__agent">Compatibilizador</span>
+            </div>
+          </li>
+          <li class="flow__step">
+            <span class="flow__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>
+              <span class="flow__num">5</span>
+            </span>
+            <div>
+              <p class="flow__title">Memorial e orçamento</p>
+              <p class="flow__text">Montados a partir do que você já especificou.</p>
+              <span class="flow__agent">Memorialista · Orçamentista</span>
+            </div>
+          </li>
+          <li class="flow__step">
+            <span class="flow__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 18h20"/><path d="M4 18v-3a8 8 0 0 1 16 0v3"/><path d="M10 7.2V5h4v2.2"/></svg>
+              <span class="flow__num">6</span>
+            </span>
+            <div>
+              <p class="flow__title">Obra acompanhada</p>
+              <p class="flow__text">Prazo com número e cliente informado toda semana.</p>
+              <span class="flow__agent">Apontador</span>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- CASO REAL · prova técnica e visual -->
+    <section id="caso-real" class="section">
+      <div class="container">
+        <div class="section__head">
+          <p class="eyebrow reveal">Caso real</p>
+          <h2 class="h2 reveal">Um agente já roda numa obra em andamento.</h2>
+          <div class="prose reveal">
+            <p>Um cliente que usa o Vobi pra gestão de obra precisava de duas coisas automatizadas: controle de prazo e memorial de acabamento. O agente cruza os dias corridos da obra com o prazo contratado e sugere o acabamento a partir do que já foi decidido em obras anteriores. A responsável confirma tudo, e o sistema nunca decide sozinho.</p>
+            <p>Nesse caso, a conta ficou em torno de <strong class="text-accent">3 horas devolvidas por mês, por obra ativa</strong>. É estimativa de rotina típica desse cliente, sem medição validada em escala. Abaixo, o demonstrativo interativo, direto na página.</p>
+          </div>
+        </div>
+        <div class="demo-frame reveal">
+          <div class="demo-frame__bar" aria-hidden="true">
+            <span class="demo-frame__dot"></span><span class="demo-frame__dot"></span><span class="demo-frame__dot"></span>
+            <span class="demo-frame__name">demonstrativo_obra</span>
+          </div>
+          <iframe src="demonstrativo_obra.html" title="Demonstrativo interativo do Apontador, agente de obra da LARÔ.IA" loading="lazy"></iframe>
+        </div>
+        <a href="demonstrativo_obra.html" class="btn btn--outline-accent reveal">Abrir em tela cheia <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <!-- CALCULADORA · prova lógica com o número do escritório -->
+    <section id="calculadora" class="section section--alt">
+      <div class="container">
+        <div class="section__head">
+          <p class="eyebrow reveal">Calculadora</p>
+          <h2 class="h2 reveal">Quanto a revisão fora do escopo já custa pro seu escritório</h2>
+          <p class="lead reveal">Ajuste os números da sua rotina. A conta mostra a hora técnica que sai do contrato sem virar cobrança.</p>
+        </div>
+
+        <div class="calc reveal">
+          <form id="calculadora-form" class="calc__inputs">
+            <div class="calc__field">
+              <div class="calc__row">
+                <label class="calc__label" for="calc-projetos">Projetos ativos por mês</label>
+                <output class="calc__out" id="calc-projetos-out" for="calc-projetos">3</output>
+              </div>
+              <input class="range" type="range" id="calc-projetos" min="1" max="20" step="1" value="3">
+            </div>
+            <div class="calc__field">
+              <div class="calc__row">
+                <label class="calc__label" for="calc-revisoes">Revisões fora do escopo, por projeto</label>
+                <output class="calc__out" id="calc-revisoes-out" for="calc-revisoes">2</output>
+              </div>
+              <input class="range" type="range" id="calc-revisoes" min="0" max="8" step="1" value="2">
+            </div>
+            <div class="calc__field">
+              <div class="calc__row">
+                <label class="calc__label" for="calc-horas">Horas de equipe por revisão</label>
+                <output class="calc__out" id="calc-horas-out" for="calc-horas">4h</output>
+              </div>
+              <input class="range" type="range" id="calc-horas" min="1" max="16" step="1" value="4">
+            </div>
+            <div class="calc__field">
+              <div class="calc__row">
+                <label class="calc__label" for="calc-valor">Valor da sua hora técnica</label>
+                <output class="calc__out" id="calc-valor-out" for="calc-valor">R$&nbsp;120</output>
+              </div>
+              <input class="range" type="range" id="calc-valor" min="50" max="400" step="10" value="120">
+            </div>
+          </form>
+
+          <div class="calc__result" aria-live="polite">
+            <p class="calc__result-label">Custo estimado</p>
+            <p class="calc__sub calc__sub--lead">Seu escritório deixa de cobrar cerca de</p>
+            <p class="calc__value text-highlight" id="calc-mensal">R$&nbsp;2.880</p>
+            <p class="calc__sub">por mês · <span id="calc-anual">R$&nbsp;34.560</span> por ano</p>
+            <div class="calc__stats">
+              <div class="stat">
+                <p class="stat__num" id="calc-horas-mes">24h</p>
+                <p class="stat__label">de equipe por mês em revisão sem cobrança</p>
+              </div>
+              <div class="stat">
+                <p class="stat__num" id="calc-revisoes-mes">6</p>
+                <p class="stat__label">revisões fora do escopo por mês</p>
+              </div>
+            </div>
+            <a href="diagnostico.html" class="btn btn--primary btn--block">Quero esse número no meu diagnóstico <span aria-hidden="true">→</span></a>
+            <p class="note">A conta usa só os números que você colocou. Não inclui conflito de compatibilização nem memorial redigitado.</p>
+          </div>
+        </div>
+
+        <p class="label-sm spec-title reveal">Horas devolvidas por mês, por especialidade · estimativa de rotina típica</p>
+        <div class="spec-grid reveal">
+          <div class="spec">
+            <p class="spec__seg">Arquitetura</p>
+            <p class="spec__num">~3,5h/mês</p>
+            <p>Revisão fora do escopo deixa de ser refeita sem controle, e a equipe para de reconstituir o que já foi combinado com o cliente.</p>
+            <div class="spec__bars"><div><span>Sem sistema</span><span>~4h/mês</span></div><div><span>Com LARÔ.IA</span><span>~0,5h/mês</span></div></div>
+          </div>
+          <div class="spec">
+            <p class="spec__seg">Engenharia de compatibilização</p>
+            <p class="spec__num">~10h/mês</p>
+            <p>O cruzamento de arquitetura, elétrica e hidráulica prancha por prancha sai da mão da equipe, e o conflito aparece antes da reunião.</p>
+            <div class="spec__bars"><div><span>Sem sistema</span><span>~16h/mês</span></div><div><span>Com LARÔ.IA</span><span>~6h/mês</span></div></div>
+          </div>
+          <div class="spec">
+            <p class="spec__seg">Design de interiores</p>
+            <p class="spec__num">~10,5h/mês</p>
+            <p>Memorial de acabamento e orçamento comparativo saem de projetos e fornecedores já registrados, sem remontar do zero.</p>
+            <div class="spec__bars"><div><span>Sem sistema</span><span>~15h/mês</span></div><div><span>Com LARÔ.IA</span><span>~4,5h/mês</span></div></div>
+          </div>
+        </div>
+        <p class="note reveal">Estimativa baseada em rotina típica relatada em conversa com escritórios. O número exato do seu sai do diagnóstico gratuito.</p>
+      </div>
+    </section>
+
+    <!-- ANTES E DEPOIS · o sonho tangível -->
+    <section id="antes-depois" class="section">
+      <div class="container">
+        <div class="section__head">
+          <p class="eyebrow reveal">O que muda</p>
+          <h2 class="h2 reveal">Antes e <span class="text-highlight">depois.</span></h2>
+          <p class="lead reveal">O desconforto de cobrar uma revisão extra. O receio de descobrir um conflito só na obra. A frustração de refazer o que já foi feito dezenas de vezes. Cada hora que deixa de virar retrabalho pode virar projeto novo, sem contratar mais gente pra sustentar o mesmo padrão.</p>
+        </div>
+        <div class="compare reveal">
+          <div class="compare__col">
+            <p class="compare__head">Sem a LARÔ.IA</p>
+            <p class="compare__row"><span class="compare__mark" aria-hidden="true">✕</span>Revisão fora de escopo vira favor, ninguém cobra</p>
+            <p class="compare__row"><span class="compare__mark" aria-hidden="true">✕</span>Conflito entre disciplinas só aparece na obra</p>
+            <p class="compare__row"><span class="compare__mark" aria-hidden="true">✕</span>Memorial de acabamento redigitado do zero a cada projeto</p>
+            <p class="compare__row"><span class="compare__mark" aria-hidden="true">✕</span>Orçamento comparativo remontado manualmente toda vez</p>
+            <p class="compare__row"><span class="compare__mark" aria-hidden="true">✕</span>Cliente novo esperando resposta até alguém ter tempo</p>
+            <p class="compare__row"><span class="compare__mark" aria-hidden="true">✕</span>Decisão de cobrar baseada em desconforto</p>
+          </div>
+          <div class="compare__col compare__col--after">
+            <p class="compare__head">Com a LARÔ.IA</p>
+            <p class="compare__row"><span class="compare__mark" aria-hidden="true">✓</span>Revisão fora de escopo registrada, com decisão de cobrar ou não</p>
+            <p class="compare__row"><span class="compare__mark" aria-hidden="true">✓</span>Conflito entre disciplinas apontado antes da reunião</p>
+            <p class="compare__row"><span class="compare__mark" aria-hidden="true">✓</span>Memorial gerado a partir do que já foi usado antes</p>
+            <p class="compare__row"><span class="compare__mark" aria-hidden="true">✓</span>Orçamento montado a partir de cotações já registradas</p>
+            <p class="compare__row"><span class="compare__mark" aria-hidden="true">✓</span>Cliente novo atendido na hora e reunião já marcada</p>
+            <p class="compare__row"><span class="compare__mark" aria-hidden="true">✓</span>Decisão de cobrar baseada em dado</p>
           </div>
         </div>
       </div>
+    </section>
 
-      <div class="problema-item bg-surface-raised rounded-card border border-border-subtle p-6 flex flex-col">
-        <div class="flex items-start justify-between gap-3 mb-3">
-          <p class="font-display font-bold text-[1.05rem] leading-[1.25]">Erro de compatibilização entre elétrica e estrutura só aparece na obra</p>
-          <button type="button" class="problema-toggle shrink-0 w-6 h-6 rounded-full border border-brand-accent text-brand-accent flex items-center justify-center text-[0.8rem] font-bold leading-none" aria-expanded="false">+</button>
+    <!-- PROCESSO · o plano -->
+    <section id="processo" class="section section--alt">
+      <div class="container">
+        <div class="section__head">
+          <p class="eyebrow reveal">Do diagnóstico à autonomia</p>
+          <h2 class="h2 reveal">Do problema ao agente rodando</h2>
+          <p class="lead reveal">Um caminho com etapa clara. Você sabe onde está, do primeiro contato até a equipe operando sozinha.</p>
         </div>
-        <span class="inline-block w-fit px-3 py-1 rounded-pill bg-brand-accent/15 text-brand-accent font-display font-bold text-[0.65rem] tracking-[0.08em] uppercase">Risco alto</span>
-        <div class="problema-a">
-          <div class="border-t border-border-subtle pt-4 mt-4">
-            <p class="font-display font-bold text-[0.65rem] tracking-[0.14em] uppercase text-brand-accent mb-2">Como a LARÔ.IA resolve</p>
-            <p class="text-[0.88rem] text-text-secondary leading-[1.6]">Cruza automaticamente os projetos de cada disciplina e aponta o conflito antes da reunião de compatibilização.</p>
+        <ol class="steps reveal">
+          <li class="steps__item">
+            <span class="steps__num">01</span>
+            <p class="steps__title">Você conta o fluxo</p>
+            <p class="steps__text">Diagnóstico gratuito de 15 a 20 minutos, sem compromisso.</p>
+          </li>
+          <li class="steps__item">
+            <span class="steps__num">02</span>
+            <p class="steps__title">Mapeamos onde perde tempo</p>
+            <p class="steps__text">Lista priorizada dos pontos de maior dreno.</p>
+          </li>
+          <li class="steps__item">
+            <span class="steps__num">03</span>
+            <p class="steps__title">Escolhemos os agentes</p>
+            <p class="steps__text">Os que resolvem o seu caso, ajustados ao seu fluxo.</p>
+          </li>
+          <li class="steps__item">
+            <span class="steps__num">04</span>
+            <p class="steps__title">Desenvolvemos e integramos</p>
+            <p class="steps__text">Em cima do WhatsApp, do Drive e das planilhas que você já usa.</p>
+          </li>
+          <li class="steps__item">
+            <span class="steps__num">05</span>
+            <p class="steps__title">Treinamos a equipe</p>
+            <p class="steps__text">IA prática, aplicada ao fluxo real do escritório.</p>
+          </li>
+          <li class="steps__item steps__item--final">
+            <span class="steps__num">06</span>
+            <p class="steps__title">O sistema fica com você</p>
+            <p class="steps__text">Guia de operação escrito, sem licença fechada.</p>
+          </li>
+        </ol>
+
+        <div class="integrations reveal">
+          <p class="integrations__label">Trabalha em cima do que o escritório já usa</p>
+          <ul>
+            <li>WhatsApp</li>
+            <li>Instagram</li>
+            <li>Gmail</li>
+            <li>Google Drive</li>
+            <li>Google Planilhas</li>
+            <li>Google Agenda</li>
+            <li>Excel</li>
+            <li>Notion</li>
+            <li>Vobi</li>
+          </ul>
+          <p class="note">O agente opera na gestão do projeto. Seu CAD ou BIM continua igual.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIFERENCIAIS · prova técnica -->
+    <section id="diferenciais" class="section">
+      <div class="container">
+        <div class="section__head">
+          <p class="eyebrow reveal">Diferenciais</p>
+          <h2 class="h2 reveal">Por que a LARÔ.IA</h2>
+        </div>
+        <div class="features reveal">
+          <div class="feature">
+            <p class="feature__num">01</p>
+            <p class="feature__title">Feita pro fluxo de projeto</p>
+            <p>Revisão, compatibilização, memorial, orçamento. Os agentes operam nos processos de arquitetura, engenharia e design de interiores, em vez de uma planilha genérica adaptada.</p>
+          </div>
+          <div class="feature">
+            <p class="feature__num">02</p>
+            <p class="feature__title">Cada implementação nasce do seu diagnóstico</p>
+            <p>Nada de solução empurrada. Mapeamos onde seu escritório perde tempo de verdade, e você decide o que faz sentido construir.</p>
+          </div>
+          <div class="feature">
+            <p class="feature__num">03</p>
+            <p class="feature__title">Do diagnóstico ao primeiro resultado em semanas</p>
+            <p>Sem projeto de consultoria de seis meses. O primeiro agente entra em operação pelo ponto de maior dreno, e os outros vêm por etapa.</p>
+          </div>
+          <div class="feature">
+            <p class="feature__num">04</p>
+            <p class="feature__title">Aponta o conflito, nunca decide o projeto</p>
+            <p>O agente cruza dados, registra escopo e sinaliza o que passou do combinado. A decisão técnica e de projeto continua com você, sempre.</p>
+          </div>
+          <div class="feature">
+            <p class="feature__num">05</p>
+            <p class="feature__title">Trabalha em cima do processo que já funciona</p>
+            <p>Sem licença fechada, sem trocar de ferramenta de desenho. O sistema é construído sobre o seu fluxo atual e fica com você.</p>
+          </div>
+          <div class="feature">
+            <p class="feature__num">06</p>
+            <p class="feature__title">Sua equipe opera sozinha depois da entrega</p>
+            <p>Treinamento incluso e guia de operação escrito. O critério de sucesso é você não precisar da gente pra sempre.</p>
           </div>
         </div>
       </div>
+    </section>
 
-      <div class="problema-item bg-surface-raised rounded-card border border-border-subtle p-6 flex flex-col">
-        <div class="flex items-start justify-between gap-3 mb-3">
-          <p class="font-display font-bold text-[1.05rem] leading-[1.25]">Memorial de acabamento é redigitado do zero pra cada ambiente</p>
-          <button type="button" class="problema-toggle shrink-0 w-6 h-6 rounded-full border border-text-tertiary text-text-tertiary flex items-center justify-center text-[0.8rem] font-bold leading-none" aria-expanded="false">+</button>
+    <!-- QUEM CONSTRÓI · prova pessoal -->
+    <section id="quem-constroi" class="section section--alt">
+      <div class="container">
+        <p class="eyebrow reveal">Quem constrói</p>
+        <div class="prose reveal">
+          <p>A LARÔ.IA é uma parceria entre a <strong>Nebu Co.</strong> e a <strong>Affectio</strong>. Em conversas com clientes de setores bem diferentes entre si, o mesmo padrão aparecia repetido: processo que só existia na memória de alguém, decisão que nunca virava registro, erro que só aparecia tarde demais. Primeiro em consultórios de psiquiatria, neurologia e atendimento a TEA. Depois em arquitetura, engenharia de compatibilização e design de interiores.</p>
+          <p>Perceber esse padrão se repetindo fez a dupla construir um método replicável, em vez de resolver caso a caso: diagnóstico honesto, agentes sob medida e treinamento aplicado, com o sistema ficando com o cliente. O mesmo processo, testado antes de chegar no seu escritório.</p>
         </div>
-        <span class="inline-block w-fit px-3 py-1 rounded-pill bg-brand-sand/15 text-brand-sand font-display font-bold text-[0.65rem] tracking-[0.08em] uppercase">Risco médio</span>
-        <div class="problema-a">
-          <div class="border-t border-border-subtle pt-4 mt-4">
-            <p class="font-display font-bold text-[0.65rem] tracking-[0.14em] uppercase text-brand-accent mb-2">Como a LARÔ.IA resolve</p>
-            <p class="text-[0.88rem] text-text-secondary leading-[1.6]">Gera o memorial a partir de especificações e fornecedores já usados em projetos anteriores.</p>
+      </div>
+    </section>
+
+    <!-- INVESTIMENTO · oferta + ancoragem -->
+    <section id="investimento" class="section">
+      <div class="container">
+        <div class="section__head section__head--center">
+          <p class="eyebrow reveal">Investimento</p>
+          <h2 class="h2 reveal">Quanto vale destravar o tempo que seu escritório já perde?</h2>
+        </div>
+
+        <p class="anchor reveal">Pela sua conta na calculadora, a revisão fora do escopo já custa <strong id="anchor-value">R$&nbsp;2.880</strong> por mês. Use esse número como régua pra ler os valores abaixo.<span class="anchor__line">Na rotina típica, de 70% a 80% dessa hora volta pro escritório com os agentes rodando: entre <strong id="anchor-recovered-min">R$&nbsp;2.016</strong> e <strong id="anchor-recovered-max">R$&nbsp;2.304</strong> por mês.</span></p>
+
+        <div class="pricing reveal">
+          <div class="price-card">
+            <span class="price-card__flag">Primeiro passo</span>
+            <p class="label-sm">Diagnóstico gratuito + implementação</p>
+            <p class="price-card__title">Agentes funcionando, equipe treinada</p>
+            <p class="note">Valores a partir de</p>
+            <div class="price-grid">
+              <div class="price-box">
+                <p class="label-sm">Treinamento aplicado</p>
+                <p class="price-box__value">R$&nbsp;497</p>
+              </div>
+              <div class="price-box" data-price="2200">
+                <p class="label-sm">Desenvolvimento sob medida</p>
+                <p class="price-box__value">R$&nbsp;2.200</p>
+                <p class="price-box__ref" id="price-dev-ref">Menos de um mês do que você deixa de cobrar hoje.</p>
+              </div>
+            </div>
+            <p class="note">Varia pela complexidade de cada agente. O valor exato sai do diagnóstico gratuito.</p>
+            <div class="price-card__actions">
+              <a href="diagnostico.html" class="btn btn--primary">Fazer o diagnóstico gratuito <span aria-hidden="true">→</span></a>
+              <a href="https://wa.me/5571996551316?text=Ol%C3%A1!%20Quero%20solicitar%20uma%20proposta%20da%20LAR%C3%94.IA." target="_blank" rel="noopener" class="price-card__secondary">Solicitar proposta →</a>
+            </div>
+          </div>
+
+          <div class="deliverables">
+            <p class="label-sm">Tudo que você leva</p>
+            <p class="deliverables__title">Diagnóstico, agentes e treinamento.</p>
+            <ul>
+              <li><span class="deliverables__check" aria-hidden="true">✓</span><div><p class="deliverables__name">Diagnóstico honesto</p><p>Mapeamento dos 3 pontos de maior dreno do seu escritório, priorizados.</p></div></li>
+              <li><span class="deliverables__check" aria-hidden="true">✓</span><div><p class="deliverables__name">Agentes sob medida</p><p>Fiscal, Compatibilizador, Memorialista, Orçamentista: o que o diagnóstico apontar primeiro.</p></div></li>
+              <li><span class="deliverables__check" aria-hidden="true">✓</span><div><p class="deliverables__name">Treinamento aplicado</p><p>IA prática, baseada nas lacunas reais da sua equipe.</p></div></li>
+              <li><span class="deliverables__check" aria-hidden="true">✓</span><div><p class="deliverables__name">Guia de operação</p><p>Escrito, pra qualquer pessoa do escritório usar sem depender da gente.</p></div></li>
+              <li><span class="deliverables__check" aria-hidden="true">✓</span><div><p class="deliverables__name">Sem licença fechada</p><p>O sistema fica com você. Autonomia real é o critério de sucesso.</p></div></li>
+            </ul>
           </div>
         </div>
       </div>
+    </section>
 
-      <div class="problema-item bg-surface-raised rounded-card border border-border-subtle p-6 flex flex-col">
-        <div class="flex items-start justify-between gap-3 mb-3">
-          <p class="font-display font-bold text-[1.05rem] leading-[1.25]">Já tentou usar ChatGPT genérico pra isso e travou depois de duas semanas</p>
-          <button type="button" class="problema-toggle shrink-0 w-6 h-6 rounded-full border border-yellow-600 text-yellow-500 flex items-center justify-center text-[0.8rem] font-bold leading-none" aria-expanded="false">+</button>
-        </div>
-        <span class="inline-block w-fit px-3 py-1 rounded-pill bg-yellow-500/15 text-yellow-500 font-display font-bold text-[0.65rem] tracking-[0.08em] uppercase">Atenção redobrada</span>
-        <div class="problema-a">
-          <div class="border-t border-border-subtle pt-4 mt-4">
-            <p class="font-display font-bold text-[0.65rem] tracking-[0.14em] uppercase text-brand-accent mb-2">Como a LARÔ.IA resolve</p>
-            <p class="text-[0.88rem] text-text-secondary leading-[1.6]">Diagnóstico mapeia seu fluxo real antes de qualquer ferramenta. Sistema é construído sob medida pro seu processo.</p>
+    <!-- FAQ -->
+    <section id="faq" class="section section--alt">
+      <div class="container faq">
+        <h2 class="faq__title reveal">Perguntas que<br>sempre<br><span class="text-accent">aparecem.</span></h2>
+        <div class="reveal">
+          <div class="faq__item">
+            <button type="button" class="faq__q" aria-expanded="false">O agente decide a solução técnica de compatibilização?<span class="toggle" aria-hidden="true">+</span></button>
+            <div class="faq__a"><p>Não. Ele cruza os projetos e aponta o conflito. A decisão de engenharia continua sempre com o profissional responsável.</p></div>
+          </div>
+          <div class="faq__item">
+            <button type="button" class="faq__q" aria-expanded="false">Preciso saber programar ou mexer em código?<span class="toggle" aria-hidden="true">+</span></button>
+            <div class="faq__a"><p>Não. O treinamento é aplicado ao fluxo real da sua equipe, e o guia de operação vem pronto pra qualquer pessoa do escritório usar.</p></div>
+          </div>
+          <div class="faq__item">
+            <button type="button" class="faq__q" aria-expanded="false">Os agentes funcionam no WhatsApp do escritório?<span class="toggle" aria-hidden="true">+</span></button>
+            <div class="faq__a"><p>O agente de atendimento e os avisos de revisão, prazo e aprovação chegam pelo WhatsApp. Os outros trabalham em cima do Drive, das planilhas e do e-mail que vocês já usam.</p></div>
+          </div>
+          <div class="faq__item">
+            <button type="button" class="faq__q" aria-expanded="false">Preciso contratar todos os agentes?<span class="toggle" aria-hidden="true">+</span></button>
+            <div class="faq__a"><p>Não. O diagnóstico aponta por onde começar, normalmente pelo ponto que mais consome hora. Dá pra começar com um agente e somar os outros depois.</p></div>
+          </div>
+          <div class="faq__item">
+            <button type="button" class="faq__q" aria-expanded="false">Quanto custa?<span class="toggle" aria-hidden="true">+</span></button>
+            <div class="faq__a"><p>Treinamento aplicado a partir de R$ 497, desenvolvimento sob medida a partir de R$ 2.200, variando pela complexidade. O valor exato do seu escritório sai do diagnóstico, que é gratuito.</p></div>
+          </div>
+          <div class="faq__item">
+            <button type="button" class="faq__q" aria-expanded="false">E se eu fizer o diagnóstico e decidir não seguir?<span class="toggle" aria-hidden="true">+</span></button>
+            <div class="faq__a"><p>Sem problema. Nenhum compromisso financeiro é exigido antes da entrega do diagnóstico. Você sai com os pontos de maior dreno priorizados de qualquer forma.</p></div>
+          </div>
+          <div class="faq__item">
+            <button type="button" class="faq__q" aria-expanded="false">O sistema substitui meu CAD ou BIM?<span class="toggle" aria-hidden="true">+</span></button>
+            <div class="faq__a"><p>Não. A LARÔ.IA opera em cima do fluxo de gestão e controle do projeto. A ferramenta de desenho continua a mesma.</p></div>
           </div>
         </div>
       </div>
+    </section>
 
-      <div class="problema-item bg-surface-raised rounded-card border border-border-subtle p-6 flex flex-col">
-        <div class="flex items-start justify-between gap-3 mb-3">
-          <p class="font-display font-bold text-[1.05rem] leading-[1.25]">Orçamento comparativo de fornecedor é remontado manualmente toda vez</p>
-          <button type="button" class="problema-toggle shrink-0 w-6 h-6 rounded-full border border-text-tertiary text-text-tertiary flex items-center justify-center text-[0.8rem] font-bold leading-none" aria-expanded="false">+</button>
-        </div>
-        <span class="inline-block w-fit px-3 py-1 rounded-pill bg-brand-sand/15 text-brand-sand font-display font-bold text-[0.65rem] tracking-[0.08em] uppercase">Risco médio</span>
-        <div class="problema-a">
-          <div class="border-t border-border-subtle pt-4 mt-4">
-            <p class="font-display font-bold text-[0.65rem] tracking-[0.14em] uppercase text-brand-accent mb-2">Como a LARÔ.IA resolve</p>
-            <p class="text-[0.88rem] text-text-secondary leading-[1.6]">Monta o comparativo a partir de cotações e fornecedores já registrados em projetos anteriores.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="problema-item bg-surface-raised rounded-card border border-border-subtle p-6 flex flex-col">
-        <div class="flex items-start justify-between gap-3 mb-3">
-          <p class="font-display font-bold text-[1.05rem] leading-[1.25]">Cliente cobra pra adiantar a entrega, mas só pagou a parcela do ato do contrato</p>
-          <button type="button" class="problema-toggle shrink-0 w-6 h-6 rounded-full border border-yellow-600 text-yellow-500 flex items-center justify-center text-[0.8rem] font-bold leading-none" aria-expanded="false">+</button>
-        </div>
-        <span class="inline-block w-fit px-3 py-1 rounded-pill bg-yellow-500/15 text-yellow-500 font-display font-bold text-[0.65rem] tracking-[0.08em] uppercase">Atenção redobrada</span>
-        <div class="problema-a">
-          <div class="border-t border-border-subtle pt-4 mt-4">
-            <p class="font-display font-bold text-[0.65rem] tracking-[0.14em] uppercase text-brand-accent mb-2">Como a LARÔ.IA resolve</p>
-            <p class="text-[0.88rem] text-text-secondary leading-[1.6]">Cruza o cronograma de entrega com o cronograma financeiro do contrato e mostra qual parcela está pendente antes de qualquer pressão de prazo.</p>
-          </div>
+    <!-- CTA FINAL -->
+    <section id="cta" class="section cta-final">
+      <svg class="logo logo--simbolo cta-final__bg" aria-hidden="true"><use href="#laroia-simbolo"/></svg>
+      <div class="container">
+        <svg class="logo logo--simbolo cta-final__mark reveal" aria-hidden="true"><use href="#laroia-simbolo"/></svg>
+        <h2 class="cta-final__title reveal">Descubra onde seu escritório perde horas <span class="text-highlight">que nunca entram na proposta.</span></h2>
+        <p class="reveal">Em 15 a 20 minutos, sem custo, você sai com os 3 pontos de maior dreno do escritório e os agentes que resolvem cada um.</p>
+        <div class="hero__ctas reveal reveal--d1">
+          <a href="diagnostico.html" class="btn btn--primary">Fazer o diagnóstico gratuito <span aria-hidden="true">→</span></a>
+          <a href="https://wa.me/5571996551316?text=Ol%C3%A1!%20Quero%20conhecer%20as%20solu%C3%A7%C3%B5es%20em%20IA%20da%20LAR%C3%94.IA." target="_blank" rel="noopener" class="btn btn--ghost">Falar no WhatsApp</a>
         </div>
       </div>
+    </section>
 
-    </div>
-    <div class="mt-10 pt-6 border-t border-border-subtle reveal">
-      <p class="font-display font-extrabold text-[1.1rem] md:text-[1.3rem]">A LARÔ.IA resolve todas essas dores.</p>
-    </div>
-  </section>
+  </main>
 
-  <!-- PROVA LÓGICA — POR QUE ISSO ACONTECE -->
-  <section id="causa" class="px-4 sm:px-6 md:px-12 py-16 md:py-24 border-t border-border-subtle bg-surface-overlay">
-    <div class="max-w-[760px]">
-      <p class="font-display font-bold text-[0.72rem] tracking-[0.22em] uppercase text-brand-accent mb-4 reveal">Por que isso acontece</p>
-      <h2 class="font-display font-extrabold text-[clamp(1.8rem,4vw,3rem)] leading-[1.1] mb-8 reveal">
-        O problema não é falta de IA.<br>É que o processo mora na memória de alguém.
-      </h2>
-      <div class="text-text-secondary text-base leading-[1.8] space-y-5 reveal">
-        <p>Cobrar revisão extra parece quebrar a parceria com o cliente, então ninguém cobra e ninguém registra. Admitir que um conflito passou despercebido parece expor falha técnica, então ninguém fala. O resultado: cada escopo, cada aprovação e cada especificação vive espalhado entre e-mail, WhatsApp e a cabeça de quem estava na reunião.</p>
-        <p>Quando o processo depende da memória, o escopo muda sem registro, as revisões se acumulam sem histórico e o erro aparece tarde demais, já na obra.</p>
-        <p class="text-text-primary font-medium">Não adianta empilhar mais uma ferramenta em cima disso. Primeiro se organiza o fluxo, depois se automatiza. É nessa ordem que a LARÔ.IA trabalha.</p>
+  <!-- RODAPÉ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <span class="nav__brand-mark">
+            <svg class="logo logo--simbolo" aria-hidden="true"><use href="#laroia-simbolo"/></svg>
+            <svg class="logo logo--wordmark" role="img" aria-label="LARÔ.IA"><use href="#laroia-wordmark"/></svg>
+          </span>
+          <p>Soluções em IA para escritórios de arquitetura, engenharia de compatibilização e design de interiores. Uma parceria Nebu Co. e Affectio.</p>
+        </div>
+        <div>
+          <p class="footer__title">Soluções</p>
+          <ul class="footer__list">
+            <li><a href="#solucoes">Fiscal · escopo e revisão</a></li>
+            <li><a href="#solucoes">Compatibilizador · disciplinas</a></li>
+            <li><a href="#solucoes">Memorialista e Orçamentista</a></li>
+            <li><a href="#solucoes">Recepcionista · WhatsApp</a></li>
+            <li><a href="demonstrativo_obra.html">Apontador · obra</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__title">Contato</p>
+          <ul class="footer__list">
+            <li><a href="https://wa.me/5571996551316?text=Ol%C3%A1!%20Quero%20conhecer%20as%20solu%C3%A7%C3%B5es%20em%20IA%20da%20LAR%C3%94.IA." target="_blank" rel="noopener">WhatsApp +55 (71) 99655-1316</a></li>
+            <li><a href="diagnostico.html">Diagnóstico gratuito</a></li>
+            <li><a href="#faq">Perguntas frequentes</a></li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </section>
-
-  <!-- OPORTUNIDADE — DE ECONOMIA A CRESCIMENTO -->
-  <section class="relative overflow-hidden px-4 sm:px-6 md:px-12 py-16 md:py-24 border-t border-border-subtle bg-surface-overlay">
-    <img src="assets/laroia-symbol.svg" alt="" aria-hidden="true"
-         class="absolute -left-20 sm:-left-10 -bottom-16 w-[320px] sm:w-[420px] max-w-none opacity-[0.05] rotate-12 pointer-events-none select-none -z-10">
-    <div class="max-w-[760px]">
-      <p class="font-display font-bold text-[0.72rem] tracking-[0.22em] uppercase text-brand-accent mb-4 reveal">O que isso libera</p>
-      <h2 class="font-display font-extrabold text-[clamp(1.8rem,4vw,3rem)] leading-[1.1] mb-8 reveal">
-        Escritório não cresce trabalhando mais.<br>Cresce repetindo qualidade sem repetir esforço.
-      </h2>
-      <p class="text-text-secondary text-base leading-[1.8] mb-8 reveal">
-        Cada hora que deixa de virar retrabalho não cobrado é uma hora que pode virar projeto novo, sem precisar contratar mais gente pra sustentar o mesmo padrão. Cada conflito apontado antes da obra é margem que não vira prejuízo. Cada decisão que já não depende só de quem "sabe tudo de cabeça" é um escritório que aguenta crescer sem travar.
-      </p>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 reveal">
-        <div class="flex items-start gap-3"><span class="text-brand-accent shrink-0 mt-0.5">→</span><p class="text-text-secondary text-[0.9rem] leading-[1.6]">Mais margem por projeto, revisão cobrada com dado</p></div>
-        <div class="flex items-start gap-3"><span class="text-brand-accent shrink-0 mt-0.5">→</span><p class="text-text-secondary text-[0.9rem] leading-[1.6]">Mais previsibilidade pro cliente final</p></div>
-        <div class="flex items-start gap-3"><span class="text-brand-accent shrink-0 mt-0.5">→</span><p class="text-text-secondary text-[0.9rem] leading-[1.6]">Capacidade de assumir mais projeto sem contratar mais gente</p></div>
-        <div class="flex items-start gap-3"><span class="text-brand-accent shrink-0 mt-0.5">→</span><p class="text-text-secondary text-[0.9rem] leading-[1.6]">Menos dependência de quem "sabe tudo de cabeça"</p></div>
+      <div class="footer__bottom">
+        <p>© <span id="ano">2026</span> LARÔ.IA Soluções em IA</p>
+        <p>A decisão de projeto é sempre de quem assina.</p>
       </div>
     </div>
-  </section>
-
-  <!-- COMO TRABALHAMOS — FLUXOGRAMA -->
-  <section id="diagnostico" class="px-4 sm:px-6 md:px-12 py-16 md:py-24 border-t border-border-subtle">
-    <p class="font-display font-bold text-[0.72rem] tracking-[0.22em] uppercase text-brand-accent mb-4 reveal">Como trabalhamos</p>
-    <h2 class="font-display font-extrabold text-[clamp(1.8rem,4vw,3rem)] leading-[1.1] mb-4 max-w-[760px] reveal">
-      Da primeira conversa até sua equipe operando sozinha.
-    </h2>
-    <p class="text-text-secondary text-[0.95rem] max-w-[640px] mb-10 md:mb-14 reveal">Implementação de IA feita para arquitetura, engenharia de compatibilização e design de interiores.</p>
-
-    <div class="flex flex-col md:flex-row items-stretch gap-2 reveal">
-      <div class="flex-1 bg-surface-raised rounded-card border border-border-subtle p-6 flex flex-col">
-        <p class="font-display font-extrabold text-brand-accent text-[1.1rem] mb-2">01 · Diagnóstico</p>
-        <p class="text-text-secondary text-[0.85rem] leading-[1.6]">Avaliamos onde seu escritório está perdendo tempo e dinheiro. Gratuito, em 15 minutos. Você sai com os pontos priorizados mesmo se decidir não seguir adiante.</p>
-      </div>
-      <div class="flex items-center justify-center text-brand-accent text-2xl font-bold shrink-0 rotate-90 md:rotate-0 leading-none py-1 md:py-0">→</div>
-      <div class="flex-1 bg-surface-raised rounded-card border border-border-subtle p-6 flex flex-col">
-        <p class="font-display font-extrabold text-brand-accent text-[1.1rem] mb-2">02 · Desenvolvimento</p>
-        <p class="text-text-secondary text-[0.85rem] leading-[1.6]">Construímos a solução sob medida: controle de escopo, cruzamento de disciplinas, geração de memorial. Rápido, acessível, focado no seu problema.</p>
-      </div>
-      <div class="flex items-center justify-center text-brand-accent text-2xl font-bold shrink-0 rotate-90 md:rotate-0 leading-none py-1 md:py-0">→</div>
-      <div class="flex-1 bg-surface-raised rounded-card border border-border-subtle p-6 flex flex-col">
-        <p class="font-display font-extrabold text-brand-accent text-[1.1rem] mb-2">03 · Treinamento</p>
-        <p class="text-text-secondary text-[0.85rem] leading-[1.6]">Capacitamos sua equipe com IA prática e aplicada ao fluxo do seu escritório. Baseado nas lacunas reais, não em conteúdo genérico.</p>
-      </div>
-      <div class="flex items-center justify-center text-brand-accent text-2xl font-bold shrink-0 rotate-90 md:rotate-0 leading-none py-1 md:py-0">→</div>
-      <div class="flex-1 bg-brand-accent/10 rounded-card border border-brand-accent p-6 flex flex-col">
-        <p class="font-display font-extrabold text-brand-accent text-[1.1rem] mb-2">04 · Autonomia</p>
-        <p class="text-text-secondary text-[0.85rem] leading-[1.6] mb-4">O sistema fica com você. Sua equipe opera sozinha, sem depender da gente pra sempre.</p>
-        <a href="demonstrativo_obra.html"
-           class="mt-auto inline-flex items-center justify-center gap-2 font-display font-bold text-[0.78rem] tracking-[0.02em] no-underline uppercase
-                  text-brand-accent border border-brand-accent px-5 py-2.5 rounded-pill w-fit
-                  hover:bg-brand-accent hover:text-surface-base transition-colors duration-200">
-          Ver na prática →
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- EXEMPLOS REAIS — ARQUITETURA -->
-  <section class="px-4 sm:px-6 md:px-12 py-16 md:py-24 border-t border-border-subtle">
-    <p class="font-display font-bold text-[0.7rem] tracking-[0.2em] uppercase text-brand-accent mb-4 reveal">Exemplos reais · arquitetura</p>
-    <h2 class="font-display font-extrabold text-[clamp(1.8rem,4vw,3rem)] mb-2 reveal">Escritórios de Arquitetura</h2>
-    <p class="font-display font-bold text-[0.7rem] tracking-[0.14em] uppercase text-text-tertiary mb-10 reveal">O que a LARÔ.IA faz pelo seu escritório</p>
-    <div class="flex flex-col reveal rounded-card border border-border-subtle overflow-hidden">
-      <div class="flex gap-6 p-6">
-        <span class="font-display font-extrabold text-brand-accent text-[1.1rem] w-8 shrink-0">01</span>
-        <div><p class="font-display font-bold">Controle automático de escopo de revisão</p><p class="text-text-secondary text-[0.9rem] mt-1">Registra o escopo original do contrato e aponta quando uma revisão do cliente já passou do combinado.</p></div>
-      </div>
-      <div class="flex gap-6 p-6 border-t border-border-subtle">
-        <span class="font-display font-extrabold text-brand-accent text-[1.1rem] w-8 shrink-0">02</span>
-        <div><p class="font-display font-bold">Histórico de decisões do projeto</p><p class="text-text-secondary text-[0.9rem] mt-1">Organiza o que já foi aprovado pelo cliente em cada rodada, sem depender de e-mail perdido.</p></div>
-      </div>
-      <div class="flex gap-6 p-6 border-t border-border-subtle">
-        <span class="font-display font-extrabold text-brand-accent text-[1.1rem] w-8 shrink-0">03</span>
-        <div><p class="font-display font-bold">Ata de reunião gerada automaticamente</p><p class="text-text-secondary text-[0.9rem] mt-1">Resume as decisões da reunião de alinhamento em formato pronto pra enviar ao cliente.</p></div>
-      </div>
-      <div class="flex gap-6 p-6 border-t border-border-subtle">
-        <span class="font-display font-extrabold text-brand-accent text-[1.1rem] w-8 shrink-0">04</span>
-        <div><p class="font-display font-bold">Alerta de prazo por etapa</p><p class="text-text-secondary text-[0.9rem] mt-1">Avisa quando uma etapa do cronograma de projeto está em risco de atraso.</p></div>
-      </div>
-      <div class="flex gap-6 p-6 border-t border-border-subtle">
-        <span class="font-display font-extrabold text-brand-accent text-[1.1rem] w-8 shrink-0">05</span>
-        <div><p class="font-display font-bold">Atendimento inicial de novo cliente</p><p class="text-text-secondary text-[0.9rem] mt-1">Chatbot pré-qualifica escopo, prazo e orçamento esperado antes da primeira reunião.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- EXEMPLOS REAIS — ENGENHARIA DE COMPATIBILIZAÇÃO -->
-  <section class="px-4 sm:px-6 md:px-12 py-16 md:py-24 border-t border-border-subtle bg-surface-overlay">
-    <p class="font-display font-bold text-[0.7rem] tracking-[0.2em] uppercase text-brand-accent mb-4 reveal">Exemplos reais · engenharia de compatibilização</p>
-    <h2 class="font-display font-extrabold text-[clamp(1.8rem,4vw,3rem)] mb-2 reveal">Escritórios de Engenharia</h2>
-    <p class="font-display font-bold text-[0.7rem] tracking-[0.14em] uppercase text-text-tertiary mb-10 reveal">O que a LARÔ.IA faz pelo seu escritório</p>
-    <div class="flex flex-col reveal rounded-card border border-border-subtle overflow-hidden">
-      <div class="flex gap-6 p-6">
-        <span class="font-display font-extrabold text-brand-accent text-[1.1rem] w-8 shrink-0">01</span>
-        <div><p class="font-display font-bold">Cruzamento automático entre disciplinas</p><p class="text-text-secondary text-[0.9rem] mt-1">Compara projeto de arquitetura, elétrica e hidráulica e aponta pontos de conflito.</p></div>
-      </div>
-      <div class="flex gap-6 p-6 border-t border-border-subtle">
-        <span class="font-display font-extrabold text-brand-accent text-[1.1rem] w-8 shrink-0">02</span>
-        <div><p class="font-display font-bold">Alerta de conflito estrutural</p><p class="text-text-secondary text-[0.9rem] mt-1">Sinaliza quando uma instalação atravessa elemento estrutural antes da obra começar.</p></div>
-      </div>
-      <div class="flex gap-6 p-6 border-t border-border-subtle">
-        <span class="font-display font-extrabold text-brand-accent text-[1.1rem] w-8 shrink-0">03</span>
-        <div><p class="font-display font-bold">Histórico de compatibilização por projeto</p><p class="text-text-secondary text-[0.9rem] mt-1">Registra quais conflitos já foram revisados e aprovados.</p></div>
-      </div>
-      <div class="flex gap-6 p-6 border-t border-border-subtle">
-        <span class="font-display font-extrabold text-brand-accent text-[1.1rem] w-8 shrink-0">04</span>
-        <div><p class="font-display font-bold">Checklist de compatibilização por etapa</p><p class="text-text-secondary text-[0.9rem] mt-1">Organiza o que falta revisar antes de liberar o projeto pra obra.</p></div>
-      </div>
-      <div class="flex gap-6 p-6 border-t border-border-subtle">
-        <span class="font-display font-extrabold text-brand-accent text-[1.1rem] w-8 shrink-0">05</span>
-        <div><p class="font-display font-bold">Relatório de compatibilização pro cliente</p><p class="text-text-secondary text-[0.9rem] mt-1">Resume os pontos verificados em linguagem que o cliente final entende.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- EXEMPLOS REAIS — DESIGN DE INTERIORES -->
-  <section class="px-4 sm:px-6 md:px-12 py-16 md:py-24 border-t border-border-subtle">
-    <p class="font-display font-bold text-[0.7rem] tracking-[0.2em] uppercase text-brand-accent mb-4 reveal">Exemplos reais · design de interiores</p>
-    <h2 class="font-display font-extrabold text-[clamp(1.8rem,4vw,3rem)] mb-2 reveal">Estúdios de Design de Interiores</h2>
-    <p class="font-display font-bold text-[0.7rem] tracking-[0.14em] uppercase text-text-tertiary mb-10 reveal">O que a LARÔ.IA faz pelo seu estúdio</p>
-    <div class="flex flex-col reveal rounded-card border border-border-subtle overflow-hidden">
-      <div class="flex gap-6 p-6">
-        <span class="font-display font-extrabold text-brand-accent text-[1.1rem] w-8 shrink-0">01</span>
-        <div><p class="font-display font-bold">Memorial de acabamento automático</p><p class="text-text-secondary text-[0.9rem] mt-1">Gera especificação de material e fornecedor a partir de projetos anteriores.</p></div>
-      </div>
-      <div class="flex gap-6 p-6 border-t border-border-subtle">
-        <span class="font-display font-extrabold text-brand-accent text-[1.1rem] w-8 shrink-0">02</span>
-        <div><p class="font-display font-bold">Orçamento comparativo de fornecedores</p><p class="text-text-secondary text-[0.9rem] mt-1">Monta o comparativo a partir de cotações já registradas.</p></div>
-      </div>
-      <div class="flex gap-6 p-6 border-t border-border-subtle">
-        <span class="font-display font-extrabold text-brand-accent text-[1.1rem] w-8 shrink-0">03</span>
-        <div><p class="font-display font-bold">Atualização de status pro cliente</p><p class="text-text-secondary text-[0.9rem] mt-1">Resume o andamento do projeto em linguagem acessível, sem reescrever do zero.</p></div>
-      </div>
-      <div class="flex gap-6 p-6 border-t border-border-subtle">
-        <span class="font-display font-extrabold text-brand-accent text-[1.1rem] w-8 shrink-0">04</span>
-        <div><p class="font-display font-bold">Lembrete de aprovação pendente</p><p class="text-text-secondary text-[0.9rem] mt-1">Avisa quando o cliente está com uma decisão de acabamento parada há tempo.</p></div>
-      </div>
-      <div class="flex gap-6 p-6 border-t border-border-subtle">
-        <span class="font-display font-extrabold text-brand-accent text-[1.1rem] w-8 shrink-0">05</span>
-        <div><p class="font-display font-bold">Triagem de novo projeto</p><p class="text-text-secondary text-[0.9rem] mt-1">Pré-qualifica escopo e orçamento esperado antes da primeira reunião.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ANTES E DEPOIS -->
-  <section class="relative overflow-hidden px-4 sm:px-6 md:px-12 py-16 md:py-24 border-t border-border-subtle">
-    <img src="assets/laroia-symbol.svg" alt="" aria-hidden="true"
-         class="absolute -right-16 sm:right-0 -top-10 w-[280px] sm:w-[360px] max-w-none opacity-[0.05] -rotate-6 pointer-events-none select-none -z-10">
-    <h2 class="font-display font-extrabold uppercase tracking-[-0.02em] leading-[0.95] text-[clamp(2rem,5.5vw,4rem)] mb-6 reveal">
-      Antes e<br><span class="text-brand-accent">depois.</span>
-    </h2>
-    <p class="text-text-secondary text-base leading-[1.7] max-w-[640px] mb-10 md:mb-14 reveal">
-      O desconforto de cobrar uma revisão extra. O receio de descobrir um conflito só na obra. A frustração de refazer o que já foi feito dezenas de vezes. É isso que muda.
-    </p>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 reveal">
-      <div class="rounded-card border border-border-subtle overflow-hidden">
-        <div class="p-5 border-b border-border-subtle bg-surface-raised">
-          <p class="font-display font-bold text-[0.75rem] tracking-[0.14em] uppercase text-text-tertiary">Sem a LARÔ.IA</p>
-        </div>
-        <div class="divide-y divide-border-subtle">
-          <div class="flex items-start gap-3 p-5"><span class="text-text-tertiary shrink-0 mt-0.5">✕</span><p class="text-text-secondary text-[0.92rem] leading-[1.6]">Revisão fora de escopo vira favor, ninguém cobra</p></div>
-          <div class="flex items-start gap-3 p-5"><span class="text-text-tertiary shrink-0 mt-0.5">✕</span><p class="text-text-secondary text-[0.92rem] leading-[1.6]">Conflito entre disciplinas só aparece na obra</p></div>
-          <div class="flex items-start gap-3 p-5"><span class="text-text-tertiary shrink-0 mt-0.5">✕</span><p class="text-text-secondary text-[0.92rem] leading-[1.6]">Memorial de acabamento redigitado do zero a cada projeto</p></div>
-          <div class="flex items-start gap-3 p-5"><span class="text-text-tertiary shrink-0 mt-0.5">✕</span><p class="text-text-secondary text-[0.92rem] leading-[1.6]">Orçamento comparativo remontado manualmente toda vez</p></div>
-          <div class="flex items-start gap-3 p-5"><span class="text-text-tertiary shrink-0 mt-0.5">✕</span><p class="text-text-secondary text-[0.92rem] leading-[1.6]">Sexta-feira sem saber quantas horas viraram retrabalho</p></div>
-          <div class="flex items-start gap-3 p-5"><span class="text-text-tertiary shrink-0 mt-0.5">✕</span><p class="text-text-secondary text-[0.92rem] leading-[1.6]">Decisão de cobrar baseada em desconforto, não em dado</p></div>
-        </div>
-      </div>
-      <div class="rounded-card border border-brand-accent overflow-hidden">
-        <div class="p-5 border-b border-brand-accent bg-brand-accent/10">
-          <p class="font-display font-bold text-[0.75rem] tracking-[0.14em] uppercase text-brand-accent">Com a LARÔ.IA</p>
-        </div>
-        <div class="divide-y divide-border-subtle">
-          <div class="flex items-start gap-3 p-5"><span class="text-brand-accent shrink-0 mt-0.5">✓</span><p class="text-text-secondary text-[0.92rem] leading-[1.6]">Revisão fora de escopo registrada, com decisão de cobrar ou não</p></div>
-          <div class="flex items-start gap-3 p-5"><span class="text-brand-accent shrink-0 mt-0.5">✓</span><p class="text-text-secondary text-[0.92rem] leading-[1.6]">Conflito entre disciplinas apontado antes da reunião</p></div>
-          <div class="flex items-start gap-3 p-5"><span class="text-brand-accent shrink-0 mt-0.5">✓</span><p class="text-text-secondary text-[0.92rem] leading-[1.6]">Memorial gerado a partir do que já foi usado antes</p></div>
-          <div class="flex items-start gap-3 p-5"><span class="text-brand-accent shrink-0 mt-0.5">✓</span><p class="text-text-secondary text-[0.92rem] leading-[1.6]">Orçamento montado a partir de cotações já registradas</p></div>
-          <div class="flex items-start gap-3 p-5"><span class="text-brand-accent shrink-0 mt-0.5">✓</span><p class="text-text-secondary text-[0.92rem] leading-[1.6]">Sexta-feira com número real de horas de revisão extra</p></div>
-          <div class="flex items-start gap-3 p-5"><span class="text-brand-accent shrink-0 mt-0.5">✓</span><p class="text-text-secondary text-[0.92rem] leading-[1.6]">Decisão de cobrar baseada em dado, não em desconforto</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CASOS DE USO E EFICIÊNCIA -->
-  <section id="eficiencia" class="px-4 sm:px-6 md:px-12 py-16 md:py-24 border-t border-border-subtle">
-    <p class="font-display font-bold text-[0.72rem] tracking-[0.22em] uppercase text-brand-accent mb-4 reveal">Casos de uso e eficiência</p>
-    <h2 class="font-display font-extrabold text-[clamp(1.8rem,4vw,3rem)] leading-[1.1] mb-4 max-w-[760px] reveal">
-      Da situação real ao tempo devolvido.
-    </h2>
-    <p class="text-text-secondary text-[0.9rem] max-w-[640px] mb-10 md:mb-14 reveal">Estimativa baseada em rotina típica relatada em diagnóstico. O número exato do seu escritório sai do seu diagnóstico gratuito.</p>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 reveal">
-
-      <div class="bg-surface-raised rounded-card border border-border-subtle overflow-hidden flex flex-col">
-        <div class="p-6 border-b border-border-subtle">
-          <p class="font-display font-bold text-[0.7rem] tracking-[0.14em] uppercase text-brand-accent mb-3">Arquitetura</p>
-          <p class="font-display font-extrabold text-brand-accent text-[1.5rem] mb-4">~3,5h/mês devolvidas</p>
-          <p class="text-[0.88rem] text-text-secondary leading-[1.6] mb-2"><strong class="text-text-primary">Situação:</strong> cada revisão fora do escopo original é refeita sem controle, e a equipe gasta tempo tentando reconstituir o que já foi combinado com o cliente.</p>
-          <p class="text-[0.88rem] text-text-secondary leading-[1.6]"><strong class="text-text-primary">A LARÔ.IA age:</strong> registra o escopo original e aponta automaticamente quando uma revisão já passou do combinado.</p>
-        </div>
-        <div class="p-6 mt-auto">
-          <div class="flex justify-between text-[0.8rem] text-text-tertiary mb-1"><span>Sem sistema</span><span>~4h/mês</span></div>
-          <div class="flex justify-between text-[0.8rem] text-text-tertiary"><span>Com LARÔ.IA</span><span>~0,5h/mês</span></div>
-        </div>
-      </div>
-
-      <div class="bg-surface-raised rounded-card border border-border-subtle overflow-hidden flex flex-col">
-        <div class="p-6 border-b border-border-subtle">
-          <p class="font-display font-bold text-[0.7rem] tracking-[0.14em] uppercase text-brand-accent mb-3">Engenharia de compatibilização</p>
-          <p class="font-display font-extrabold text-brand-accent text-[1.5rem] mb-4">~10h/mês devolvidas</p>
-          <p class="text-[0.88rem] text-text-secondary leading-[1.6] mb-2"><strong class="text-text-primary">Situação:</strong> cruzar arquitetura, elétrica e hidráulica prancha por prancha consome horas por projeto, e o conflito que passa despercebido só aparece na obra.</p>
-          <p class="text-[0.88rem] text-text-secondary leading-[1.6]"><strong class="text-text-primary">A LARÔ.IA age:</strong> cruza os projetos automaticamente e aponta o conflito antes da reunião de compatibilização.</p>
-        </div>
-        <div class="p-6 mt-auto">
-          <div class="flex justify-between text-[0.8rem] text-text-tertiary mb-1"><span>Sem sistema</span><span>~16h/mês</span></div>
-          <div class="flex justify-between text-[0.8rem] text-text-tertiary"><span>Com LARÔ.IA</span><span>~6h/mês</span></div>
-        </div>
-      </div>
-
-      <div class="bg-surface-raised rounded-card border border-border-subtle overflow-hidden flex flex-col">
-        <div class="p-6 border-b border-border-subtle">
-          <p class="font-display font-bold text-[0.7rem] tracking-[0.14em] uppercase text-brand-accent mb-3">Design de interiores</p>
-          <p class="font-display font-extrabold text-brand-accent text-[1.5rem] mb-4">~10,5h/mês devolvidas</p>
-          <p class="text-[0.88rem] text-text-secondary leading-[1.6] mb-2"><strong class="text-text-primary">Situação:</strong> memorial de acabamento e orçamento comparativo são remontados do zero pra cada projeto, mesmo repetindo fornecedor e combinação de material.</p>
-          <p class="text-[0.88rem] text-text-secondary leading-[1.6]"><strong class="text-text-primary">A LARÔ.IA age:</strong> gera memorial e orçamento a partir de projetos e fornecedores já registrados.</p>
-        </div>
-        <div class="p-6 mt-auto">
-          <div class="flex justify-between text-[0.8rem] text-text-tertiary mb-1"><span>Sem sistema</span><span>~15h/mês</span></div>
-          <div class="flex justify-between text-[0.8rem] text-text-tertiary"><span>Com LARÔ.IA</span><span>~4,5h/mês</span></div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- DIFERENCIAIS -->
-  <section class="px-4 sm:px-6 md:px-12 py-16 md:py-24 border-t border-border-subtle bg-surface-overlay">
-    <p class="font-display font-bold text-[0.72rem] tracking-[0.22em] uppercase text-brand-accent mb-4 reveal">Diferenciais</p>
-    <h2 class="font-display font-extrabold text-[clamp(1.8rem,4vw,3rem)] mb-10 md:mb-14 reveal">Por que a LARÔ.IA?</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 reveal">
-      <div class="bg-surface-raised rounded-card border border-border-subtle p-6">
-        <p class="font-display font-bold text-[0.95rem] mb-2"><span class="text-brand-accent mr-2">01</span>Feita pro fluxo de projeto, não pra "escritório" em geral</p>
-        <p class="text-text-secondary text-[0.88rem] leading-[1.6]">Revisão, compatibilização, memorial, orçamento. A LARÔ.IA opera nos processos de arquitetura, engenharia e design de interiores, não numa planilha genérica adaptada.</p>
-      </div>
-      <div class="bg-surface-raised rounded-card border border-border-subtle p-6">
-        <p class="font-display font-bold text-[0.95rem] mb-2"><span class="text-brand-accent mr-2">02</span>Cada implementação nasce do seu diagnóstico</p>
-        <p class="text-text-secondary text-[0.88rem] leading-[1.6]">Não empurramos solução pronta. Mapeamos onde seu escritório perde tempo de verdade, e você decide o que faz sentido construir.</p>
-      </div>
-      <div class="bg-surface-raised rounded-card border border-border-subtle p-6">
-        <p class="font-display font-bold text-[0.95rem] mb-2"><span class="text-brand-accent mr-2">03</span>Do diagnóstico ao primeiro resultado em semanas</p>
-        <p class="text-text-secondary text-[0.88rem] leading-[1.6]">Não é projeto de consultoria de seis meses. O sistema entra em operação por etapa, começando pelo ponto de maior dreno.</p>
-      </div>
-      <div class="bg-surface-raised rounded-card border border-border-subtle p-6">
-        <p class="font-display font-bold text-[0.95rem] mb-2"><span class="text-brand-accent mr-2">04</span>Aponta o conflito, nunca decide o projeto</p>
-        <p class="text-text-secondary text-[0.88rem] leading-[1.6]">O sistema cruza dados, registra escopo e sinaliza o que passou do combinado. A decisão técnica e de projeto continua com você, sempre.</p>
-      </div>
-      <div class="bg-surface-raised rounded-card border border-border-subtle p-6">
-        <p class="font-display font-bold text-[0.95rem] mb-2"><span class="text-brand-accent mr-2">05</span>Não substitui seu processo. Organiza e acelera o que já funciona</p>
-        <p class="text-text-secondary text-[0.88rem] leading-[1.6]">Sem licença fechada, sem trocar de ferramenta de desenho. O sistema é construído em cima do seu fluxo atual e fica com você.</p>
-      </div>
-      <div class="bg-surface-raised rounded-card border border-border-subtle p-6">
-        <p class="font-display font-bold text-[0.95rem] mb-2"><span class="text-brand-accent mr-2">06</span>Sua equipe opera sozinha depois da entrega</p>
-        <p class="text-text-secondary text-[0.88rem] leading-[1.6]">Treinamento incluso e guia de operação escrito. O critério de sucesso é você não precisar da gente pra sempre.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- QUEM CONSTRÓI -->
-  <section class="px-4 sm:px-6 md:px-12 py-16 md:py-24 border-t border-border-subtle">
-    <div class="max-w-[760px] reveal">
-      <p class="font-display font-bold text-[0.72rem] tracking-[0.22em] uppercase text-brand-accent mb-6">Quem constrói</p>
-      <p class="text-text-secondary text-base leading-[1.8] mb-4">A LARÔ.IA é uma parceria entre a <strong class="text-text-primary font-semibold">Nebu Co.</strong> e a <strong class="text-text-primary font-semibold">Affectio</strong>. Em conversas com clientes de setores bem diferentes entre si, o mesmo padrão aparecia repetido: processo que só existia na memória de alguém, decisão que nunca virava registro, erro que só aparecia tarde demais. Primeiro em escritórios de psiquiatria, neurologia e atendimento a TEA. Depois em arquitetura, engenharia de compatibilização e design de interiores.</p>
-      <p class="text-text-secondary text-base leading-[1.8]">Perceber esse padrão se repetindo foi o que fez a dupla decidir construir um método replicável, em vez de resolver caso a caso: diagnóstico honesto, treinamento aplicado, sistema sob medida que fica com o cliente. Não é ferramenta de prateleira adaptada. É o mesmo processo, testado antes de chegar no seu escritório.</p>
-    </div>
-  </section>
-
-  <!-- CASO REAL -->
-  <section id="caso-real" class="px-4 sm:px-6 md:px-12 py-16 md:py-24 border-t border-border-subtle bg-surface-overlay">
-    <div class="max-w-[760px]">
-      <p class="font-display font-bold text-[0.72rem] tracking-[0.22em] uppercase text-brand-accent mb-4 reveal">Caso real</p>
-      <h2 class="font-display font-extrabold text-[clamp(1.8rem,4vw,3rem)] leading-[1.1] mb-6 reveal">
-        Uma obra em andamento já roda esse método.
-      </h2>
-      <p class="text-text-secondary text-base leading-[1.8] mb-4 reveal">
-        Um cliente que usa o Vobi pra gestão de obra precisava de duas coisas automatizadas: controle de prazo e memorial de acabamento. O agente cruza os dias corridos da obra com o prazo contratado e sugere o acabamento a partir do que já foi decidido em obras anteriores. A responsável confirma tudo, o sistema nunca decide sozinho.
-      </p>
-      <p class="text-text-secondary text-base leading-[1.8] mb-8 reveal">
-        Nesse caso, a conta ficou em torno de <strong class="text-brand-accent">3 horas devolvidas por mês, por obra ativa</strong>. Estimativa de rotina típica desse cliente, não medição validada em escala. Abaixo, o demonstrativo interativo real, direto na página.
-      </p>
-    </div>
-    <div class="max-w-[900px] rounded-card border border-border-subtle overflow-hidden reveal mb-8">
-      <div class="flex items-center gap-2 px-4 py-2.5 bg-surface-raised border-b border-border-subtle">
-        <span class="w-2.5 h-2.5 rounded-full bg-text-tertiary/40"></span>
-        <span class="w-2.5 h-2.5 rounded-full bg-text-tertiary/40"></span>
-        <span class="w-2.5 h-2.5 rounded-full bg-text-tertiary/40"></span>
-        <span class="ml-2 font-display text-[0.7rem] text-text-tertiary tracking-[0.05em] uppercase">demonstrativo_obra</span>
-      </div>
-      <iframe src="demonstrativo_obra.html" title="Demonstrativo interativo LARÔ.IA" class="w-full h-[600px] bg-surface-base" loading="lazy"></iframe>
-    </div>
-    <div class="max-w-[760px]">
-      <a href="demonstrativo_obra.html"
-         class="inline-flex items-center gap-2 font-display font-bold text-[0.85rem] tracking-[0.02em] no-underline uppercase
-                text-brand-accent border border-brand-accent px-6 py-3 rounded-pill
-                hover:bg-brand-accent hover:text-surface-base transition-colors duration-200 reveal">
-        Abrir em tela cheia →
-      </a>
-    </div>
-  </section>
-
-  <!-- INVESTIMENTO -->
-  <section id="investimento" class="px-4 sm:px-6 md:px-12 py-16 md:py-24 border-t border-border-subtle">
-    <div class="text-center max-w-[760px] mx-auto mb-12 md:mb-16">
-      <p class="font-display font-bold text-[0.72rem] tracking-[0.22em] uppercase text-brand-accent mb-4 reveal">Investimento</p>
-      <h2 class="font-display font-extrabold text-[clamp(1.8rem,4.5vw,3.2rem)] leading-[1.15] reveal">
-        Quanto vale destravar o tempo que seu escritório já perde?
-      </h2>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-[1000px] mx-auto reveal">
-
-      <!-- CARD PREÇO -->
-      <div class="relative bg-surface-raised rounded-card border border-brand-accent p-6 pt-8 flex flex-col">
-        <span class="absolute -top-3 left-6 px-3 py-1 rounded-pill bg-brand-accent text-surface-base font-display font-bold text-[0.65rem] tracking-[0.08em] uppercase">Primeiro passo</span>
-        <p class="font-display font-bold text-[0.7rem] tracking-[0.14em] uppercase text-text-tertiary mb-1">Diagnóstico + implementação</p>
-        <p class="font-display font-extrabold text-text-primary text-[1.2rem] mb-4">Treinamento aplicado</p>
-
-        <p class="text-text-secondary text-[0.76rem] mb-2">Valores a partir de</p>
-        <div class="grid grid-cols-2 gap-3 mb-3">
-          <div class="rounded-card border border-border-subtle p-4">
-            <p class="text-text-tertiary text-[0.64rem] uppercase tracking-[0.08em] mb-1">Treinamento</p>
-            <p class="font-display font-extrabold text-brand-accent text-[1.35rem] leading-none">R$ 497</p>
-          </div>
-          <div class="rounded-card border border-border-subtle p-4">
-            <p class="text-text-tertiary text-[0.64rem] uppercase tracking-[0.08em] mb-1">Desenvolvimento</p>
-            <p class="font-display font-extrabold text-brand-accent text-[1.35rem] leading-none">R$ 2.200</p>
-          </div>
-        </div>
-        <p class="text-text-tertiary text-[0.74rem] mb-6">Varia pela complexidade. Valor exato sai do diagnóstico gratuito.</p>
-
-        <div class="mt-auto flex flex-col gap-3">
-          <a href="diagnostico.html"
-             class="inline-flex items-center justify-center gap-2 bg-brand-accent hover:bg-brand-accent-h
-                    text-surface-base font-display font-bold text-[0.8rem] no-underline uppercase px-5 py-3 rounded-pill transition-colors duration-200">
-            Fazer o diagnóstico gratuito →
-          </a>
-          <a href="https://wa.me/5571996551316?text=Ol%C3%A1!%20Quero%20solicitar%20uma%20proposta%20da%20Lar%C3%B4.IA" target="_blank" rel="noopener"
-             class="text-center text-text-secondary text-[0.8rem] no-underline hover:text-text-primary transition-colors duration-200">
-             Solicitar proposta →
-          </a>
-        </div>
-      </div>
-
-      <!-- CARD ENTREGÁVEIS -->
-      <div class="bg-surface-overlay rounded-card border border-border-subtle p-8">
-        <p class="font-display font-bold text-[0.7rem] tracking-[0.14em] uppercase text-text-tertiary mb-2">Tudo que você leva</p>
-        <p class="font-display font-extrabold text-text-primary text-[1.3rem] mb-6">Diagnóstico, treinamento e sistema.</p>
-        <div class="space-y-5">
-          <div class="flex items-start gap-3">
-            <span class="shrink-0 w-5 h-5 rounded-full border border-brand-accent text-brand-accent flex items-center justify-center text-[0.6rem] mt-0.5">✓</span>
-            <div><p class="font-display font-bold text-[0.92rem]">Diagnóstico honesto</p><p class="text-text-secondary text-[0.85rem] mt-0.5">Mapeamento dos 3 pontos de maior dreno do seu escritório, priorizados.</p></div>
-          </div>
-          <div class="flex items-start gap-3">
-            <span class="shrink-0 w-5 h-5 rounded-full border border-brand-accent text-brand-accent flex items-center justify-center text-[0.6rem] mt-0.5">✓</span>
-            <div><p class="font-display font-bold text-[0.92rem]">Treinamento aplicado</p><p class="text-text-secondary text-[0.85rem] mt-0.5">IA prática, baseada nas lacunas reais da sua equipe.</p></div>
-          </div>
-          <div class="flex items-start gap-3">
-            <span class="shrink-0 w-5 h-5 rounded-full border border-brand-accent text-brand-accent flex items-center justify-center text-[0.6rem] mt-0.5">✓</span>
-            <div><p class="font-display font-bold text-[0.92rem]">Sistema sob medida</p><p class="text-text-secondary text-[0.85rem] mt-0.5">Controle de escopo, cruzamento de disciplinas, geração de memorial.</p></div>
-          </div>
-          <div class="flex items-start gap-3">
-            <span class="shrink-0 w-5 h-5 rounded-full border border-brand-accent text-brand-accent flex items-center justify-center text-[0.6rem] mt-0.5">✓</span>
-            <div><p class="font-display font-bold text-[0.92rem]">Guia de operação</p><p class="text-text-secondary text-[0.85rem] mt-0.5">Escrito, pra qualquer pessoa do escritório usar sem depender da gente.</p></div>
-          </div>
-          <div class="flex items-start gap-3">
-            <span class="shrink-0 w-5 h-5 rounded-full border border-brand-accent text-brand-accent flex items-center justify-center text-[0.6rem] mt-0.5">✓</span>
-            <div><p class="font-display font-bold text-[0.92rem]">Sem licença fechada</p><p class="text-text-secondary text-[0.85rem] mt-0.5">O sistema fica com você. Autonomia real é o critério de sucesso.</p></div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section id="faq" class="border-t border-border-subtle grid grid-cols-1 md:grid-cols-[380px_1fr] px-4 sm:px-6 md:px-12 py-16 md:py-24">
-    <div class="md:pr-12 mb-10 md:mb-0 reveal">
-      <h2 class="font-display font-extrabold uppercase tracking-[-0.02em] leading-[0.95] text-[clamp(1.8rem,4vw,3rem)]">
-        Perguntas que<br>sempre<br><span class="text-brand-accent">aparecem.</span>
-      </h2>
-    </div>
-    <div class="flex flex-col reveal">
-      <div class="faq-item border-b border-border-subtle py-5 cursor-pointer">
-        <div class="flex items-center justify-between gap-4">
-          <p class="font-display font-bold text-[0.9rem] sm:text-[0.95rem] uppercase tracking-[0.01em]">O sistema decide a solução técnica de compatibilização?</p>
-          <button type="button" class="faq-toggle shrink-0 w-6 h-6 rounded-full border border-brand-accent text-brand-accent flex items-center justify-center text-[0.8rem] font-bold leading-none" aria-expanded="false">+</button>
-        </div>
-        <div class="faq-a">
-          <p class="text-text-secondary text-[0.9rem] leading-[1.6] pt-4 max-w-[560px]">Não. Ele cruza os projetos e aponta o conflito. A decisão de engenharia continua sempre com o profissional responsável.</p>
-        </div>
-      </div>
-      <div class="faq-item border-b border-border-subtle py-5 cursor-pointer">
-        <div class="flex items-center justify-between gap-4">
-          <p class="font-display font-bold text-[0.9rem] sm:text-[0.95rem] uppercase tracking-[0.01em]">Preciso saber programar ou mexer em código?</p>
-          <button type="button" class="faq-toggle shrink-0 w-6 h-6 rounded-full border border-brand-accent text-brand-accent flex items-center justify-center text-[0.8rem] font-bold leading-none" aria-expanded="false">+</button>
-        </div>
-        <div class="faq-a">
-          <p class="text-text-secondary text-[0.9rem] leading-[1.6] pt-4 max-w-[560px]">Não. O treinamento é aplicado ao fluxo real da sua equipe, e o guia de operação vem pronto pra qualquer pessoa do escritório usar.</p>
-        </div>
-      </div>
-      <div class="faq-item border-b border-border-subtle py-5 cursor-pointer">
-        <div class="flex items-center justify-between gap-4">
-          <p class="font-display font-bold text-[0.9rem] sm:text-[0.95rem] uppercase tracking-[0.01em]">Quanto custa?</p>
-          <button type="button" class="faq-toggle shrink-0 w-6 h-6 rounded-full border border-brand-accent text-brand-accent flex items-center justify-center text-[0.8rem] font-bold leading-none" aria-expanded="false">+</button>
-        </div>
-        <div class="faq-a">
-          <p class="text-text-secondary text-[0.9rem] leading-[1.6] pt-4 max-w-[560px]">Treinamento aplicado a partir de R$ 497, desenvolvimento sob medida a partir de R$ 2.200, variando pela complexidade. O valor exato do seu escritório sai do diagnóstico, que é gratuito.</p>
-        </div>
-      </div>
-      <div class="faq-item border-b border-border-subtle py-5 cursor-pointer">
-        <div class="flex items-center justify-between gap-4">
-          <p class="font-display font-bold text-[0.9rem] sm:text-[0.95rem] uppercase tracking-[0.01em]">E se eu fizer o diagnóstico e decidir não seguir?</p>
-          <button type="button" class="faq-toggle shrink-0 w-6 h-6 rounded-full border border-brand-accent text-brand-accent flex items-center justify-center text-[0.8rem] font-bold leading-none" aria-expanded="false">+</button>
-        </div>
-        <div class="faq-a">
-          <p class="text-text-secondary text-[0.9rem] leading-[1.6] pt-4 max-w-[560px]">Sem problema. Nenhum compromisso financeiro é exigido antes da entrega do diagnóstico. Você sai com os pontos de maior dreno priorizados de qualquer forma.</p>
-        </div>
-      </div>
-      <div class="faq-item py-5 cursor-pointer">
-        <div class="flex items-center justify-between gap-4">
-          <p class="font-display font-bold text-[0.9rem] sm:text-[0.95rem] uppercase tracking-[0.01em]">O sistema substitui meu CAD ou BIM?</p>
-          <button type="button" class="faq-toggle shrink-0 w-6 h-6 rounded-full border border-brand-accent text-brand-accent flex items-center justify-center text-[0.8rem] font-bold leading-none" aria-expanded="false">+</button>
-        </div>
-        <div class="faq-a">
-          <p class="text-text-secondary text-[0.9rem] leading-[1.6] pt-4 max-w-[560px]">Não. A LARÔ.IA opera em cima do fluxo de gestão e controle do projeto, não da ferramenta de desenho.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA FINAL -->
-  <section id="cta" class="relative overflow-hidden px-4 sm:px-6 md:px-12 py-20 md:py-28 border-t border-border-subtle">
-    <img src="assets/laroia-symbol.svg" alt="" aria-hidden="true"
-         class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] sm:w-[760px] max-w-none opacity-[0.04] pointer-events-none select-none -z-10">
-    <img src="assets/laroia-symbol.svg" alt="" aria-hidden="true" class="h-10 w-auto mb-6 reveal">
-    <h2 class="font-display font-extrabold uppercase tracking-[-0.03em] leading-[0.95]
-               text-[clamp(2rem,6vw,4.5rem)] max-w-[900px] mb-8 reveal">
-      Descubra onde seu<br>escritório perde horas<span class="text-brand-accent"> que nunca<br> entram na proposta.</span>
-    </h2>
-    <p class="text-base text-text-secondary mb-8 reveal">Em 15 minutos, gratuito, você sai com os 3 pontos de maior dreno do seu escritório, priorizados.</p>
-    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 reveal reveal-delay-1">
-      <a href="diagnostico.html"
-         class="inline-flex items-center justify-center gap-2 bg-brand-accent hover:bg-brand-accent-h
-                text-surface-base font-display font-bold text-[0.95rem] no-underline uppercase px-6 py-4 rounded-pill transition-colors duration-200 sm:whitespace-nowrap sm:shrink-0">
-        Fazer o diagnóstico gratuito
-      </a>
-      <a href="https://wa.me/5571996551316?text=Ol%C3%A1!%20Quero%20solicitar%20uma%20proposta%20da%20Lar%C3%B4.IA" target="_blank" rel="noopener"
-         class="inline-flex items-center justify-center border border-border-default text-text-secondary
-                font-display font-semibold text-[0.9rem] no-underline uppercase px-6 py-4 rounded-pill
-                hover:text-text-primary hover:border-text-secondary transition-colors duration-200 sm:whitespace-nowrap sm:shrink-0">
-        Solicitar proposta
-      </a>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="px-4 sm:px-6 md:px-12 py-6 border-t border-border-subtle flex flex-col sm:flex-row justify-between items-start sm:items-center flex-wrap gap-3">
-    <div class="flex items-center gap-2">
-      <img src="assets/laroia-symbol.svg" alt="" aria-hidden="true" class="h-4 w-auto opacity-70">
-      <img src="assets/laroia-wordmark.svg" alt="LARÔ.IA" class="h-2.5 w-auto opacity-70">
-    </div>
-    <p class="text-[0.68rem] text-text-tertiary tracking-[0.14em] uppercase">Implementação de IA</p>
   </footer>
 
-  <!-- JS -->
-  <script>
-    const revealObs = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+  <a href="https://wa.me/5571996551316?text=Ol%C3%A1!%20Quero%20conhecer%20as%20solu%C3%A7%C3%B5es%20em%20IA%20da%20LAR%C3%94.IA." target="_blank" rel="noopener" class="wa-float" aria-label="Falar com a LARÔ.IA no WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 11.6a8.5 8.5 0 0 1-12.5 7.5L3.5 20.5l1.4-4.3a8.5 8.5 0 1 1 15.6-4.6Z"/><path d="M9 8.7c.2-.4.5-.6.9-.6h.4c.2 0 .4.1.5.4l.6 1.5c.1.2 0 .4-.1.6l-.5.6c.5 1 1.2 1.7 2.1 2.1l.6-.5c.2-.1.4-.2.6-.1l1.5.6c.3.1.4.3.4.5v.4c0 .4-.2.7-.6.9-.6.3-1.4.4-2.3 0-1.9-.8-3.4-2.3-4.2-4.2-.4-.9-.3-1.7.1-2.2Z"/></svg></a>
 
-    const navEl = document.getElementById('nav');
-    window.addEventListener('scroll', () => { navEl.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
-
-    document.querySelectorAll('.problema-toggle').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const item = btn.closest('.problema-item');
-        const isOpen = item.classList.toggle('open');
-        btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      });
-    });
-
-    document.querySelectorAll('.faq-item').forEach(item => {
-      item.addEventListener('click', () => {
-        const btn = item.querySelector('.faq-toggle');
-        const isOpen = item.classList.toggle('open');
-        btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      });
-    });
-  </script>
-
+  <script src="assets/main.js"></script>
 </body>
 </html>

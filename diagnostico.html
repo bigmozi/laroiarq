@@ -1,216 +1,182 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Diagnóstico gratuito · LARÔ.IA</title>
-  <meta name="description" content="Diagnóstico gratuito de 15 a 20 minutos pra escritórios de arquitetura, engenharia de compatibilização e design de interiores. Sem compromisso." />
+  <title>Diagnóstico gratuito · LARÔ.IA Soluções em IA</title>
+  <meta name="description" content="Diagnóstico gratuito de 15 a 20 minutos pra escritórios de arquitetura, engenharia de compatibilização e design de interiores. Você sai sabendo quais agentes de IA resolvem o seu caso." />
+  <meta name="theme-color" content="#0b0b0b" />
   <meta property="og:title" content="Diagnóstico gratuito · LARÔ.IA" />
   <meta property="og:description" content="Mapeamos onde seu escritório perde tempo e dinheiro. Você sai com uma lista priorizada, sem compromisso." />
   <meta property="og:locale" content="pt_BR" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="icon" type="image/svg+xml" href="assets/laroia-symbol.svg" />
-  <link rel="stylesheet" href="assets/tokens.css">
-
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="assets/tailwind.config.js"></script>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" href="assets/fonts/BDOGrotesk-VF.woff2" as="font" type="font/woff2" crossorigin>
+
+  <link rel="stylesheet" href="assets/tokens.css">
+  <link rel="stylesheet" href="assets/style.css">
 </head>
 
-<body class="font-body bg-surface-base text-text-primary text-lg leading-relaxed antialiased overflow-x-hidden">
+<body>
+
+  <!-- Marca LARÔ.IA: o desenho mora aqui, a cor vem do CSS (--color-logo). Tridente simétrico, sem a haste de baixo. -->
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <symbol id="laroia-simbolo" viewBox="409.3 150.5 256 309.5">
+      <path d="M417.2,254.6l21,11.2,1.3,2.4.2,93.2c1.6,17.6,23,15.8,25,.8.9-6.6-1.4-13.5-3.6-19.6s-4.1-7.7-5-10.6.2-1.7,1.3-1.3,11.1,12.4,12.5,14.3c11.5,14.7,18.8,28.4,19.9,47.4.3,4.5,1.1,24.1-2.6,26s-2.3.7-3.5,0l-64.4-64.3c-.6-.9-2.1-4-2.1-4.8v-94.6Z"/>
+      <path transform="matrix(-1 0 0 1 1074.6 0)" d="M417.2,254.6l21,11.2,1.3,2.4.2,93.2c1.6,17.6,23,15.8,25,.8.9-6.6-1.4-13.5-3.6-19.6s-4.1-7.7-5-10.6.2-1.7,1.3-1.3,11.1,12.4,12.5,14.3c11.5,14.7,18.8,28.4,19.9,47.4.3,4.5,1.1,24.1-2.6,26s-2.3.7-3.5,0l-64.4-64.3c-.6-.9-2.1-4-2.1-4.8v-94.6Z"/>
+      <path d="M520.1,430V377.5C520.1,375.5 520.9,373.6 521,371.5C522.4,319.8 524.6,266.7 529.6,215.1C531.1,199.5 532.8,181.1 535.7,165.9C536.4,162.4 536.9,160.2 537.3,158.5C537.7,160.2 538.2,162.4 538.9,165.9C541.8,181.1 543.5,199.5 545,215.1C550,266.7 552.2,319.8 553.6,371.5C553.7,373.6 554.5,375.5 554.5,377.5V430L537.3,452Z"/>
+    </symbol>
+    <symbol id="laroia-wordmark" viewBox="45 572 1000 233">
+      <path d="M491.1,627.7c49.7,5.3,60.1,64.7,14.8,84.8l-17.9,5c3.2.6,7.9,2.6,10.7,4.5,12.7,8.7,25.2,38.3,35.3,52s11.1,12.6,18,17.9c-20.6,6.4-42,4.7-60.4-6.5s-32.1-38.8-47-60.1c-2.2-3.2-5.6-6.2-7.5-8.9s-1.2-.9-.8-2.2c27.3,2,50.8-21.8,42.1-49.4-5.8-18.3-24-25.2-41.7-25.8-2.6,0-4.8,1.8-7.3,0-.7.7,4.3,6.2,4.3,8.2v146.4h-53.6v-165.9h111Z"/>
+      <path d="M1034,793.6h-187.5v-18.6c0-2.6,2-9.7,2.8-12.7,8.7-32.7,33.9-55.6,61.9-72.4,3.2,5.2-1.9,7.8-4.5,12.4-13.3,23.9-10.6,54.3,10.1,73.2,17.6,16,52.3,16.1,45.8-14.7l-57.4-133.1h63.5l65.2,165.9Z"/>
+      <path d="M309.2,627.7l66.5,165.9h-174.5c-6.4-41.7,17.7-82.2,53.1-102.8,3.3,4.2-1.7,8.7-3.4,13-9,23.2-6.5,53.7,12.1,71.7,17.5,16.9,51.4,15.2,39.1-15.8l-55.9-131.9h63.1Z"/>
+      <path d="M112.3,627.7v144.7c0,2.8-2.4,7-4.3,9.1h13.4c3.6,0,15.6-4,19.4-5.6,18.6-7.6,32.4-22.4,46.7-35.8v53.6H57v-165.9h55.3Z"/>
+      <rect x="780" y="627.7" width="53.6" height="165.9"/>
+      <path d="M636.6,794.4c13.9-10.4,19.3-26.7,23.1-43,7.2-31.4,6.9-74-6.2-103.8-3.6-8.2-8.8-17.3-16.8-21.6-.2-1.4,1.2-.8,2.1-.8,27.6-1.6,58.3,20.5,70.6,44.3,28.5,55.3-9.5,125-72.7,125Z"/>
+      <path d="M632.3,625.1l-6.5,4.3c-22.1,28.5-25.2,74.5-20.1,109.2s8.9,43.6,25.8,55.4c-32.6,1.6-64.2-22-76-51.8-21.8-55.1,16.7-117.5,76.9-117.1Z"/>
+      <path d="M736.6,754.1c30.3-5.2,33,41.4,3.2,41.1s-26.2-37.1-3.2-41.1Z"/>
+      <path d="M667.7,608.7l-11.2-.5-22.1-14.8-23.7,14.9-10.4.4,24.2-29.8c4-.3,18.8-1.5,21.1.4l22,29.4Z"/>
+    </symbol>
+  </svg>
 
   <!-- NAV -->
-  <nav id="nav"
-    class="fixed top-0 inset-x-0 z-[200] flex justify-between items-center
-           px-4 sm:px-6 md:px-8 h-[60px]
-           bg-black/[.8] backdrop-blur-[16px]
-           border-b border-transparent transition-[border-color] duration-300">
-    <a href="index.html" class="inline-flex items-center gap-2 no-underline">
-      <img src="assets/laroia-symbol.svg" alt="" aria-hidden="true" class="h-6 w-auto">
-      <img src="assets/laroia-wordmark.svg" alt="LARÔ.IA" class="h-4 w-auto">
-    </a>
-    <span class="font-display font-bold text-[0.62rem] tracking-[0.14em] uppercase text-text-tertiary hidden sm:block">
-      Diagnóstico gratuito · 15 a 20 min
-    </span>
+  <nav id="nav" class="nav" aria-label="Principal">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__brand" aria-label="LARÔ.IA Soluções em IA, voltar ao início">
+        <span class="nav__brand-mark">
+          <svg class="logo logo--simbolo" aria-hidden="true"><use href="#laroia-simbolo"/></svg>
+          <svg class="logo logo--wordmark" role="img" aria-label="LARÔ.IA"><use href="#laroia-wordmark"/></svg>
+        </span>
+        <span class="nav__tag">Soluções<br>em IA</span>
+      </a>
+      <span class="nav__meta">Diagnóstico gratuito · 15 a 20 min</span>
+    </div>
   </nav>
 
-  <!-- HERO -->
-  <section class="min-h-svh px-4 sm:px-6 md:px-12 pt-24 pb-16 flex flex-col justify-center max-w-[1000px]">
-    <p class="font-display font-bold text-[0.72rem] tracking-[0.22em] uppercase text-brand-accent mb-6 reveal">Implementação de IA · Arquitetura</p>
-    <h1 class="font-display font-extrabold uppercase tracking-[-0.03em] leading-[0.95]
-               text-[clamp(2.2rem,6vw,4.6rem)] mb-8 reveal">
-      Descubra onde <br>seu escritório<br>
-      <span class="text-brand-accent">perde tempo <br>e dinheiro.</span>
-    </h1>
-    <p class="text-base text-text-secondary leading-[1.7] max-w-[620px] mb-8 reveal reveal-delay-1">
-      Uma conversa de 15 a 20 minutos, sem custo e sem compromisso. Você sai com uma lista priorizada dos pontos onde revisão sem controle, compatibilização manual ou memorial repetido estão custando mais caro do que parece.
-    </p>
-    <div class="reveal reveal-delay-2">
-      <a href="#form"
-         class="inline-flex items-center justify-center gap-2 bg-brand-accent hover:bg-brand-accent-h
-                text-surface-base font-display font-bold text-[0.95rem] tracking-[0.02em] no-underline
-                px-6 py-4 rounded-pill transition-colors duration-200">
-        Quero meu diagnóstico →
-      </a>
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <p class="hero__pill reveal">Diagnóstico gratuito · arquitetura, engenharia e interiores</p>
+        <h1 class="hero__title reveal">Descubra onde seu escritório <span class="text-highlight">perde tempo e dinheiro.</span></h1>
+        <p class="hero__lead reveal reveal--d1">Uma conversa de 15 a 20 minutos, sem custo e sem compromisso. Você sai com uma lista priorizada dos pontos onde revisão sem controle, compatibilização manual ou memorial repetido estão custando mais caro do que parece, e com os agentes que resolvem cada um.</p>
+        <div class="hero__ctas reveal reveal--d2">
+          <a href="#form" class="btn btn--primary">Quero meu diagnóstico <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- O QUE ACONTECE -->
+    <section class="section">
+      <div class="container">
+        <div class="section__head">
+          <p class="eyebrow reveal">O que acontece nessa conversa</p>
+          <h2 class="h2 reveal">Sem apresentação de slide.<br>Sem venda empurrada.</h2>
+        </div>
+        <div class="cards-3 reveal">
+          <div class="card">
+            <p class="card__num">01</p>
+            <p class="card__title">Você conta o fluxo real</p>
+            <p>Como uma revisão de cliente, uma compatibilização entre disciplinas ou um memorial acontece hoje no seu escritório, do jeito que é, sem maquiar.</p>
+          </div>
+          <div class="card">
+            <p class="card__num">02</p>
+            <p class="card__title">Mapeamos junto onde trava</p>
+            <p>Identificamos os pontos de maior dreno de tempo e risco, com base no que você já vive, sem benchmark genérico de mercado.</p>
+          </div>
+          <div class="card">
+            <p class="card__num">03</p>
+            <p class="card__title">Você recebe a lista priorizada</p>
+            <p>Com os agentes que resolvem cada ponto e sem obrigação de contratar nada depois. Se fizer sentido seguir, aí sim falamos de investimento.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRA QUEM É / NÃO É -->
+    <section class="section section--alt">
+      <div class="container">
+        <div class="section__head section__head--center">
+          <p class="eyebrow reveal">Antes de agendar</p>
+          <h2 class="h2 reveal">Pra você <span class="text-accent">ou não</span> é.</h2>
+        </div>
+        <div class="fit reveal">
+          <div class="fit__col">
+            <div class="fit__head"><p class="label-sm">Não é pra você se</p></div>
+            <p class="fit__row"><span class="fit__mark" aria-hidden="true">✗</span>Quer que a IA decida a solução técnica ou de projeto no seu lugar</p>
+            <p class="fit__row"><span class="fit__mark" aria-hidden="true">✗</span>É construtora ou incorporadora de grande porte</p>
+            <p class="fit__row"><span class="fit__mark" aria-hidden="true">✗</span>Procura curso genérico de "IA pra escritório"</p>
+            <p class="fit__row"><span class="fit__mark" aria-hidden="true">✗</span>Quer atalho sem participar da conversa de diagnóstico</p>
+          </div>
+          <div class="fit__col fit__col--yes">
+            <div class="fit__head"><p class="label-sm">É pra você se</p></div>
+            <p class="fit__row"><span class="fit__mark" aria-hidden="true">✓</span>É arquiteto, engenheiro de compatibilização ou dono de estúdio de design de interiores</p>
+            <p class="fit__row"><span class="fit__mark" aria-hidden="true">✓</span>Sente que revisão fora de escopo, conflito entre disciplinas ou memorial repetido consomem tempo que deveria ir pro projeto</p>
+            <p class="fit__row"><span class="fit__mark" aria-hidden="true">✓</span>Já tentou ChatGPT genérico e travou depois de duas semanas</p>
+            <p class="fit__row"><span class="fit__mark" aria-hidden="true">✓</span>Topa separar 15 a 20 minutos antes de pedir qualquer orçamento fechado</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORM -->
+    <section id="form" class="section">
+      <div class="container">
+        <div class="section__head">
+          <p class="eyebrow reveal">Agendar</p>
+          <h2 class="h2 reveal">Três perguntas rápidas, e te chamamos no WhatsApp.</h2>
+          <p class="lead reveal">Isso só ajuda a chegar na conversa já sabendo por onde começar.</p>
+        </div>
+
+        <form id="diagnostico-form" class="form reveal">
+          <div>
+            <label for="nome">Seu nome</label>
+            <input type="text" id="nome" name="nome" placeholder="Como você se chama" autocomplete="name" required>
+          </div>
+          <div>
+            <label for="escritorio">Escritório ou estúdio</label>
+            <input type="text" id="escritorio" name="escritorio" placeholder="Nome do escritório" autocomplete="organization">
+          </div>
+          <div>
+            <label for="especialidade">Especialidade</label>
+            <select id="especialidade" name="especialidade" required>
+              <option value="" disabled selected>Selecione</option>
+              <option value="Arquitetura">Arquitetura</option>
+              <option value="Engenharia de compatibilização">Engenharia de compatibilização</option>
+              <option value="Design de interiores">Design de interiores</option>
+              <option value="Outro">Outro</option>
+            </select>
+          </div>
+          <div>
+            <label for="dor">O que mais rouba seu tempo hoje?</label>
+            <textarea id="dor" name="dor" rows="3" placeholder="Ex: revisão sem controle, conflito de compatibilização, memorial repetido..."></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary btn--block">Quero meu diagnóstico gratuito <span aria-hidden="true">→</span></button>
+          <p class="form__hint">Ao enviar, você abre o WhatsApp com os dados preenchidos. Nada é salvo sem você mandar.</p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer class="footer footer--compact">
+    <div class="container footer__bottom">
+      <span class="nav__brand-mark">
+        <svg class="logo logo--simbolo" aria-hidden="true"><use href="#laroia-simbolo"/></svg>
+        <svg class="logo logo--wordmark" role="img" aria-label="LARÔ.IA"><use href="#laroia-wordmark"/></svg>
+      </span>
+      <a href="index.html" class="footer__back">← Voltar pra LARÔ.IA</a>
     </div>
-  </section>
-
-  <!-- O QUE ACONTECE -->
-  <section class="px-4 sm:px-6 md:px-12 py-16 md:py-24 border-t border-border-subtle">
-    <p class="font-display font-bold text-[0.72rem] tracking-[0.22em] uppercase text-brand-accent mb-4 reveal">O que acontece nessa conversa</p>
-    <h2 class="font-display font-extrabold text-[clamp(1.6rem,3.6vw,2.6rem)] leading-[1.1] mb-10 md:mb-14 max-w-[760px] reveal">
-      Sem apresentação de slide.<br>Sem venda empurrada.
-    </h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 reveal">
-      <div class="bg-surface-raised rounded-card border border-border-subtle p-6">
-        <span class="font-display font-extrabold text-brand-accent text-[1.3rem]">01</span>
-        <p class="font-display font-bold text-[1rem] mt-3 mb-2">Você conta o fluxo real</p>
-        <p class="text-text-secondary text-[0.88rem] leading-[1.6]">Como uma revisão de cliente, uma compatibilização entre disciplinas ou um memorial acontece hoje no seu escritório, do jeito que é, não do jeito ideal.</p>
-      </div>
-      <div class="bg-surface-raised rounded-card border border-border-subtle p-6">
-        <span class="font-display font-extrabold text-brand-accent text-[1.3rem]">02</span>
-        <p class="font-display font-bold text-[1rem] mt-3 mb-2">Mapeamos junto onde trava</p>
-        <p class="text-text-secondary text-[0.88rem] leading-[1.6]">Identificamos os pontos de maior dreno de tempo e risco, com base no que você já vive, não em benchmark genérico de mercado.</p>
-      </div>
-      <div class="bg-surface-raised rounded-card border border-border-subtle p-6">
-        <span class="font-display font-extrabold text-brand-accent text-[1.3rem]">03</span>
-        <p class="font-display font-bold text-[1rem] mt-3 mb-2">Você recebe a lista priorizada</p>
-        <p class="text-text-secondary text-[0.88rem] leading-[1.6]">Sem obrigação de contratar nada depois. Se fizer sentido seguir pro treinamento ou desenvolvimento sob medida, aí sim falamos de investimento.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRA QUEM É / NÃO É -->
-  <section class="px-4 sm:px-6 md:px-12 py-16 md:py-24 border-t border-border-subtle bg-surface-overlay text-center">
-    <p class="font-display font-bold text-[0.72rem] tracking-[0.22em] uppercase text-brand-accent mb-4 reveal">Antes de agendar</p>
-    <h2 class="font-display font-extrabold uppercase tracking-[-0.02em] leading-[0.95] text-[clamp(1.8rem,4.5vw,3.2rem)] mb-10 md:mb-14 reveal">
-      Pra você <span class="text-brand-accent">ou não</span> é.
-    </h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 rounded-card border border-border-subtle overflow-hidden max-w-[1100px] mx-auto reveal">
-      <div class="border-b md:border-b-0 md:border-r border-border-subtle">
-        <div class="px-6 py-4 border-b border-border-subtle bg-surface-base">
-          <p class="font-display font-bold text-[0.68rem] tracking-[0.14em] uppercase text-text-tertiary">Não é pra você se</p>
-        </div>
-        <div class="flex flex-col items-center gap-2 px-6 py-5 border-b border-border-subtle hover:bg-white/[.03] transition-colors">
-          <span class="text-text-tertiary">✗</span>
-          <p class="text-[0.9rem] text-text-secondary leading-[1.5]">Quer que a IA decida a solução técnica ou de projeto no seu lugar</p>
-        </div>
-        <div class="flex flex-col items-center gap-2 px-6 py-5 border-b border-border-subtle hover:bg-white/[.03] transition-colors">
-          <span class="text-text-tertiary">✗</span>
-          <p class="text-[0.9rem] text-text-secondary leading-[1.5]">É construtora ou incorporadora de grande porte</p>
-        </div>
-        <div class="flex flex-col items-center gap-2 px-6 py-5 border-b border-border-subtle hover:bg-white/[.03] transition-colors">
-          <span class="text-text-tertiary">✗</span>
-          <p class="text-[0.9rem] text-text-secondary leading-[1.5]">Procura curso genérico de "IA pra escritório"</p>
-        </div>
-        <div class="flex flex-col items-center gap-2 px-6 py-5 hover:bg-white/[.03] transition-colors">
-          <span class="text-text-tertiary">✗</span>
-          <p class="text-[0.9rem] text-text-secondary leading-[1.5]">Quer atalho sem participar da conversa de diagnóstico</p>
-        </div>
-      </div>
-      <div>
-        <div class="px-6 py-4 border-b border-border-subtle bg-surface-base">
-          <p class="font-display font-bold text-[0.68rem] tracking-[0.14em] uppercase text-brand-accent">É pra você se</p>
-        </div>
-        <div class="flex flex-col items-center gap-2 px-6 py-5 border-b border-border-subtle hover:bg-white/[.03] transition-colors">
-          <span class="text-brand-accent">✓</span>
-          <p class="text-[0.9rem] text-text-secondary leading-[1.5]">É arquiteto, engenheiro de compatibilização ou dono de estúdio de design de interiores</p>
-        </div>
-        <div class="flex flex-col items-center gap-2 px-6 py-5 border-b border-border-subtle hover:bg-white/[.03] transition-colors">
-          <span class="text-brand-accent">✓</span>
-          <p class="text-[0.9rem] text-text-secondary leading-[1.5]">Sente que revisão fora de escopo, conflito entre disciplinas ou memorial repetido consomem tempo que deveria ir pro projeto</p>
-        </div>
-        <div class="flex flex-col items-center gap-2 px-6 py-5 border-b border-border-subtle hover:bg-white/[.03] transition-colors">
-          <span class="text-brand-accent">✓</span>
-          <p class="text-[0.9rem] text-text-secondary leading-[1.5]">Já tentou ChatGPT genérico e travou depois de duas semanas</p>
-        </div>
-        <div class="flex flex-col items-center gap-2 px-6 py-5 hover:bg-white/[.03] transition-colors">
-          <span class="text-brand-accent">✓</span>
-          <p class="text-[0.9rem] text-text-secondary leading-[1.5]">Topa separar 15 a 20 minutos antes de pedir qualquer orçamento fechado</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FORM -->
-  <section id="form" class="px-4 sm:px-6 md:px-12 py-20 md:py-28 border-t border-border-subtle max-w-[640px]">
-    <p class="font-display font-bold text-[0.72rem] tracking-[0.22em] uppercase text-brand-accent mb-4 reveal">Agendar</p>
-    <h2 class="font-display font-extrabold text-[clamp(1.8rem,4vw,2.8rem)] leading-[1.1] mb-4 reveal">
-      Três perguntas rápidas, e te chamo no WhatsApp.
-    </h2>
-    <p class="text-text-secondary text-[0.9rem] mb-10 reveal">Isso só ajuda a chegar na conversa já sabendo por onde começar. Não é formulário burocrático.</p>
-
-    <form id="diagnostico-form" class="space-y-6 reveal">
-      <div>
-        <label for="nome">Seu nome</label>
-        <input type="text" id="nome" name="nome" placeholder="Como você se chama" required>
-      </div>
-      <div>
-        <label for="escritorio">Escritório ou estúdio</label>
-        <input type="text" id="escritorio" name="escritorio" placeholder="Nome do escritório">
-      </div>
-      <div>
-        <label for="especialidade">Especialidade</label>
-        <select id="especialidade" name="especialidade" required>
-          <option value="" disabled selected>Selecione</option>
-          <option value="Arquitetura">Arquitetura</option>
-          <option value="Engenharia de compatibilização">Engenharia de compatibilização</option>
-          <option value="Design de interiores">Design de interiores</option>
-          <option value="Outro">Outro</option>
-        </select>
-      </div>
-      <div>
-        <label for="dor">O que mais rouba seu tempo hoje?</label>
-        <textarea id="dor" name="dor" rows="3" placeholder="Ex: revisão sem controle, conflito de compatibilização, memorial repetido..."></textarea>
-      </div>
-      <button type="submit"
-        class="w-full inline-flex items-center justify-center gap-2 bg-brand-accent hover:bg-brand-accent-h
-               text-surface-base font-display font-bold text-[0.95rem] tracking-[0.02em] no-underline
-               px-6 py-4 rounded-pill transition-colors duration-200 border-0 cursor-pointer">
-        Quero meu diagnóstico gratuito →
-      </button>
-      <p class="text-text-tertiary text-[0.72rem] text-center">Ao enviar, você abre o WhatsApp com os dados preenchidos. Nada é salvo sem você mandar.</p>
-    </form>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="px-4 sm:px-6 md:px-12 py-6 border-t border-border-subtle flex flex-col sm:flex-row justify-between items-start sm:items-center flex-wrap gap-3">
-    <div class="flex items-center gap-2">
-      <img src="assets/laroia-symbol.svg" alt="" aria-hidden="true" class="h-4 w-auto opacity-70">
-      <img src="assets/laroia-wordmark.svg" alt="LARÔ.IA" class="h-2.5 w-auto opacity-70">
-    </div>
-    <a href="index.html" class="text-[0.68rem] text-text-tertiary tracking-[0.14em] uppercase no-underline hover:text-text-secondary">← Voltar pra LARÔ.IA</a>
   </footer>
 
-  <!-- JS -->
-  <script>
-    const revealObs = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
-
-    const navEl = document.getElementById('nav');
-    window.addEventListener('scroll', () => { navEl.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
-
-    document.getElementById('diagnostico-form').addEventListener('submit', function (e) {
-      e.preventDefault();
-      const nome = document.getElementById('nome').value.trim();
-      const escritorio = document.getElementById('escritorio').value.trim();
-      const especialidade = document.getElementById('especialidade').value;
-      const dor = document.getElementById('dor').value.trim();
-
-      let msg = `Olá! Sou ${nome}`;
-      if (escritorio) msg += `, do escritório ${escritorio}`;
-      msg += `. Área: ${especialidade}.`;
-      if (dor) msg += ` O que mais rouba meu tempo hoje: ${dor}.`;
-      msg += ' Quero agendar o diagnóstico gratuito da LARÔ.IA.';
-
-      const url = `https://wa.me/5571996551316?text=${encodeURIComponent(msg)}`;
-      window.open(url, '_blank', 'noopener');
-    });
-  </script>
+  <script src="assets/main.js"></script>
+  <script src="assets/diagnostico.js"></script>
 
 </body>
 </html>

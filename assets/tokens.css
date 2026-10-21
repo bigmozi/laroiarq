@@ -1,94 +1,253 @@
-/* LARÔ.IA — design tokens e estilos compartilhados
-   Usado por index.html, diagnostico.html e demonstrativo_obra.html.
-   Os valores aqui são a fonte única de verdade; o tailwind.config de cada
-   página só referencia essas variáveis (var(--color-...) etc.), nunca hex direto. */
+/* LARÔ.IA Soluções em IA — design tokens
+   Duas camadas:
+   1. Primitivos (--laro-*): a paleta crua da marca. Só este arquivo usa.
+   2. Semânticos (--color-*, --space-*, --text-* etc.): o que cada valor significa.
+      style.css e as páginas usam só esta camada, nunca hex nem primitivo direto.
+   Pra trocar o tema, mexe nos semânticos. Pra trocar a paleta, mexe nos primitivos.
+   Ficam fora dos tokens, por limite da plataforma: os breakpoints (@media não lê var())
+   e o <meta name="theme-color"> de cada HTML, que repete --laro-black-950 em hex. */
+
+/* BDO Grotesk, variável (peso 300 a 900). Licença OFL em fonts/OFL.txt.
+   Arquivo oficial do LCTipografi/BDO-Grotesk, recortado pra latim e acentos do português. */
+@font-face {
+  font-family: "BDO Grotesk";
+  src: url("fonts/BDOGrotesk-VF.woff2") format("woff2");
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
-  /* Superfícies */
-  --color-surface-base: #0b0b0b;
-  --color-surface-raised: #141414;
-  --color-surface-overlay: #1a1a1a;
+  /* ── 1. PRIMITIVOS ─────────────────────────────────────────── */
+  --laro-black-950: #0b0b0b;
+  --laro-black-900: #141414;
+  --laro-black-850: #1a1a1a;
+  --laro-black-800: #1f1f1f;
+  --laro-black-700: #2f2f2f;
+  --laro-stone-500: #67655e;
+  --laro-stone-300: #9a9890;
+  --laro-bone-50: #f5f3ef;
+  --laro-gold-600: #8f7140;
+  --laro-gold-500: #b08d4f;
+  --laro-gold-300: #d9bd86;
+  --laro-sand-200: #d0d3c8;
+  --laro-green-500: #2ecc71;
+  --laro-yellow-500: #e8b02c;
+  --laro-whatsapp-500: #25d366;
 
-  /* Bordas */
-  --color-border-subtle: #1f1f1f;
-  --color-border-default: #2f2f2f;
+  /* ── 2. SEMÂNTICOS · COR ───────────────────────────────────── */
+  /* Fundo */
+  --color-bg-page: var(--laro-black-950);
+  --color-bg-surface: var(--laro-black-900);
+  --color-bg-surface-alt: var(--laro-black-850);
+  --color-bg-nav: rgb(11 11 11 / 0.82);
+  --color-bg-hover: rgb(255 255 255 / 0.03);
+
+  /* Borda */
+  --color-border-subtle: var(--laro-black-800);
+  --color-border-default: var(--laro-black-700);
+  --color-border-accent: var(--laro-gold-500);
 
   /* Texto */
-  --color-text-primary: #f5f3ef;
-  --color-text-secondary: #9a9890;
-  --color-text-tertiary: #67655e;
+  --color-text-primary: var(--laro-bone-50);
+  --color-text-secondary: var(--laro-stone-300);
+  --color-text-tertiary: var(--laro-stone-500);
+  --color-text-on-accent: var(--laro-black-950);
+  --color-text-highlight: var(--laro-gold-300);
+  --color-text-display-muted: var(--laro-stone-300);
+  --color-text-display: var(--laro-bone-50);
 
-  /* Marca */
-  --color-brand-accent: #b08d4f;
-  --color-brand-accent-hover: #8f7140;
-  --color-brand-sand: #d0d3c8;
-  --color-brand-green: #2ecc71;
-  --color-brand-yellow: #e8b02c;
+  /* Marca: o desenho do tridente e do LARÔ.IA mora no HTML, a cor vem daqui */
+  --color-logo: var(--laro-bone-50);
 
-  /* Tipografia */
-  --font-display: "Sora", sans-serif;
-  --font-body: "Inter", sans-serif;
+  /* Ação e destaque */
+  --color-accent: var(--laro-gold-500);
+  --color-accent-hover: var(--laro-gold-600);
+  --color-accent-strong: var(--laro-gold-300);
+  --color-accent-soft: rgb(176 141 79 / 0.12);
+  --color-accent-line: rgb(176 141 79 / 0.35);
+  --color-accent-glow: rgb(176 141 79 / 0.18);
+  --color-glyph: var(--laro-gold-500);
 
-  /* Raio */
-  --radius-card: 18px;
-  --radius-card-sm: 10px;
+  /* Status (severidade dos problemas e simulação de obra) */
+  --color-status-ok: var(--laro-green-500);
+  --color-status-ok-soft: rgb(46 204 113 / 0.14);
+  --color-status-warn: var(--laro-yellow-500);
+  --color-status-warn-soft: rgb(232 176 44 / 0.14);
+  --color-status-risk: var(--laro-gold-500);
+  --color-status-risk-soft: rgb(176 141 79 / 0.16);
+  --color-status-neutral: var(--laro-sand-200);
+  --color-status-neutral-soft: rgb(208 211 200 / 0.12);
+
+  /* Hero da home: palavra gigante e grafo dos agentes */
+  --color-grid-dot: rgb(255 255 255 / 0.09);
+  --color-node-fill: rgb(176 141 79 / 0.14);
+  --color-node-fill-lit: rgb(176 141 79 / 0.32);
+  --color-node-border: rgb(176 141 79 / 0.55);
+  --color-edge: rgb(255 255 255 / 0.08);
+  --color-edge-active: var(--laro-gold-300);
+  --opacity-graph-dim: 0.1;
+  --opacity-edge-active: 0.45;
+
+  /* Canal externo */
+  --color-whatsapp: var(--laro-whatsapp-500);
+
+  /* Gradientes (só em fundo; texto é sempre cor chapada) */
+  --gradient-accent-fill: linear-gradient(135deg, var(--laro-gold-300) 0%, var(--laro-gold-500) 100%);
+  --gradient-hero-glow:
+    radial-gradient(60% 55% at 78% 40%, rgb(176 141 79 / 0.14) 0%, transparent 70%),
+    radial-gradient(45% 40% at 10% 10%, rgb(208 211 200 / 0.05) 0%, transparent 70%);
+  --gradient-section-glow: radial-gradient(50% 60% at 50% 0%, rgb(176 141 79 / 0.08) 0%, transparent 75%);
+  /* Véu de leitura do hero: escurece de leve o miolo atrás do texto e some nas bordas,
+     pra linha do grafo continuar aparecendo como sombra através do borrão. */
+  --gradient-hero-veil: radial-gradient(60% 58% at 50% 48%, rgb(8 8 8 / 0.62) 0%, rgb(8 8 8 / 0.34) 55%, transparent 100%);
+  --mask-hero-veil: radial-gradient(68% 62% at 50% 48%, #000 40%, rgb(0 0 0 / 0.55) 70%, transparent 100%);
+  /* Textura do nó de área aceso: hachura fina na cor da marca */
+  --gradient-node-texture: repeating-linear-gradient(135deg, rgb(255 255 255 / 0.22) 0 1px, transparent 1px 5px);
+
+  /* ── 2. SEMÂNTICOS · TIPOGRAFIA ────────────────────────────── */
+  --font-display: "BDO Grotesk", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+
+  --text-3xs: 0.6rem;
+  --text-2xs: 0.65rem;
+  --text-xs: 0.72rem;
+  --text-caption: 0.8rem;
+  --text-sm: 0.875rem;
+  --text-ui: 0.92rem;
+  --text-body-sm: 0.95rem;
+  --text-base: 1rem;
+  --text-md: 1.0625rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.5rem;
+  --text-h3: 1.15rem;
+  --text-title: 1.3rem;
+  --text-closing: clamp(1.1rem, 2vw, 1.3rem);
+  --text-banner: clamp(1.2rem, 2.4vw, 1.6rem);
+  --text-h1-page: clamp(1.9rem, 5vw, 3.2rem);
+  --text-stat: clamp(2.4rem, 6vw, 3.6rem);
+  --text-h2: clamp(1.8rem, 4vw, 2.9rem);
+  --text-h1: clamp(2.3rem, 4.6vw, 3.9rem);
+  --text-display: clamp(2rem, 6vw, 4.4rem);
+  --text-headline: clamp(1.35rem, 2.6vw, 2.2rem);
+  --text-hero: clamp(1.7rem, 4.1vw, 3.6rem);
+
+  --weight-light: 300;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-black: 800;
+
+  /* Títulos: sempre em caixa alta, um degrau acima do peso que tinham na Sora.
+     A fonte é variável, então o degrau é de 50 e não de 100. */
+  --case-heading: uppercase;
+  --weight-heading: 700;
+  --weight-heading-card: 620;
+  --weight-heading-display: 350;
+
+  --leading-none: 1;
+  --leading-tight: 1.02;
+  --leading-compact: 1.1;
+  --leading-heading: 1.04;
+  --leading-display: 1.14;
+  --leading-title: 1.2;
+  --leading-card: 1.3;
+  --leading-snug: 1.4;
+  --leading-ui: 1.5;
+  --leading-relaxed: 1.6;
+  --leading-body: 1.7;
+  --leading-prose: 1.8;
+
+  --tracking-tight: -0.03em;
+  --tracking-heading: -0.005em;
+  --tracking-heading-card: 0.02em;
+  --tracking-display: 0.01em;
+  --tracking-ui: 0.01em;
+  --tracking-caps: 0.08em;
+  --tracking-label: 0.14em;
+  --tracking-eyebrow: 0.22em;
+
+  /* ── 2. SEMÂNTICOS · ESPAÇO E LAYOUT ───────────────────────── */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  --gutter: 1rem;
+  --section-py: var(--space-16);
+  --container-max: 1200px;
+  --measure: 660px;
+  --nav-height: 64px;
+  --grid-size: 28px;
+  --graph-height: clamp(420px, 64vh, 620px);
+
+  /* ── 2. SEMÂNTICOS · FORMA, SOMBRA, MOVIMENTO ──────────────── */
+  --radius-card: 12px;
+  --radius-card-sm: 7px;
+  --radius-icon: 9px;
   --radius-pill: 100px;
+
+  --border-width: 1px;
+  --blur-nav: 16px;
+  --blur-hero-veil: 7px;
+
+  --size-icon-sm: 16px;
+  --size-icon-md: 20px;
+  --size-icon-lg: 24px;
+  --size-icon-xl: 28px;
+  --size-logo-symbol: 24px;
+  --size-logo-symbol-sm: 16px;
+  --size-logo-wordmark: 15px;
+  --size-grid-dot: 1px;
+  --size-node-root: 72px;
+  --size-node-area: 40px;
+  --size-node-agent: 24px;
+  --edge-width: 1px;
+  --edge-width-active: 1.5px;
+  --underline-width: 1.5px;
+  --underline-offset: 0.35em;
+
+  --shadow-card-hover: 0 0 0 1px var(--color-accent-line), 0 18px 40px -24px rgb(0 0 0 / 0.8);
+  --shadow-accent-glow: 0 10px 40px -10px var(--color-accent-glow);
+  --shadow-float: 0 12px 30px -8px rgb(0 0 0 / 0.6);
+  --shadow-btn-glow: 0 0 34px -8px var(--color-accent-glow);
+  --shadow-btn-glow-hover: 0 0 46px -4px rgb(176 141 79 / 0.35);
+  --shadow-node-active: 0 0 0 6px var(--color-accent-soft), 0 0 36px var(--color-accent-glow);
+
+  --duration-fast: 0.2s;
+  --duration-base: 0.35s;
+  --duration-slow: 0.6s;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --z-nav: 200;
+  --z-float: 150;
 }
 
-body { -webkit-font-smoothing: antialiased; }
-
-/* Animação de entrada ao rolar (todas as páginas) */
-.reveal { opacity: 0; transform: translateY(14px); transition: opacity .5s ease, transform .5s ease; }
-.reveal.visible { opacity: 1; transform: none; }
-.reveal-delay-1 { transition-delay: .06s; }
-.reveal-delay-2 { transition-delay: .12s; }
-#nav.scrolled { border-color: var(--color-border-subtle); }
-
-/* Accordion "o problema" (index.html) */
-.problema-item { transition: border-color .25s ease; cursor: pointer; }
-.problema-item:hover { border-color: var(--color-brand-accent); }
-.problema-a { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
-.problema-item.open .problema-a,
-.problema-item:hover .problema-a { max-height: 240px; }
-.problema-toggle { transition: transform .25s ease; cursor: pointer; }
-.problema-item.open .problema-toggle,
-.problema-item:hover .problema-toggle { transform: rotate(45deg); }
-
-/* Accordion FAQ (index.html) */
-.faq-a { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
-.faq-item.open .faq-a { max-height: 200px; }
-.faq-toggle { transition: transform .25s ease; }
-.faq-item.open .faq-toggle { transform: rotate(45deg); }
-
-/* Campos de formulário (diagnostico.html) */
-input, select, textarea {
-  background: var(--color-surface-raised);
-  border: 1px solid var(--color-border-default);
-  color: var(--color-text-primary);
-  border-radius: var(--radius-card-sm);
-  padding: 0.85rem 1rem;
-  font-family: var(--font-body);
-  font-size: 0.92rem;
-  width: 100%;
-  transition: border-color .2s ease;
-}
-input:focus, select:focus, textarea:focus { outline: none; border-color: var(--color-brand-accent); }
-input::placeholder, textarea::placeholder { color: var(--color-text-tertiary); }
-label {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 0.68rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-text-secondary);
-  display: block;
-  margin-bottom: 0.5rem;
+@media (max-width: 719px) {
+  :root {
+    --size-node-root: 56px;
+    --size-node-area: 30px;
+    --size-node-agent: 18px;
+    --graph-height: 400px;
+  }
 }
 
-/* Simulação clicável (demonstrativo_obra.html) */
-.chip { transition: all .2s ease; }
-.step-line { background: linear-gradient(180deg, var(--color-border-default) 0%, var(--color-border-default) 100%); }
-.agent-bubble { animation: fadeIn .35s ease both; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
-.check-done { text-decoration: line-through; color: var(--color-text-tertiary); }
-input[type=checkbox].sim-check { accent-color: var(--color-brand-accent); width: 18px; height: 18px; }
+@media (min-width: 640px) {
+  :root { --gutter: 1.5rem; }
+}
+
+@media (min-width: 960px) {
+  :root {
+    --gutter: 3rem;
+    --section-py: var(--space-24);
+  }
+}
